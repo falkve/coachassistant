@@ -1,0 +1,41 @@
+#switch {
+	#player-switcher {
+		#switch-indicaton {
+			display: inline-block;
+			max-width: 100px;
+			margin-top: 20px;
+			margin-left: auto;
+			margin-right: auto;
+			margin-bottom: 20px;
+			padding: 10px 20px;
+			border-radius: 10px;
+			background-color: white;
+			.arrow-up {
+				color: $green;
+				float: left;
+				&:before {
+					@include icons();
+					content: "u";
+				    font-size: 50px;
+				}
+			}
+			.arrow-down {
+				color: $red;
+				float: right;
+				&:before {
+					@include icons();
+					content: "x";
+				    font-size: 50px;
+				}
+			}
+		}
+		ul {
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+			li {
+
+			}
+		}
+	}
+}

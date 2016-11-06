@@ -1,0 +1,41 @@
+#settings {
+	h1 {
+		display: none;
+	}
+	.ui-content {
+		padding: 0;
+		.settings-option {
+			margin-bottom: 30px;
+			.option {
+				display: inline-block;
+				width: 100%;
+				margin-bottom: 3px;
+				padding: 5px 15px;
+				border-top: 1px solid #DDD;
+				border-bottom: 1px solid #DDD;
+				background-color: white;
+				label {
+					display: inline-block;
+					padding-top: 10px;
+					float: left;
+				}
+				.ui-flipswitch {
+					float: right;
+					margin: 0;
+				}
+				ul {
+					list-style-type: none;
+					margin: 0;
+					padding: 0;
+				}
+			}
+			
+			&.user-account-details {
+				#email {
+					color: blue;
+				}
+			}
+			
+		}
+	}
+}

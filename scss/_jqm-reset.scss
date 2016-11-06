@@ -1,0 +1,22 @@
+.ui-panel-inner {
+	padding: 0 !important;
+}
+
+.ui-listview {
+	margin: 0 !important;
+	& > li > a.ui-btn {
+		border: 0 !important;
+	}
+}
+
+.ui-flipswitch.ui-corner-all {
+	margin: 0 !important;
+	border-radius: 20px !important;
+}
+
+.ui-page {
+	max-width: 640px;
+	.ui-content {
+		position: relative;
+	}
+}

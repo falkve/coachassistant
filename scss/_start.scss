@@ -1,0 +1,67 @@
+.player--cards {
+	a {
+		display: block;
+		color: $black;
+	}
+	.player--card {
+	    padding: 15px;
+		margin-bottom: 5px;
+		border-radius: 10px;
+		background-color: white;
+		position: relative;
+		&:after {
+			@include icons();
+			content: "\q";
+			font-size: 24px;
+			color: $grey;
+			margin-top: -10px;
+			position: absolute;
+			right: 20px;
+			top: 50%;
+		}
+		.time--start {
+			font-weight: 100;
+		}
+	}
+	&.disable-links {
+		a {
+			pointer-events: none;
+			cursor: default;
+		}
+	}
+}
+
+#lock-screen {
+	text-align: center;
+	color: white;
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+	background-color: $red;
+
+	-webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.25);
+	-moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.25);
+	box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.25);
+	
+	position: fixed;
+	bottom: 15px;
+	right: 15px;
+	z-index: 99;
+	
+	&:before {
+		@include icons();
+		font-size: 30px;
+	    line-height: 75px;
+		content: "\41";
+	}
+	
+	&.active {
+		background-color: $green;
+		&:before {
+			@include icons();
+			font-size: 30px;
+		    line-height: 75px;
+			content: "\42";
+		}
+	}
+}

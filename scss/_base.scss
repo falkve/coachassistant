@@ -1,0 +1,67 @@
+.ui-overlay-a, .ui-page-theme-a, .ui-page-theme-a .ui-panel-wrapper, body {
+	margin: 0;
+	padding: 0;
+	background-color: $app-background-color !important;
+}
+
+#page-wrapper {
+	max-width: 640px;
+	padding-top: 40px;
+	position: relative;
+}
+
+.text-muted {
+	font-size: 12px;
+	color: #999;
+}
+
+h3 {
+	font-weight: 300;
+	color: $grey;
+}
+
+h5 {
+    font-size: 12px;
+	font-weight: 300;
+	color: $grey;
+	margin: 0;
+	margin-bottom: 10px;
+}
+
+a {
+	text-decoration: none;
+}
+
+// Buttons
+
+.btn-menu {
+	&:before {
+		@include icons();
+		content: "\79";
+	}
+}
+
+.btn-add {
+	&:before {
+		@include icons();
+		content: "4";
+		font-size: 27px !important;
+		line-height: 35px !important;
+	}
+}
+
+.btn-close {
+	&:before {
+		@include icons();
+		content: "\i";
+	}
+}
+
+.btn-return {
+	padding-top: 4px !important;
+	&:before {
+		@include icons();
+		content: "\p";
+		font-size: 27px !important;
+	}
+}

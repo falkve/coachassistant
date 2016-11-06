@@ -1,13 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta id="extViewportMeta" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+
     <title>CoachAssistant</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    
+	<meta name="apple-touch-fullscreen" content="yes">
+
+    <!-- Config look in Safari Web App -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimal-ui">
+	
+	<link rel="apple-touch-startup-image" href="icons/startup.png">
+
+	<link rel="apple-touch-icon" href="ico/icns/touch-icon-iphone.png">
+
+	<link rel="apple-touch-icon" sizes="57x57" href="icons/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="icons/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="icons/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="icons/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="icons/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="icons/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="icons/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="icons/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="icons/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="icons/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="icons/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
+	<link rel="manifest" href="icons/manifest.json">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">	
+	<meta name="msapplication-tap-highlight" content="no">
+	<!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+	<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi">
+
+    
+    <link rel="stylesheet" href="app.css">
+    
+    <!--<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">-->
+     <link rel="stylesheet" href="jquery.mobile-1.4.5.css">
+    
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-    <script src="support.js"></script>
+    <script src="app.js"></script>
 
     <script>
         $( document ).ready(function() {
@@ -24,8 +65,9 @@
             height:100%;
             z-index:1000;
         }
+        /*
         .ui-page {
-            background:#4A8CDB;
+            background: #4A8CDB;
         }
         .ui-page .ui-btn {
             background: #81CEF9;
@@ -51,53 +93,113 @@
             padding-top: 5px;
             padding-left: 5px;
         }
-
-
-
-
+		*/
     </style>
 
 </head>
 
-<div id="lockscreen" class="overlay">
-    <button class="ui-btn" onclick="unlock()" style="background-color: #36A131; position:absolute; bottom: -10px;">Unlock</button>
+<div data-role="page" id="start">
+
+	<div data-role="header">
+		<a href="#mypanel" class="ui-btn-left btn-navbar btn-menu" data-role="button" role="button"><span>Inställningar</span></a>
+		<h1>ta</h1>
+		<a href="#addplayer" class="ui-btn-right btn-navbar btn-add" data-role="button" role="button" data-transition="slide"><span>Add player</span></a>
+	</div><!-- /header -->
+
+	<div data-role="content">	
+
+	<div id="lockscreen" class="overlay">
+	    <button class="ui-btn" onclick="unlock()" style="background-color: #36A131; position:absolute; bottom: -10px;">Unlock</button>
+	</div>
+	
+	<div id="time"></div>
+	
+	<h5>Spelare</h5>
+	<ul data-role="listview" data-inset="true" id="players"></ul>
+	
+
+	<ul data-role="listview" data-inset="true" id="playeronbench"></ul>
+	
+	
+	<div data-role="main" class="ui-content" id="back">
+	    <button class="ui-btn" onclick="back()">Back</button>
+	</div>
+
+
+	<div data-role="main" class="ui-content" id="positions">
+		<div class="select-position-container">
+			<div class="cancel">Avbryt</div>
+		</div>
+	</div>
+
+	<!-- start -->
+	<div data-role="main" class="ui-content" id="teamcompletebutton">
+	    <button class="ui-btn" onclick="teamComplete()">Team Complete</button>
+	</div>
+	
+	<div data-role="main" class="ui-content" id="gameover">
+	    <button class="ui-btn" onclick="gameOver()">Game Over</button>
+	    <button class="ui-btn" onclick="lock()">Lock</button>
+	</div>
+	<div data-role="main" class="ui-content" id="startgame">
+	    <button class="ui-btn" onclick="startGame()">Start Game</button>
+	</div>
+	<div data-role="main" class="ui-content" id="init">
+	    <button class="ui-btn" onclick="init()">Start new Game</button>
+	</div>
+	<!-- /end -->
+
+
+		<ul data-role="listview" data-inset="true" id="players">        
+		 
+		</ul>
+		<!--
+		<div id="player--cards" class="player--cards disable-links">
+			<h5>Spelare</h5>
+		</div>
+		-->
+		<div class="small" style="padding-top: 40px;">
+			TeamAssistant version Beta
+		</div>
+		
+		<div id="lock-screen"><span class="sr-only">Lås klick</span></div>
+		
+	</div>
+
+
+	<div data-role="panel" id="mypanel" data-display="overlay">
+	    
+	    <div data-role="header">
+		    <a href="#close-panel" data-rel="close" class="ui-btn-right btn-navbar btn-close" data-role="button" role="button"><span>Navbar</span></a>
+	    </div>
+	
+		<h3>Inställningar</h3>
+		
+		<h5>Ställ in din app</h5>
+		
+		<ul data-role="listview">
+			<li><a href="#settings">Appinställningar</a></li>
+			<li><a href="#positions">Positioner</a></li>
+		</ul>
+		
+		<h5>Exportera</h5>
+		<p class="small"></p>
+		<ul data-role="listview">
+			<li><a href="#">Dropbox</a></li>
+			<li><a href="#">Excel</a></li>
+			<li><a href="#">CSV</a></li>
+		</ul>
+		
+		<div class="app-version">TeamAssistant Beta</div>
+		
+	</div>
+	
+	<!--
+	<div data-role="startter">
+		<h4>Page startter</h4>
+	</div>
+	-->
 </div>
-<div id="time" style="text-align: center; font-size: 20px;color: white;" >
-
-</div>
-<ul data-role="listview" data-inset="true" id="players">        
-     
-</ul>
-
-<ul data-role="listview" data-inset="true" id="playeronbench">             
-</ul>
-<div data-role="main" class="ui-content" id="back">
-    <button class="ui-btn" onclick="back()">Back</button>
-</div>
-
-
-<div data-role="main" class="ui-content" id="positions">
-</div>
-
-
-<div data-role="main" class="ui-content" id="teamcompletebutton">
-    <button class="ui-btn" onclick="teamComplete()">Team Complete</button>
-</div>
-
-<div data-role="main" class="ui-content" id="gameover">
-    <button class="ui-btn" onclick="gameOver()">Game Over</button>
-    <button class="ui-btn" onclick="lock()">Lock</button>
-</div>
-<div data-role="main" class="ui-content" id="startgame">
-    <button class="ui-btn" onclick="startGame()">Start Game</button>
-</div>
-<div data-role="main" class="ui-content" id="init">
-    <button class="ui-btn" onclick="init()">Start new Game</button>
-</div>
-
-
-
-
 
 </body>
 </html>

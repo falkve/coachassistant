@@ -1,0 +1,133 @@
+@import "scss/_icons",
+"scss/_variables",
+"scss/_mixins",
+"scss/_jqm-reset",
+"scss/_helpers",
+"scss/_navbar",
+"scss/_panel",
+"scss/_base",
+"scss/_start",
+"scss/_switch",
+"scss/_settings",
+"scss/_addplayer",
+"scss/_hack";
+
+.app-version {
+	font-size: 12px;
+	color: $grey;
+	padding: 0 0 20px 20px;
+	position: absolute;
+	bottom: 0;
+}
+
+.listview-seamless-btn {
+	color: blue;
+    padding: .7em 1em;
+    margin-top: 3px;
+    border-top: 1px solid #DDD;
+	background-color: white;
+	
+	&:after {
+		@include icons();
+		font-size: 23px;
+		line-height: 19px;		
+		content: "3";
+		float: right;
+	}
+}
+
+// positions
+
+.white-list {
+
+	li {
+		padding: .7em 1em !important;
+		border-bottom: 1px solid #DDD !important;
+		background-color: white;
+		
+		&:first-child {
+			border: none !important;
+			border-bottom: 1px solid #DDD !important;
+		}
+		
+		&:last-of-type {
+			border: none !important;
+		}
+	}
+}
+
+#positions {
+	#positions-list-sortable {
+		li {
+			&:before {
+				content: "|||";
+				color: #DDD;
+				margin-right: 5px;
+			}
+			.edit-positions-btn {
+				float: right;
+				span {
+					display: none;
+				}
+			}
+			.edit-positions-btn {
+				&:before {
+					@include icons();
+					content: "l";
+				}
+			}
+		}
+	}
+}
+
+.add-position-item {
+	/*
+	padding: .7em 1em !important;
+	border-bottom: 1px solid #DDD;
+	background-color: white;
+	*/
+	input {
+		width: 100%;
+		padding: 5px;
+		border: 0;
+		border-radius: 3px;
+		background-color: #f7f7f7;
+	}
+}
+
+// add player
+
+#selectable-positions {
+	#positions-list {
+		li {
+			&.selected-position {
+				&:after {
+					@include icons();
+					color: $green;
+					content: "j";
+					float: right;
+				}
+			}		
+		}
+	}
+
+}
+
+#switch, #addplayer {
+	h1 {
+		display: none;
+	}
+}
+
+// Sortable
+.sortable-chosen {
+	border: 2px solid #DDD;
+}
+
+.sortable-ghost {
+	/*
+	-webkit-box-shadow: 0px 0px 18px 0px rgba(0,0,0,0.28);
+	-moz-box-shadow: 0px 0px 18px 0px rgba(0,0,0,0.28);
+	box-shadow: 0px 0px 18px 0px rgba(0,0,0,0.28);
+	*/
+}

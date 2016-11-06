@@ -1,6 +1,3 @@
-
-
-
 /**
  * Created by vonfalk on 2016-04-13.
  */
@@ -141,7 +138,9 @@ function init() {
     $("#back").hide();
     
     for (var name in players) {
-        $("#players").append('<li id="' + name + '" onClick="addPlayer(\'' + name + '\')" class="ui-first-child ui-last-child"><a href="#" class="ui-btn ui-btn-icon-right ui-icon-arrow-r"><img height="44" width="30" src="img/' + players[name] + '"> ' + name + '</a></li>');
+	    var name_plate = name.charAt(0);
+	    
+        $("#players").append('<li id="' + name + '" onClick="addPlayer(\'' + name + '\')" class="ui-first-child ui-last-child"><a href="#" class="ui-btn ui-btn-icon-right ui-icon-arrow-r"><div class="name-plate">'+name_plate+'</div><img height="44" width="30" src="img/' + players[name] + '"> ' + name + '</a></li>');
     }
 
     for (var key in positions) {

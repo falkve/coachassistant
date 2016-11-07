@@ -3,6 +3,7 @@ $green: #37c772;
 $grey: #999;
 $black: #333;
 $purple: #704fd6;
+$orange: #FEBB00;
 
 
 $app-background-color: #111;
@@ -10,6 +11,9 @@ $navbar-color: #222;
 $text-color: white;
 $secondary-text-color: $grey;
 
+// Navbar
+$navbar-background-color: black;
+$navbar-border-color: $navbar-background-color;
+
 // Panel
-$navbar-background-color: #111;
-$navbar-border-color: #111;
+$panel-background-color: #111;

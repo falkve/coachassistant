@@ -21,7 +21,39 @@
 		background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 91%);
 		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=0 );
 	}
-	
+
+	.elapsed_time {
+		padding-top: 25px;
+		#elapsed_minutes, #elapsed_seconds {
+		    line-height: 47px;
+			&:after {
+				font-size: 14px
+			}
+		}
+		.divider {
+			display: inline-block;
+			line-height: 47px;
+			vertical-align: top;
+			margin-top: 0px;
+			font-size: 75px;
+		}
+		#elapsed_minutes {
+			display: inline-block;
+			&:after {
+				display: block;
+				content: "sekunder";
+				color: #999;
+			}
+		}
+		#elapsed_seconds {
+			display: inline-block;
+			&:after {
+				display: block;
+				content: "minuter";
+				color: #999;
+			}
+		}
+	}
 }
 
 .ui-btn {
@@ -29,47 +61,6 @@
 	border-radius: 4px !important;
 	border: 1px solid #444 !important;
 	background-color: transparent !important;
-}
-
-#players,
-#playeronbench {
-	.ui-btn {
-	    font-size: 19px;
-	    margin-bottom: 10px;
-	    border-radius: 41px !important;
-		border: 1px solid #444 !important;
-	}
-	li {
-		&:nth-child(odd) {
-			.name-plate {
-				background-color: orange;
-			}
-		}
-		&:nth-child(even) {
-			.name-plate {
-				background-color: $purple;
-			}
-		}
-	}
-	.name-plate {
-		display: inline-block;
-		text-transform: uppercase;
-		text-align: center;
-		line-height: 50px;
-		vertical-align: middle;
-		width: 50px;
-		height: 50px;
-		margin-right: 10px;
-		border-radius: 50%;
-	}
-	img {
-		display: none;
-		width: 50px;
-		height: 50px;
-		margin-right: 10px;
-		border-radius: 50%;
-		vertical-align: middle;
-	}
 }
 
 .ui-btn-icon-left:after,
@@ -81,33 +72,4 @@
 	content: "q" !important;
 	background-image: none !important;
 	background-color: transparent !important;
-}
-
-// Positions
-
-#positions {
-	&.ui-content {
-		display: block;
-		width: 100%;
-		height: 100%;
-		padding: 0;
-		position: absolute;
-		top: 0;
-		left: 0;
-		z-index: 10019;
-		background: rgba(0,0,0,0.8);
-		.select-position-container {
-			width: 80%;
-			margin-top: 40px;
-			margin-left: auto;
-			margin-right: auto;
-			padding: 10px;
-			background-color: #111;
-			.ui-btn {
-				font-weight: 100;
-			    color: #DDD !important;
-				border: 1px solid #222 !important;
-			}
-		}
-	}
 }

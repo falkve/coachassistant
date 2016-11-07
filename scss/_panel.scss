@@ -1,14 +1,20 @@
 .ui-panel {
-	background-color: $navbar-background-color !important;
-	h3 {
-		font-weight: 100;
-		color: $grey;
+	background-color: $panel-background-color !important;
+	
+	.panel-contents {
+		padding-left: 15px;
+		h3 {
+			font-weight: 100;
+			color: $grey;
+		}
 	}
+
 	.ui-header {
+		border-color: transparent !important;
 		background-color: transparent !important;
 		.btn-navbar {
 			color: $grey !important;
-		    padding: 6px;
+		    padding: 7px 6px;
 			&:before {
 			    font-size: 21px;
 			    color: $grey;

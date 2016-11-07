@@ -3,8 +3,9 @@
 	min-height: 40px;
 	position: fixed;
 	top: 0;
-	background-color: $navbar-color !important;
 	border-color: $navbar-border-color !important;
+	background-color: $navbar-background-color !important;
+
 	.ui-title {
 		color: white;
 	}

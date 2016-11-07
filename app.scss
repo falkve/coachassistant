@@ -1,6 +1,7 @@
 @import "scss/_icons",
 "scss/_variables",
 "scss/_mixins",
+"scss/_animate",
 "scss/_jqm-reset",
 "scss/_helpers",
 "scss/_navbar",
@@ -9,6 +10,9 @@
 "scss/_start",
 "scss/_switch",
 "scss/_settings",
+"scss/_times",
+"scss/_positions",
+"scss/_players",
 "scss/_addplayer",
 "scss/_hack";
 
@@ -53,45 +57,6 @@
 		&:last-of-type {
 			border: none !important;
 		}
-	}
-}
-
-#positions {
-	#positions-list-sortable {
-		li {
-			&:before {
-				content: "|||";
-				color: #DDD;
-				margin-right: 5px;
-			}
-			.edit-positions-btn {
-				float: right;
-				span {
-					display: none;
-				}
-			}
-			.edit-positions-btn {
-				&:before {
-					@include icons();
-					content: "l";
-				}
-			}
-		}
-	}
-}
-
-.add-position-item {
-	/*
-	padding: .7em 1em !important;
-	border-bottom: 1px solid #DDD;
-	background-color: white;
-	*/
-	input {
-		width: 100%;
-		padding: 5px;
-		border: 0;
-		border-radius: 3px;
-		background-color: #f7f7f7;
 	}
 }
 

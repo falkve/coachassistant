@@ -1,0 +1,62 @@
+#players,
+#playeronbench {
+	.ui-btn {
+	    font-size: 19px;
+	    margin-bottom: 10px;
+	    border-radius: 41px !important;
+		border: 1px solid black !important;
+		background-color: black !important;
+		&:after {
+			@include icons();
+			content: "4" !important;
+		}
+	}
+	li {
+		&:nth-child(odd) {
+			.name-plate {
+				background-color: orange;
+			}
+		}
+		&:nth-child(even) {
+			.name-plate {
+				background-color: $purple;
+			}
+		}
+	}
+	.name-plate {
+		display: inline-block;
+		text-transform: uppercase;
+		text-align: center;
+		line-height: 50px;
+		vertical-align: middle;
+		width: 50px;
+		height: 50px;
+		margin-right: 10px;
+		border-radius: 50%;
+	}
+	img {
+		display: none;
+		width: 50px;
+		height: 50px;
+		margin-right: 10px;
+		border-radius: 50%;
+		vertical-align: middle;
+	}
+
+	// Times
+	.player-elapsed-time {
+		display: inline-block;
+		font-weight: 100;
+		color: $orange;
+		margin-left: 10px;
+		padding: 5px 15px;
+		border-radius: 4px;
+		background-color: #111;
+	}
+	// Remove anim
+	.removeAnim {
+		height: 200px;
+		
+		@include transition(10s);
+	}
+}

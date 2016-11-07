@@ -9,3 +9,10 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+
+@mixin transition( $duration ) {
+	-webkit-transition: all $duration ease-out;
+	-moz-transition: all $duration ease-out;
+	-o-transition: all $duration ease-out;
+	transition: all $duration ease-out;
+}

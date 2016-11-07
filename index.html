@@ -114,11 +114,15 @@
 	
 	<div id="time"></div>
 	
-	<h5>Spelare</h5>
-	<ul data-role="listview" data-inset="true" id="players"></ul>
+	<h5>Välj spelare</h5>
+	<ul data-role="listview" data-inset="true" id="players">
+		
+	</ul>
 	
 
-	<ul data-role="listview" data-inset="true" id="playeronbench"></ul>
+	<ul data-role="listview" data-inset="true" id="playeronbench">
+		
+	</ul>
 	
 	
 	<div data-role="main" class="ui-content" id="back">
@@ -128,7 +132,10 @@
 
 	<div data-role="main" class="ui-content" id="positions">
 		<div class="select-position-container">
-			<div class="cancel">Avbryt</div>
+			<header>
+				<div class="cancel">Avbryt</div>
+			</header>
+			<footer></footer>
 		</div>
 	</div>
 
@@ -158,9 +165,11 @@
 			<h5>Spelare</h5>
 		</div>
 		-->
+		<!--
 		<div class="small" style="padding-top: 40px;">
 			TeamAssistant version Beta
 		</div>
+		-->
 		
 		<div id="lock-screen"><span class="sr-only">Lås klick</span></div>
 		
@@ -172,18 +181,20 @@
 	    <div data-role="header">
 		    <a href="#close-panel" data-rel="close" class="ui-btn-right btn-navbar btn-close" data-role="button" role="button"><span>Navbar</span></a>
 	    </div>
-	
-		<h3>Inställningar</h3>
-		
-		<h5>Ställ in din app</h5>
-		
+		<div class="panel-contents">
+			<h3>Inställningar</h3>
+			
+			<h5>Ställ in din app</h5>
+		</div>
 		<ul data-role="listview">
 			<li><a href="#settings">Appinställningar</a></li>
 			<li><a href="#positions">Positioner</a></li>
 		</ul>
-		
-		<h5>Exportera</h5>
-		<p class="small"></p>
+		<div class="panel-contents">
+			<h5>Exportera</h5>
+			<p class="small"></p>
+		</div>
+
 		<ul data-role="listview">
 			<li><a href="#">Dropbox</a></li>
 			<li><a href="#">Excel</a></li>

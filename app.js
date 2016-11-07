@@ -111,7 +111,7 @@ function Player (name, img) {
 
             if(position.startTime != null){
                 var elapsedTime = getElapsedTime(position.startTime, new Date());
-                returnString += ' - ' + elapsedTime.toString();
+                returnString += ' <div class="player-elapsed-time">' + elapsedTime.toString() + '</div>';
             }
             return returnString;
 
@@ -149,28 +149,70 @@ function init() {
 
 }
 
+// Animations
+
+$.fn.extend({
+    animateCss: function (animationName) {
+        var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+        this.addClass('animated ' + animationName).one(animationEnd, function() {
+            $(this).removeClass('animated ' + animationName);
+        });
+    }
+});
+
+function popRemovePlayer(name) {
+	// Add class to animate	
+	player = $('#'+name);
+	
+	setTimeout(function(){
+		player.addClass('animated bounceOutRight');
+		player.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+			console.log("Animation ends!");
+			player.remove();
+		});
+	}, 300);
+	
+}
+
+// App Functionality
+
+// Add Player
 function addPlayer(name){
-    $('#'+name).remove();
+    //popRemovePlayer(name);
+    
     currentPlayer = new Player(name, players[name]);
     //$("#players").hide();
-    $("#positions").show();
+    $('#positions').show().find('.select-position-container').addClass('animate fadeInUp');
+    //$('#positions').show();
     $('#teamcompletebutton').hide();
 }
 
+// Set positions
 function setPosition(position){
     if(position != 'BENCH'){
         $('#'+position).remove();
+        
+        // Remove player
+        console.log(currentPlayer);
+        popRemovePlayer(currentPlayer.name);
+        
         activePlayers[currentPlayer.name] = currentPlayer;
         activePlayers[currentPlayer.name].addPosition(new Position(position));
     } else {
         $("#playeronbench").append('<li id="b_'+currentPlayer.name+'" onClick="doSwitchPlayer(\''+currentPlayer.name+'\')" class="ui-first-child ui-last-child"><a href="#" class="ui-btn ui-btn-icon-right ui-icon-arrow-r"><img height="44" width="30" src="img/'+currentPlayer.img+'"> '+currentPlayer.name+ ' '  + currentPlayer.viewPositions() + '</a></li>');
         benchPlayers[currentPlayer.name] = currentPlayer;
+
+        // Remove player
+        console.log(currentPlayer);
+        popRemovePlayer(currentPlayer.name);
+
     }
     $("#players").show();
     $("#positions").hide();
     $('#teamcompletebutton').show();
 }
 
+// Change player
 function changePlayer(name){
     currentPlayer = activePlayers[name];
     $("#players").hide();
@@ -227,11 +269,13 @@ function startGame(){
     startTime = new Date();
     $("#time").show();
     $("#startgame").hide();
+    
     var d = new Date();
     for (var name in activePlayers) {
         activePlayers[name].positions[activePlayers[name].positions.length-1].startTime = d;
     }
     loopId = setInterval(updateActiveView, 1000);
+    
     $("#gameover").show();
     lock();
 }
@@ -242,7 +286,14 @@ function updateActiveView(){
         $("#players").append('<li id="'+activePlayers[name].name+'" onClick="changePlayer(\''+activePlayers[name].name+'\')" class="ui-first-child ui-last-child"><a href="#" class="ui-btn ui-btn-icon-right ui-icon-arrow-r"><img height="44" width="30" src="img/'+players[name]+'"> '+activePlayers[name].toString()+ '</a></li>');
     }
     if(startTime != null){
-        $('#time').text(getElapsedTime(startTime, new Date()));
+		eTime = getElapsedTime(startTime, new Date());
+		eMinutes = eTime['minutes'];
+		eSeconds = eTime['seconds'];
+		
+		eSeconds = eSeconds < 10 ? "0" + eSeconds : eSeconds;
+		eMinutes = eMinutes < 10 ? "0" + eMinutes : eMinutes;
+	    
+	    $('#time').html('<div class="elapsed_time"><div id="elapsed_seconds">'+eMinutes+'</div> <div class="divider">:</div> <div id="elapsed_minutes">'+eSeconds+'</div> </div>');
     }
 }
 

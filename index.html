@@ -102,7 +102,7 @@
 
 	<div data-role="header">
 		<a href="#mypanel" class="ui-btn-left btn-navbar btn-menu" data-role="button" role="button"><span>Inställningar</span></a>
-		<h1>ta</h1>
+		<h1><span class="sr-only">TeamAssistant</span></h1>
 		<a href="#addplayer" class="ui-btn-right btn-navbar btn-add" data-role="button" role="button" data-transition="slide"><span>Add player</span></a>
 	</div><!-- /header -->
 
@@ -118,7 +118,15 @@
 	<ul data-role="listview" data-inset="true" id="players">
 		
 	</ul>
-	
+
+	<div data-role="main" class="ui-content" id="positions">
+		<div class="select-position-container">
+			<header>
+				<div class="cancel"><span class="sr-only">Avbryt</span></div>
+			</header>
+			<footer></footer>
+		</div>
+	</div>	
 
 	<ul data-role="listview" data-inset="true" id="playeronbench">
 		
@@ -127,16 +135,6 @@
 	
 	<div data-role="main" class="ui-content" id="back">
 	    <button class="ui-btn" onclick="back()">Back</button>
-	</div>
-
-
-	<div data-role="main" class="ui-content" id="positions">
-		<div class="select-position-container">
-			<header>
-				<div class="cancel">Avbryt</div>
-			</header>
-			<footer></footer>
-		</div>
 	</div>
 
 	<!-- start -->
@@ -148,9 +146,11 @@
 	    <button class="ui-btn" onclick="gameOver()">Game Over</button>
 	    <button class="ui-btn" onclick="lock()">Lock</button>
 	</div>
+	
 	<div data-role="main" class="ui-content" id="startgame">
 	    <button class="ui-btn" onclick="startGame()">Start Game</button>
 	</div>
+	
 	<div data-role="main" class="ui-content" id="init">
 	    <button class="ui-btn" onclick="init()">Start new Game</button>
 	</div>

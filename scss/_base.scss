@@ -65,3 +65,14 @@ a {
 		font-size: 27px !important;
 	}
 }
+
+// Cancel
+.cancel {
+	float: right;
+	color: $grey;
+	&:before {
+		@include icons();
+		content: "k";
+	    font-size: 27px;
+	}
+}

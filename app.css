@@ -199,6 +199,18 @@
 .icon-plus-add-2:before {
   content: "\34"; }
 
+.icon-play-2:before {
+  content: "\35"; }
+
+.icon-swap-exchage:before {
+  content: "\37"; }
+
+.icon-question:before {
+  content: "\36"; }
+
+.icon-data:before {
+  content: "\38"; }
+
 /*!
  * animate.css -http://daneden.me/animate
  * Version - 3.5.1
@@ -2443,7 +2455,11 @@
   border-color: black !important;
   background-color: black !important; }
   .ui-header .ui-title {
-    color: white; }
+    color: white;
+    background-image: url(images/logo-white-oneeye.svg);
+    background-size: 50px;
+    background-repeat: no-repeat;
+    background-position: center center; }
   .ui-header .btn-navbar {
     color: white !important;
     border: none;
@@ -2558,6 +2574,22 @@ a {
     -moz-osx-font-smoothing: grayscale;
     content: "\p";
     font-size: 27px !important; }
+
+.cancel {
+  float: right;
+  color: #999; }
+  .cancel:before {
+    font-family: "teamassistant" !important;
+    font-style: normal !important;
+    font-weight: normal !important;
+    font-variant: normal !important;
+    text-transform: none !important;
+    speak: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    content: "k";
+    font-size: 27px; }
 
 .player--cards a {
   display: block;
@@ -2726,27 +2758,15 @@ a {
     border-radius: 20px;
     background-color: #111;
     position: relative; }
+    #positions.ui-content .select-position-container header {
+      display: inline-block;
+      width: 100%; }
     #positions.ui-content .select-position-container .ui-btn {
       font-weight: 100;
       color: #DDD !important;
       border-radius: 20px !important;
       border: 1px solid black !important;
       background-color: black !important; }
-    #positions.ui-content .select-position-container .cancel {
-      position: absolute;
-      top: 10px;
-      right: 10px; }
-      #positions.ui-content .select-position-container .cancel:before {
-        font-family: "teamassistant" !important;
-        font-style: normal !important;
-        font-weight: normal !important;
-        font-variant: normal !important;
-        text-transform: none !important;
-        speak: none;
-        line-height: 1;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        content: "k"; }
 #positions #positions-list-sortable li:before {
   content: "|||";
   color: #DDD;
@@ -2783,6 +2803,7 @@ a {
 #players .ui-btn,
 #playeronbench .ui-btn {
   font-size: 19px;
+  letter-spacing: 0.03em;
   margin-bottom: 10px;
   border-radius: 41px !important;
   border: 1px solid black !important;
@@ -3053,3 +3074,65 @@ a {
   -moz-box-shadow: 0px 0px 18px 0px rgba(0,0,0,0.28);
   box-shadow: 0px 0px 18px 0px rgba(0,0,0,0.28);
   */ }
+
+#teamcompletebutton .ui-btn {
+  background: #704fd6 !important;
+  border-radius: 50px !important;
+  border-color: #704fd6 !important;
+  position: relative; }
+  #teamcompletebutton .ui-btn:before {
+    font-family: "teamassistant" !important;
+    font-style: normal !important;
+    font-weight: normal !important;
+    font-variant: normal !important;
+    text-transform: none !important;
+    speak: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    content: "h";
+    font-size: 28px;
+    color: #37c772;
+    position: absolute;
+    right: 9px;
+    top: 8px;
+    z-index: 20; }
+  #teamcompletebutton .ui-btn:after {
+    font-family: "teamassistant" !important;
+    font-style: normal !important;
+    font-weight: normal !important;
+    font-variant: normal !important;
+    text-transform: none !important;
+    speak: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    content: "";
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.12);
+    position: absolute;
+    position: absolute;
+    right: 6px;
+    top: 4px;
+    z-index: 10; }
+
+#startgame .ui-btn {
+  background: #704fd6 !important;
+  border-radius: 50px !important;
+  border-color: #704fd6 !important;
+  position: relative; }
+  #startgame .ui-btn:after {
+    font-family: "teamassistant" !important;
+    font-style: normal !important;
+    font-weight: normal !important;
+    font-variant: normal !important;
+    text-transform: none !important;
+    speak: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    content: "5";
+    position: absolute; }

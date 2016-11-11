@@ -2,6 +2,27 @@
  * Created by vonfalk on 2016-04-13.
  */
 
+var playersObj = {"players":
+[{'player_name':'Adrian','player_image':'IMG_0172.jpg'},
+{'player_name':'Albin', 'player_image':'IMG_0176.jpg'},
+{'player_name':'Christoffer', 'player_image':'IMG_0178.jpg'},
+{'player_name':'Dante', 'player_image':'IMG_0174.jpg'},
+{'player_name':'Dylan', 'player_image':'IMG_0175.jpg'},
+{'player_name':'Emil', 'player_image':'IMG_0166.jpg'},
+{'player_name':'Ivar', 'player_image':'IMG_0169.jpg'},
+{'player_name':'Jacob', 'player_image':'IMG_0167.jpg'},
+{'player_name':'Leo', 'player_image':'IMG_0173.jpg'},
+{'player_name':'Linus','player_image':'IMG_0166.jpg'},
+{'player_name':'Malte', 'player_image':'IMG_0177.jpg'},
+{'player_name':'Pontus', 'player_image':'IMG_0168.jpg'},
+{'player_name':'Samuel', 'player_image':'IMG_0171.jpg'},
+{'player_name':'Sebastian', 'player_image':'IMG_0166.jpg'},
+{'player_name':'Tor', 'player_image':'IMG_0170.jpg'},
+{'player_name':'Viggo','player_image':'IMG_0179.jpg'},
+{'player_name':'Viktor', 'player_image':'IMG_0180.jpg'},
+{'player_name':'Åke', 'player_image':'IMG_0166.jpg'}]
+};
+
 var players = new Object();
 players['Adrian'] = 'IMG_0172.jpg';
 players['Albin'] = 'IMG_0176.jpg';
@@ -21,6 +42,8 @@ players['Tor'] = 'IMG_0170.jpg';
 players['Viggo'] = 'IMG_0179.jpg';
 players['Viktor'] = 'IMG_0180.jpg';
 players['Åke'] = 'IMG_0166.jpg';
+
+console.log(players);
 
 var positions = new Object();
 /*positions['HF'] = 'Höger Forward';

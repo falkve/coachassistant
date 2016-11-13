@@ -40,14 +40,13 @@
 	<!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
 	<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi">
 
-    
+	
     <link rel="stylesheet" href="app.css">
-    
+    <link rel="stylesheet" href="jquery.mobile-1.4.5.css">
     <!--<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">-->
-     <link rel="stylesheet" href="jquery.mobile-1.4.5.css">
-    
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src="fastclick.js"></script>
     <script src="app.js"></script>
 
     <script>
@@ -181,6 +180,7 @@
 	    <div data-role="header">
 		    <a href="#close-panel" data-rel="close" class="ui-btn-right btn-navbar btn-close" data-role="button" role="button"><span>Navbar</span></a>
 	    </div>
+	    
 		<div class="panel-contents">
 			<h3>Inställningar</h3>
 			
@@ -188,7 +188,8 @@
 		</div>
 		<ul data-role="listview">
 			<li><a href="#settings">Appinställningar</a></li>
-			<li><a href="#positions">Positioner</a></li>
+			<li><a href="#positions-setup">Positioner</a></li>
+			<li><a href="#players-setup">Spelare</a></li>
 		</ul>
 		<div class="panel-contents">
 			<h5>Exportera</h5>
@@ -210,6 +211,27 @@
 		<h4>Page startter</h4>
 	</div>
 	-->
+</div>
+
+<div data-role="page" id="players-setup">
+	<div data-role="header">
+		<a href="#start" class="ui-btn-left btn-navbar btn-menu" data-role="button" role="button"><span>Inställningar</span></a>
+		<h1><span class="sr-only">TeamAssistant</span></h1>
+	</div><!-- /header -->
+</div>
+
+<div data-role="page" id="positions-setup">
+	<div data-role="header">
+		<a href="#start" class="ui-btn-left btn-navbar btn-menu" data-role="button" role="button"><span>Inställningar</span></a>
+		<h1><span class="sr-only">TeamAssistant</span></h1>
+	</div><!-- /header -->
+</div>
+
+<div data-role="page" id="settings">
+	<div data-role="header">
+		<a href="#start" class="ui-btn-left btn-navbar btn-menu" data-role="button" role="button"><span>Inställningar</span></a>
+		<h1><span class="sr-only">TeamAssistant</span></h1>
+	</div><!-- /header -->
 </div>
 
 </body>

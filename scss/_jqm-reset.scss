@@ -20,3 +20,8 @@
 		position: relative;
 	}
 }
+
+.ui-listview > .ui-li-has-thumb > .ui-btn, .ui-listview > .ui-li-static.ui-li-has-thumb {
+    min-height: 0 !important;
+    padding-left: 15px !important;
+}

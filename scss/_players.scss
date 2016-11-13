@@ -1,27 +1,12 @@
-#players,
-#playeronbench {
+// Player
+
+.player-card {
 	
-	// Player
-	
-	.player {
-		&.confirmed {
-			a {
-				-webkit-box-shadow: inset 0px 0px 0px 3px $green;
-				-moz-box-shadow: inset 0px 0px 0px 3px $green;
-				box-shadow: inset 0px 0px 0px 3px $green;
-				
-				.name-plate {
-					background-color: $green !important;
-				}
-				
-			}
-		}
-	}
-	
-	.ui-btn {
-	    font-size: 19px;
+	a {
+		display: inline-block;
+		font-size: 19px;
         letter-spacing: 0.03em;
-	    margin-bottom: 10px;
+	    margin-bottom: 10px !important;
 	    border-radius: 41px !important;
 		border: 1px solid black !important;
 		background-color: black !important;
@@ -30,18 +15,7 @@
 			content: "4" !important;
 		}
 	}
-	li {
-		&:nth-child(odd) {
-			.name-plate {
-				background-color: orange;
-			}
-		}
-		&:nth-child(even) {
-			.name-plate {
-				background-color: $purple;
-			}
-		}
-	}
+
 	.name-plate {
 		display: inline-block;
 		text-transform: uppercase;
@@ -60,6 +34,39 @@
 		margin-right: 10px;
 		border-radius: 50%;
 		vertical-align: middle;
+	}
+
+	&.confirmed {
+		a {
+			-webkit-box-shadow: inset 0px 0px 0px 3px $green;
+			-moz-box-shadow: inset 0px 0px 0px 3px $green;
+			box-shadow: inset 0px 0px 0px 3px $green;
+			
+			.name-plate {
+				background-color: $green !important;
+			}
+			
+		}
+	}
+}
+
+#players,
+#playeronbench {
+	
+	.ui-btn {
+
+	}
+	li {
+		&:nth-child(odd) {
+			.name-plate {
+				background-color: orange;
+			}
+		}
+		&:nth-child(even) {
+			.name-plate {
+				background-color: $purple;
+			}
+		}
 	}
 
 	// Times

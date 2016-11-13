@@ -32,6 +32,7 @@
 }
 
 #lock-screen {
+	display: none !important;
 	text-align: center;
 	color: white;
 	width: 80px;
@@ -62,6 +63,40 @@
 			font-size: 30px;
 		    line-height: 75px;
 			content: "\42";
+		}
+	}
+}
+
+#fixed-footer {
+	border: none;
+	background-color: black;
+	.ui-link {
+		font-size: 10px;
+		font-weight: 100;
+		text-transform: uppercase;
+		color: #999 !important;
+		border: none !important;
+		
+		&:before {
+			@include icons();
+			display: block;
+			font-size: 27px;
+			content: "7";
+		}
+		&.players-setup {
+			&:before {
+				content: "m";
+			}
+		}
+		&.positions-setup {
+			&:before {
+				content: "";
+			}
+		}
+		&.settings {
+			&:before {
+				content: "Q";
+			}
 		}
 	}
 }

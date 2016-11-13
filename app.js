@@ -43,7 +43,7 @@ players['Viggo'] = 'IMG_0179.jpg';
 players['Viktor'] = 'IMG_0180.jpg';
 players['Åke'] = 'IMG_0166.jpg';
 
-console.log(players);
+//console.log(players);
 
 var positions = new Object();
 /*positions['HF'] = 'Höger Forward';
@@ -89,6 +89,7 @@ function Player (name, img) {
     this.positions = [];
 
     this.addPosition = function(position) {
+	    //console.log(position);
         this.positions[this.positions.length] = position;
     };
 
@@ -163,11 +164,11 @@ function init() {
     for (var name in players) {
 	    var name_plate = name.charAt(0);
 	    
-        $("#players").append('<li id="' + name + '" onClick="addPlayer(\'' + name + '\')" class="ui-first-child ui-last-child"><a href="#" class="ui-btn ui-btn-icon-right ui-icon-arrow-r"><div class="name-plate">'+name_plate+'</div><img height="44" width="30" src="img/' + players[name] + '"> ' + name + '</a></li>');
+        $("#players").append('<li id="' + name + '" onClick="addPlayer(\'' + name + '\')" class="player ui-first-child ui-last-child"><a href="#" class="ui-btn ui-btn-icon-right ui-icon-arrow-r"><div class="name-plate">'+name_plate+'</div><img height="44" width="30" src="img/' + players[name] + '"> ' + name + '</a></li>');
     }
 
     for (var key in positions) {
-        $("#positions .select-position-container").append('<li id="'+key+'" onClick="setPosition(\''+key+'\')" class="ui-btn">'+key+ ' - '+positions[key]+'</a></li>');
+        $("#positions .select-position-container").append('<li id="'+key+'" onClick="setPosition(\''+key+'\')" class="ui-btn"><span class="position-key">'+key+ '</span> '+positions[key]+'</a></li>');
     }
 
 }
@@ -188,9 +189,9 @@ function popRemovePlayer(name) {
 	player = $('#'+name);
 	
 	setTimeout(function(){
-		player.addClass('animated bounceOutRight');
+		player.addClass('confirmed animated bounceOutRight');
 		player.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
-			console.log("Animation ends!");
+			//console.log("Animation ends!");
 			player.remove();
 		});
 	}, 300);
@@ -200,14 +201,13 @@ function popRemovePlayer(name) {
 // App Functionality
 
 // Add Player
-function addPlayer(name){
+function addPlayer(name) {
     //popRemovePlayer(name);
-    
     currentPlayer = new Player(name, players[name]);
     //$("#players").hide();
     $('#positions').show().find('.select-position-container').addClass('animate fadeInUp');
     //$('#positions').show();
-    $('#teamcompletebutton').hide();
+    $('#teamcompletebutton').show();
 }
 
 // Set positions
@@ -216,7 +216,7 @@ function setPosition(position){
         $('#'+position).remove();
         
         // Remove player
-        console.log(currentPlayer);
+        //console.log(currentPlayer);
         popRemovePlayer(currentPlayer.name);
         
         activePlayers[currentPlayer.name] = currentPlayer;
@@ -226,9 +226,8 @@ function setPosition(position){
         benchPlayers[currentPlayer.name] = currentPlayer;
 
         // Remove player
-        console.log(currentPlayer);
+        //console.log(currentPlayer);
         popRemovePlayer(currentPlayer.name);
-
     }
     $("#players").show();
     $("#positions").hide();
@@ -306,7 +305,8 @@ function startGame(){
 function updateActiveView(){
     $('#players li').remove();
     for (var name in activePlayers) {
-        $("#players").append('<li id="'+activePlayers[name].name+'" onClick="changePlayer(\''+activePlayers[name].name+'\')" class="ui-first-child ui-last-child"><a href="#" class="ui-btn ui-btn-icon-right ui-icon-arrow-r"><img height="44" width="30" src="img/'+players[name]+'"> '+activePlayers[name].toString()+ '</a></li>');
+	    console.log( activePlayers[name].positions[0].position );
+        $("#players").append('<li id="'+activePlayers[name].name+'" onClick="changePlayer(\''+activePlayers[name].name+'\')" class="ui-first-child ui-last-child"><a href="#" class="ui-btn ui-btn-icon-right ui-icon-arrow-r"><img height="44" width="30" src="img/'+players[name]+'"> <span class="position-key">'+activePlayers[name].positions[0].position+'</span>'+activePlayers[name].name+ '</a></li>');
     }
     if(startTime != null){
 		eTime = getElapsedTime(startTime, new Date());
@@ -373,8 +373,11 @@ function getElapsedTime(from, to){
 // Cancel position selector
 $( document ).ready(function($) {
 	
+	// FastClick
+	FastClick.attach(document.body);
+	
 	$('#positions .cancel').on('click', function() {
-		console.log('test');
+		//console.log('test');
 		$('#positions').hide();
 	});
 	
@@ -382,7 +385,7 @@ $( document ).ready(function($) {
 	
 	$('#lock-screen').on('click', function() {
 		lock();
-		console.log('test');
+		//console.log('test');
 		$(this).toggleClass('active');
 	});
 

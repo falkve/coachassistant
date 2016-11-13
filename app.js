@@ -53,7 +53,6 @@ positions['HB'] = 'Höger Back';
 positions['VB'] = 'Vänster Back';
 positions['BENCH'] = 'Avbytarbänk';*/
 
-
 positions['F'] = 'Forward';
 positions['VM'] = 'Vänster Mittfältare';
 positions['HM'] = 'Höger Mittfältare';
@@ -164,13 +163,18 @@ function init() {
     for (var name in players) {
 	    var name_plate = name.charAt(0);
 	    
-        $("#players").append('<li id="' + name + '" onClick="addPlayer(\'' + name + '\')" class="player ui-first-child ui-last-child"><a href="#" class="ui-btn ui-btn-icon-right ui-icon-arrow-r"><div class="name-plate">'+name_plate+'</div><img height="44" width="30" src="img/' + players[name] + '"> ' + name + '</a></li>');
+        $("#players").append('<li id="' + name + '" onClick="addPlayer(\'' + name + '\')" class="player-card ui-first-child ui-last-child"><a href="#" class="ui-btn ui-btn-icon-right ui-icon-arrow-r"><div class="name-plate">'+name_plate+'</div><img height="44" width="30" src="img/' + players[name] + '"> ' + name + '</a></li>');
     }
 
     for (var key in positions) {
         $("#positions .select-position-container").append('<li id="'+key+'" onClick="setPosition(\''+key+'\')" class="ui-btn"><span class="position-key">'+key+ '</span> '+positions[key]+'</a></li>');
     }
-
+    
+	// List players
+	listPlayers();
+	
+	// List positions
+	listPositions();
 }
 
 // Animations
@@ -195,10 +199,30 @@ function popRemovePlayer(name) {
 			player.remove();
 		});
 	}, 300);
-	
 }
 
+// -------------------------------------------
 // App Functionality
+// -------------------------------------------
+
+// List and handle players
+function listPlayers() {
+	
+    for (var name in players) {
+	    var name_plate = name.charAt(0);
+	    console.log("setup players!");
+        $("#players-setup #list-players").append('<li id="' + name + '" class="player-card ui-first-child ui-last-child"><a href="#" class="ui-btn ui-btn-icon-right ui-icon-arrow-r"><div class="name-plate">'+name_plate+'</div><img height="44" width="30" src="img/' + players[name] + '"> ' + name + '</a></li>');
+    }
+}
+
+// List and handle positions
+function listPositions() {
+	
+    for (var position in positions) {
+	    console.log("setup positions!");
+        $("#positions-setup #list-positions").append('<li id="' + position + '"class="position-card ui-first-child ui-last-child"><a href="#" class="ui-btn ui-btn-icon-right ui-icon-arrow-r"><span class="position-key">'+position+'</span></li>');
+    }
+}
 
 // Add Player
 function addPlayer(name) {
@@ -370,8 +394,7 @@ function getElapsedTime(from, to){
     return new ElapsedTime(days, hours, minutes, seconds);
 }
 
-// Cancel position selector
-$( document ).ready(function($) {
+$(document).ready(function($) {
 	
 	// FastClick
 	FastClick.attach(document.body);
@@ -389,4 +412,25 @@ $( document ).ready(function($) {
 		$(this).toggleClass('active');
 	});
 
+	// List players
+	$(document).on("pagebeforeshow","#players-setup",function(){ // When entering pagetwo
+		//listPlayers();
+	});
+
+	// List positions
+	$(document).on("pagebeforeshow","#positions-setup",function(){ // When entering pagetwo
+		//listPositions();
+	});
+	
+});
+
+$(document).on('pageinit','#splash',function() {
+	// the .on() method does require jQuery 1.7 + but this will allow
+	// you to have the contained code only run when the #splash page is initialized.
+	//$( ":mobile-pagecontainer" ).pagecontainer( "change", "confirm.html", { role: "dialog" } );
+	setTimeout(function(){
+		console.log("hehehehe");
+		$( ":mobile-pagecontainer" ).pagecontainer( "change", "#start", { role: "page" } );
+		//$.mobile.changePage("#start", "fade");
+	}, 4000);
 });

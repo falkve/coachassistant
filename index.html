@@ -97,63 +97,72 @@
 
 </head>
 
+<div data-role="page" id="splash"> 
+    <div class="splash">
+	    <div class="brand">
+	        <img src="images/logo-white-oneeye.svg" alt="startup image" />
+	        <div class="description">Team Assistant</div>
+	    </div>
+    </div>
+</div>
+
 <div data-role="page" id="start">
 
 	<div data-role="header">
-		<a href="#mypanel" class="ui-btn-left btn-navbar btn-menu" data-role="button" role="button"><span>Inställningar</span></a>
+		<!-- <a href="#mypanel" class="ui-btn-left btn-navbar btn-menu" data-role="button" role="button"><span>Inställningar</span></a> -->
 		<h1><span class="sr-only">TeamAssistant</span></h1>
-		<a href="#addplayer" class="ui-btn-right btn-navbar btn-add" data-role="button" role="button" data-transition="slide"><span>Add player</span></a>
+		<!--<a href="#addplayer" class="ui-btn-right btn-navbar btn-add" data-role="button" role="button" data-transition="slide"><span>Add player</span></a>-->
 	</div><!-- /header -->
 
 	<div data-role="content">	
 
-	<div id="lockscreen" class="overlay">
-	    <button class="ui-btn" onclick="unlock()" style="background-color: #36A131; position:absolute; bottom: -10px;">Unlock</button>
-	</div>
-	
-	<div id="time"></div>
-	
-	<h5>Välj spelare</h5>
-	<ul data-role="listview" data-inset="true" id="players">
-		
-	</ul>
-
-	<div data-role="main" class="ui-content" id="positions">
-		<div class="select-position-container">
-			<header>
-				<div class="cancel"><span class="sr-only">Avbryt</span></div>
-			</header>
-			<footer></footer>
+		<div id="lockscreen" class="overlay">
+		    <button class="ui-btn" onclick="unlock()" style="background-color: #36A131; position:absolute; bottom: -10px;">Unlock</button>
 		</div>
-	</div>	
-
-	<ul data-role="listview" data-inset="true" id="playeronbench">
 		
-	</ul>
+		<div id="time"></div>
+		
+		<h5>Välj spelare</h5>
+		<ul data-role="listview" data-inset="true" id="players">
+			
+		</ul>
 	
+		<div data-role="main" class="ui-content" id="positions">
+			<div class="select-position-container">
+				<header>
+					<div class="cancel"><span class="sr-only">Avbryt</span></div>
+				</header>
+				<footer></footer>
+			</div>
+		</div>	
 	
-	<div data-role="main" class="ui-content" id="back">
-	    <button class="ui-btn" onclick="back()">Back</button>
-	</div>
-
-	<!-- start -->
-	<div data-role="main" class="ui-content" id="teamcompletebutton">
-	    <button class="ui-btn" onclick="teamComplete()">Team Complete</button>
-	</div>
+		<ul data-role="listview" data-inset="true" id="playeronbench">
+			
+		</ul>
+		
+		
+		<div data-role="main" class="ui-content" id="back">
+		    <button class="ui-btn" onclick="back()">Back</button>
+		</div>
 	
-	<div data-role="main" class="ui-content" id="gameover">
-	    <button class="ui-btn" onclick="gameOver()">Game Over</button>
-	    <button class="ui-btn" onclick="lock()">Lock</button>
-	</div>
-	
-	<div data-role="main" class="ui-content" id="startgame">
-	    <button class="ui-btn" onclick="startGame()">Start Game</button>
-	</div>
-	
-	<div data-role="main" class="ui-content" id="init">
-	    <button class="ui-btn" onclick="init()">Start new Game</button>
-	</div>
-	<!-- /end -->
+		<!-- start -->
+		<div data-role="main" class="ui-content" id="teamcompletebutton">
+		    <button class="ui-btn" onclick="teamComplete()">Team Complete</button>
+		</div>
+		
+		<div data-role="main" class="ui-content" id="gameover">
+		    <button class="ui-btn" onclick="gameOver()">Game Over</button>
+		    <button class="ui-btn" onclick="lock()">Lock</button>
+		</div>
+		
+		<div data-role="main" class="ui-content" id="startgame">
+		    <button class="ui-btn" onclick="startGame()">Start Game</button>
+		</div>
+		
+		<div data-role="main" class="ui-content" id="init">
+		    <button class="ui-btn" onclick="init()">Start new Game</button>
+		</div>
+		<!-- /end -->
 
 
 		<ul data-role="listview" data-inset="true" id="players">        
@@ -187,9 +196,9 @@
 			<h5>Ställ in din app</h5>
 		</div>
 		<ul data-role="listview">
-			<li><a href="#settings">Appinställningar</a></li>
-			<li><a href="#positions-setup">Positioner</a></li>
-			<li><a href="#players-setup">Spelare</a></li>
+			<li><a href="#settings" data-transition="slide">Appinställningar</a></li>
+			<li><a href="#positions-setup" data-transition="slide">Positioner</a></li>
+			<li><a href="#players-setup" data-transition="slide">Spelare</a></li>
 		</ul>
 		<div class="panel-contents">
 			<h5>Exportera</h5>
@@ -206,32 +215,121 @@
 		
 	</div>
 	
-	<!--
-	<div data-role="startter">
-		<h4>Page startter</h4>
-	</div>
-	-->
+
+	<div id="fixed-footer" data-role="footer" data-id="foo1" data-position="fixed" data-tap-toggle="false">
+		<div data-role="navbar">
+			<ul>
+				<li><a class="players-setup" href="#players-setup" data-transition="slideup">Spelare</a></li>
+				<li><a class="positios-setup" href="#positions-setup" data-transition="slideup">Positioner</a></li>
+				<li><a class="settings" href="#settings" data-transition="slideup">Inställningar</a></li>
+			</ul>
+		</div><!-- /navbar -->
+	</div><!-- /footer -->
+
 </div>
 
 <div data-role="page" id="players-setup">
 	<div data-role="header">
-		<a href="#start" class="ui-btn-left btn-navbar btn-menu" data-role="button" role="button"><span>Inställningar</span></a>
+		<a href="#start" class="ui-btn-left btn-navbar btn-return" data-role="button" role="button" data-transition="slideup" data-direction="reverse"><span>Navbar</span></a>
 		<h1><span class="sr-only">TeamAssistant</span></h1>
 	</div><!-- /header -->
+	
+	<div data-role="content">
+		<ul data-role="listview" data-inset="true" id="list-players">
+			
+		</ul>
+	</div>
 </div>
 
 <div data-role="page" id="positions-setup">
 	<div data-role="header">
-		<a href="#start" class="ui-btn-left btn-navbar btn-menu" data-role="button" role="button"><span>Inställningar</span></a>
+		<a href="#start" class="ui-btn-left btn-navbar btn-return" data-role="button" role="button" data-transition="slideup" data-direction="reverse"><span>Navbar</span></a>
 		<h1><span class="sr-only">TeamAssistant</span></h1>
 	</div><!-- /header -->
+
+	<div data-role="content">
+		<ul data-role="listview" data-inset="true" id="list-positions">
+			
+		</ul>
+	</div>
+
 </div>
 
 <div data-role="page" id="settings">
 	<div data-role="header">
-		<a href="#start" class="ui-btn-left btn-navbar btn-menu" data-role="button" role="button"><span>Inställningar</span></a>
-		<h1><span class="sr-only">TeamAssistant</span></h1>
+		<a href="#start" class="ui-btn-left btn-navbar btn-return" data-role="button" role="button" data-transition="slideup" data-direction="reverse"><span>Navbar</span></a>
+		<h1>Bar</h1>
 	</div><!-- /header -->
+
+<div data-role="content">	
+		<h3>Appinställningar</h3>
+		
+		<div class="settings-option">
+			<h5>Tillgänglighet</h5>
+			<div class="option">
+				<ul>
+					<li>
+						<form>
+						    <label for="lockable-startpage">Låsbar startsida</label>
+						    <input type="checkbox" data-role="flipswitch" name="flip-checkbox-1" id="lockable-startpage">
+						</form>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="settings-option">
+			<h5>Identifikation</h5>
+			<div class="option">
+				<ul>
+					<li>
+						<form>
+						    <label for="use-playershirtnum">Använd tröjnummer</label>
+						    <input type="checkbox" data-role="flipswitch" name="flip-checkbox-1" id="use-playershirtnum">
+						</form>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="settings-option">
+			<h5>Datahantering</h5>
+			<div class="option">
+				<ul>
+					<li>
+						<form>
+						    <label for="log-events">Spara log</label>
+						    <input type="checkbox" data-role="flipswitch" name="flip-checkbox-1" id="log-events">
+						</form>
+					</li>
+				</ul>
+			</div>
+			<div class="option">
+				<ul>
+					<li>
+						<form>
+						    <label for="gps-trackning">Spara position för användning</label>
+						    <input type="checkbox" data-role="flipswitch" name="flip-checkbox-1" id="gps-trackning">
+						</form>
+					</li>
+				</ul>
+			</div>
+		</div>
+		
+		<div class="settings-option user-account-details">
+			<h5>Dina uppgifter</h5>
+			<div class="option">
+				<ul>
+					<li>
+						<div id="email">martin@kidkie.se</div>
+					</li>
+				</ul>
+			</div>
+			<p class="small">Behövs för att kunna spara din data</p>
+		</div>
+
+	</div><!-- /content -->
+
 </div>
 
 </body>

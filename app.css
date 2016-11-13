@@ -2739,6 +2739,18 @@ a {
     #settings .ui-content .settings-option.user-account-details #email {
       color: blue; }
 
+.position-key {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 30px;
+  text-align: center;
+  height: 30px;
+  margin-right: 10px;
+  padding: 5px 20px;
+  border-radius: 20px;
+  background: #f15400; }
+
 #positions.ui-content {
   display: block;
   width: 100%;
@@ -2800,6 +2812,14 @@ a {
     border-radius: 3px;
     background-color: #f7f7f7; }
 
+#players .player.confirmed a,
+#playeronbench .player.confirmed a {
+  -webkit-box-shadow: inset 0px 0px 0px 3px #37c772;
+  -moz-box-shadow: inset 0px 0px 0px 3px #37c772;
+  box-shadow: inset 0px 0px 0px 3px #37c772; }
+  #players .player.confirmed a .name-plate,
+  #playeronbench .player.confirmed a .name-plate {
+    background-color: #37c772 !important; }
 #players .ui-btn,
 #playeronbench .ui-btn {
   font-size: 19px;
@@ -2861,6 +2881,9 @@ a {
   -moz-transition: all 10s ease-out;
   -o-transition: all 10s ease-out;
   transition: all 10s ease-out; }
+
+#teamcompletebutton {
+  display: none; }
 
 #addplayer h1 {
   display: none; }

@@ -1,5 +1,23 @@
 #players,
 #playeronbench {
+	
+	// Player
+	
+	.player {
+		&.confirmed {
+			a {
+				-webkit-box-shadow: inset 0px 0px 0px 3px $green;
+				-moz-box-shadow: inset 0px 0px 0px 3px $green;
+				box-shadow: inset 0px 0px 0px 3px $green;
+				
+				.name-plate {
+					background-color: $green !important;
+				}
+				
+			}
+		}
+	}
+	
 	.ui-btn {
 	    font-size: 19px;
         letter-spacing: 0.03em;

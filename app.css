@@ -2419,6 +2419,10 @@
   .ui-page .ui-content {
     position: relative; }
 
+.ui-listview > .ui-li-has-thumb > .ui-btn, .ui-listview > .ui-li-static.ui-li-has-thumb {
+  min-height: 0 !important;
+  padding-left: 15px !important; }
+
 .float-left {
   float: left; }
 
@@ -2591,6 +2595,14 @@ a {
     content: "k";
     font-size: 27px; }
 
+#splash .brand {
+  font-weight: 100;
+  letter-spacing: 0.04em;
+  text-align: center;
+  color: white; }
+  #splash .brand img {
+    max-width: 25%; }
+
 .player--cards a {
   display: block;
   color: #333; }
@@ -2624,6 +2636,7 @@ a {
   cursor: default; }
 
 #lock-screen {
+  display: none !important;
   text-align: center;
   color: white;
   width: 80px;
@@ -2665,6 +2678,35 @@ a {
       font-size: 30px;
       line-height: 75px;
       content: "\42"; }
+
+#fixed-footer {
+  border: none;
+  background-color: black; }
+  #fixed-footer .ui-link {
+    font-size: 10px;
+    font-weight: 100;
+    text-transform: uppercase;
+    color: #999 !important;
+    border: none !important; }
+    #fixed-footer .ui-link:before {
+      font-family: "teamassistant" !important;
+      font-style: normal !important;
+      font-weight: normal !important;
+      font-variant: normal !important;
+      text-transform: none !important;
+      speak: none;
+      line-height: 1;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      display: block;
+      font-size: 27px;
+      content: "7"; }
+    #fixed-footer .ui-link.players-setup:before {
+      content: "m"; }
+    #fixed-footer .ui-link.positions-setup:before {
+      content: ""; }
+    #fixed-footer .ui-link.settings:before {
+      content: "Q"; }
 
 #switch #player-switcher #switch-indicaton {
   display: inline-block;
@@ -2711,33 +2753,67 @@ a {
   margin: 0;
   padding: 0; }
 
-#settings h1 {
-  display: none; }
-#settings .ui-content {
-  padding: 0; }
-  #settings .ui-content .settings-option {
-    margin-bottom: 30px; }
-    #settings .ui-content .settings-option .option {
-      display: inline-block;
-      width: 100%;
-      margin-bottom: 3px;
-      padding: 5px 15px;
-      border-top: 1px solid #DDD;
-      border-bottom: 1px solid #DDD;
-      background-color: white; }
-      #settings .ui-content .settings-option .option label {
-        display: inline-block;
+#settings {
+  background-color: #f7f7f7 !important; }
+  #settings .ui-header {
+    border-color: #DDD !important;
+    background-color: #f7f7f7 !important; }
+    #settings .ui-header .btn-navbar:before {
+      color: #999; }
+  #settings h1 {
+    display: none; }
+  #settings .ui-content {
+    padding: 0; }
+    #settings .ui-content h3 {
+      padding-left: 14px; }
+    #settings .ui-content .settings-option {
+      margin-bottom: 30px; }
+      #settings .ui-content .settings-option h5 {
+        padding-left: 14px; }
+      #settings .ui-content .settings-option > .small {
         padding-top: 10px;
+        padding-left: 14px; }
+      #settings .ui-content .settings-option .option {
+        display: inline-block;
+        width: 100%;
+        margin-bottom: 3px;
+        padding: 5px 15px;
+        border-top: 1px solid #DDD;
+        border-bottom: 1px solid #DDD;
+        background-color: white;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box; }
+        #settings .ui-content .settings-option .option label {
+          display: inline-block;
+          padding-top: 10px;
+          float: left; }
+        #settings .ui-content .settings-option .option .ui-flipswitch {
+          float: right;
+          margin: 0; }
+          #settings .ui-content .settings-option .option .ui-flipswitch .ui-flipswitch-on {
+            border-radius: 50% !important;
+            border-color: #EEE !important;
+            background-color: white !important; }
+        #settings .ui-content .settings-option .option ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0; }
+      #settings .ui-content .settings-option.user-account-details #email {
+        display: inline-block;
+        color: blue;
+        padding-top: 10px;
+        padding-bottom: 10px;
         float: left; }
-      #settings .ui-content .settings-option .option .ui-flipswitch {
-        float: right;
-        margin: 0; }
-      #settings .ui-content .settings-option .option ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0; }
-    #settings .ui-content .settings-option.user-account-details #email {
-      color: blue; }
+
+.position-card a {
+  display: inline-block;
+  font-size: 19px;
+  letter-spacing: 0.03em;
+  margin-bottom: 10px !important;
+  border-radius: 41px !important;
+  border: 1px solid black !important;
+  background-color: black !important; }
 
 .position-key {
   display: inline-block;
@@ -2812,24 +2888,15 @@ a {
     border-radius: 3px;
     background-color: #f7f7f7; }
 
-#players .player.confirmed a,
-#playeronbench .player.confirmed a {
-  -webkit-box-shadow: inset 0px 0px 0px 3px #37c772;
-  -moz-box-shadow: inset 0px 0px 0px 3px #37c772;
-  box-shadow: inset 0px 0px 0px 3px #37c772; }
-  #players .player.confirmed a .name-plate,
-  #playeronbench .player.confirmed a .name-plate {
-    background-color: #37c772 !important; }
-#players .ui-btn,
-#playeronbench .ui-btn {
+.player-card a {
+  display: inline-block;
   font-size: 19px;
   letter-spacing: 0.03em;
-  margin-bottom: 10px;
+  margin-bottom: 10px !important;
   border-radius: 41px !important;
   border: 1px solid black !important;
   background-color: black !important; }
-  #players .ui-btn:after,
-  #playeronbench .ui-btn:after {
+  .player-card a:after {
     font-family: "teamassistant" !important;
     font-style: normal !important;
     font-weight: normal !important;
@@ -2840,14 +2907,7 @@ a {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     content: "4" !important; }
-#players li:nth-child(odd) .name-plate,
-#playeronbench li:nth-child(odd) .name-plate {
-  background-color: orange; }
-#players li:nth-child(even) .name-plate,
-#playeronbench li:nth-child(even) .name-plate {
-  background-color: #704fd6; }
-#players .name-plate,
-#playeronbench .name-plate {
+.player-card .name-plate {
   display: inline-block;
   text-transform: uppercase;
   text-align: center;
@@ -2857,14 +2917,26 @@ a {
   height: 50px;
   margin-right: 10px;
   border-radius: 50%; }
-#players img,
-#playeronbench img {
+.player-card img {
   display: none;
   width: 50px;
   height: 50px;
   margin-right: 10px;
   border-radius: 50%;
   vertical-align: middle; }
+.player-card.confirmed a {
+  -webkit-box-shadow: inset 0px 0px 0px 3px #37c772;
+  -moz-box-shadow: inset 0px 0px 0px 3px #37c772;
+  box-shadow: inset 0px 0px 0px 3px #37c772; }
+  .player-card.confirmed a .name-plate {
+    background-color: #37c772 !important; }
+
+#players li:nth-child(odd) .name-plate,
+#playeronbench li:nth-child(odd) .name-plate {
+  background-color: orange; }
+#players li:nth-child(even) .name-plate,
+#playeronbench li:nth-child(even) .name-plate {
+  background-color: #704fd6; }
 #players .player-elapsed-time,
 #playeronbench .player-elapsed-time {
   display: inline-block;

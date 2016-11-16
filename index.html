@@ -64,44 +64,16 @@
             height:100%;
             z-index:1000;
         }
-        /*
-        .ui-page {
-            background: #4A8CDB;
-        }
-        .ui-page .ui-btn {
-            background: #81CEF9;
-        }
-        .ui-overlay-a, .ui-page-theme-a, .ui-page-theme-a .ui-panel-wrapper {
-            background:#4A8CDB;
-        }
-        .ui-page .ui-content {
-            padding: 10px;
-        }
-        .ui-block-left, .ui-block-right {
-            width: 8% !important;
-        }
-
-        .ui-block-center {
-            width: 85% !important;
-        }
-
-        .ui-listview>.ui-li-static, .ui-listview>.ui-li-divider, .ui-listview>li>a.ui-btn{
-            font-size: 18px;
-            margin: 5px;
-            padding: 0px;
-            padding-top: 5px;
-            padding-left: 5px;
-        }
-		*/
     </style>
 
 </head>
 
 <div data-role="page" id="splash"> 
     <div class="splash">
+	    <div class="loader"></div>
 	    <div class="brand">
-	        <img src="images/logo-white-oneeye.svg" alt="startup image" />
-	        <div class="description">Team Assistant</div>
+	        <img src="images/ta_cap_white.svg" alt="startup image" />
+	        <div class="description sr-only">Team Assistant</div>
 	    </div>
     </div>
 </div>
@@ -219,9 +191,9 @@
 	<div id="fixed-footer" data-role="footer" data-id="foo1" data-position="fixed" data-tap-toggle="false">
 		<div data-role="navbar">
 			<ul>
-				<li><a class="players-setup" href="#players-setup" data-transition="slideup">Spelare</a></li>
-				<li><a class="positios-setup" href="#positions-setup" data-transition="slideup">Positioner</a></li>
-				<li><a class="settings" href="#settings" data-transition="slideup">Inställningar</a></li>
+				<li><a class="players-setup" href="#players-setup" data-transition="slideup"><span class="btn-label">Spelare</span></a></li>
+				<li><a class="positios-setup" href="#positions-setup" data-transition="slideup"><span class="btn-label">Positioner</span></a></li>
+				<li><a class="settings" href="#settings" data-transition="slideup"><span class="btn-label">Inställningar</span></a></li>
 			</ul>
 		</div><!-- /navbar -->
 	</div><!-- /footer -->
@@ -230,7 +202,7 @@
 
 <div data-role="page" id="players-setup">
 	<div data-role="header">
-		<a href="#start" class="ui-btn-left btn-navbar btn-return" data-role="button" role="button" data-transition="slideup" data-direction="reverse"><span>Navbar</span></a>
+		<a href="#start" class="ui-btn-left btn-navbar btn-return" data-role="button" role="button" data-transition="slideup" data-direction="reverse">Avbryt</a>
 		<h1><span class="sr-only">TeamAssistant</span></h1>
 	</div><!-- /header -->
 	
@@ -243,7 +215,7 @@
 
 <div data-role="page" id="positions-setup">
 	<div data-role="header">
-		<a href="#start" class="ui-btn-left btn-navbar btn-return" data-role="button" role="button" data-transition="slideup" data-direction="reverse"><span>Navbar</span></a>
+		<a href="#start" class="ui-btn-left btn-navbar btn-return" data-role="button" role="button" data-transition="slideup" data-direction="reverse">Avbryt</a>
 		<h1><span class="sr-only">TeamAssistant</span></h1>
 	</div><!-- /header -->
 
@@ -257,7 +229,7 @@
 
 <div data-role="page" id="settings">
 	<div data-role="header">
-		<a href="#start" class="ui-btn-left btn-navbar btn-return" data-role="button" role="button" data-transition="slideup" data-direction="reverse"><span>Navbar</span></a>
+		<a href="#start" class="ui-btn-left btn-navbar btn-return" data-role="button" role="button" data-transition="slideup" data-direction="reverse">Avbryt</a>
 		<h1>Bar</h1>
 	</div><!-- /header -->
 
@@ -308,7 +280,7 @@
 				<ul>
 					<li>
 						<form>
-						    <label for="gps-trackning">Spara position för användning</label>
+						    <label for="gps-trackning">Spara position för match</label>
 						    <input type="checkbox" data-role="flipswitch" name="flip-checkbox-1" id="gps-trackning">
 						</form>
 					</li>

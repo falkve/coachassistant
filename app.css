@@ -2415,7 +2415,7 @@
   border-radius: 20px !important; }
 
 .ui-page {
-  max-width: 640px; }
+  max-width: 768px; }
   .ui-page .ui-content {
     position: relative; }
 
@@ -2501,13 +2501,15 @@
         font-size: 21px;
         color: #999; }
 
+body, input, select, textarea, button, .ui-btn {
+  font-family: 'Helvetica','HelveticaNeue-Light' !important; }
+
 .ui-overlay-a, .ui-page-theme-a, .ui-page-theme-a .ui-panel-wrapper, body {
   margin: 0;
   padding: 0;
   background-color: #111 !important; }
 
 #page-wrapper {
-  max-width: 640px;
   padding-top: 40px;
   position: relative; }
 
@@ -2838,6 +2840,61 @@ a {
         padding-bottom: 10px;
         float: left; }
 
+#time {
+  font-family: 'Helvetica-Light','HelveticaNeue-Light', sans-serif;
+  font-size: 98px !important;
+  font-weight: 100 !important;
+  text-shadow: 2px 2px 3px black;
+  text-align: center;
+  color: white;
+  position: relative;
+  min-height: 105px;
+  margin-left: -16px;
+  margin-right: -16px;
+  margin-top: -16px;
+  margin-bottom: 15px;
+  overflow: hidden;
+  background: black;
+  /*
+  &:before {
+  	content: "";
+  	width: 100%;
+  	height: 80px;
+  	position: absolute;
+  	left: 0;
+  	top: 0;
+  	background: -moz-linear-gradient(top, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 91%);
+  	background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 91%);
+  	background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 91%);
+  	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=0 );
+  }
+  */ }
+  #time .elapsed_time {
+    padding-top: 25px; }
+    #time .elapsed_time #elapsed_minutes, #time .elapsed_time #elapsed_seconds {
+      line-height: 47px; }
+      #time .elapsed_time #elapsed_minutes:after, #time .elapsed_time #elapsed_seconds:after {
+        font-size: 14px; }
+    #time .elapsed_time .divider {
+      display: inline-block;
+      line-height: 70px;
+      color: #888;
+      vertical-align: top;
+      margin-top: 0px;
+      font-size: 75px; }
+    #time .elapsed_time #elapsed_minutes {
+      display: inline-block; }
+      #time .elapsed_time #elapsed_minutes:after {
+        display: block;
+        content: "sekunder";
+        color: #999; }
+    #time .elapsed_time #elapsed_seconds {
+      display: inline-block; }
+      #time .elapsed_time #elapsed_seconds:after {
+        display: block;
+        content: "minuter";
+        color: #999; }
+
 .position-card a {
   display: inline-block;
   font-size: 19px;
@@ -2858,6 +2915,53 @@ a {
   padding: 5px 20px;
   border-radius: 20px;
   background: #f15400; }
+
+.ui-overlay-shadow {
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  box-shadow: none !important; }
+
+.flow {
+  -webkit-transform-origin: 50% 30%;
+  -webkit-box-shadow: none !important;
+  -moz-transform-origin: 50% 30%;
+  -moz-box-shadow: none !important;
+  transform-origin: 50% 30%;
+  box-shadow: none !important; }
+
+.ui-popup-container {
+  background-color: black !important; }
+
+.ui-popup {
+  margin-top: 0 !important;
+  border-color: black !important;
+  background-color: black !important;
+  width: 80%;
+  margin-top: 150px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px 10px 10px 10px;
+  border-radius: 20px;
+  background-color: #111;
+  position: relative; }
+  .ui-popup header {
+    display: inline-block;
+    width: 100%; }
+  .ui-popup ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0; }
+    .ui-popup ul li {
+      text-align: left; }
+  .ui-popup .ui-btn {
+    font-weight: 100;
+    color: #DDD !important;
+    padding-top: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    border-radius: 20px !important;
+    border: 1px solid black !important;
+    background-color: black !important; }
 
 #positions.ui-content {
   display: block;
@@ -2920,6 +3024,10 @@ a {
     border-radius: 3px;
     background-color: #f7f7f7; }
 
+.player-card:nth-child(odd) .name-plate {
+  background-color: orange; }
+.player-card:nth-child(even) .name-plate {
+  background-color: #704fd6; }
 .player-card a {
   display: inline-block;
   font-size: 19px;
@@ -2929,6 +3037,7 @@ a {
   border: 1px solid black !important;
   background-color: black !important; }
   .player-card a:after {
+    display: none !important;
     font-family: "teamassistant" !important;
     font-style: normal !important;
     font-weight: normal !important;
@@ -2963,12 +3072,6 @@ a {
   .player-card.confirmed a .name-plate {
     background-color: #37c772 !important; }
 
-#players li:nth-child(odd) .name-plate,
-#playeronbench li:nth-child(odd) .name-plate {
-  background-color: orange; }
-#players li:nth-child(even) .name-plate,
-#playeronbench li:nth-child(even) .name-plate {
-  background-color: #704fd6; }
 #players .player-elapsed-time,
 #playeronbench .player-elapsed-time {
   display: inline-block;
@@ -2977,7 +3080,9 @@ a {
   margin-left: 10px;
   padding: 5px 15px;
   border-radius: 4px;
-  background-color: #111; }
+  background-color: #111;
+  position: absolute;
+  right: 10px !important; }
 #players .removeAnim,
 #playeronbench .removeAnim {
   height: 200px;
@@ -2985,6 +3090,22 @@ a {
   -moz-transition: all 10s ease-out;
   -o-transition: all 10s ease-out;
   transition: all 10s ease-out; }
+
+#players-setup .search-player {
+  padding: 10px;
+  margin-left: -15px;
+  margin-right: -15px;
+  margin-top: -15px;
+  background-color: black; }
+  #players-setup .search-player .ui-input-text {
+    border-radius: 20px;
+    border-color: #222 !important;
+    background-color: black; }
+    #players-setup .search-player .ui-input-text input {
+      color: white;
+      padding-left: 20px;
+      border-color: #222 !important;
+      background-color: #222; }
 
 #teamcompletebutton {
   display: none; }
@@ -3066,52 +3187,6 @@ a {
       font-size: 30px;
       line-height: 75px;
       content: "\42"; }
-
-#time {
-  font-size: 80px !important;
-  font-weight: 100 !important;
-  text-shadow: 2px 2px 3px black;
-  text-align: center;
-  color: white;
-  position: relative;
-  min-height: 105px;
-  border-radius: 4px;
-  overflow: hidden; }
-  #time:before {
-    content: "";
-    width: 100%;
-    height: 80px;
-    position: absolute;
-    left: 0;
-    top: 0;
-    background: -moz-linear-gradient(top, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 91%);
-    background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 91%);
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 91%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=0 ); }
-  #time .elapsed_time {
-    padding-top: 25px; }
-    #time .elapsed_time #elapsed_minutes, #time .elapsed_time #elapsed_seconds {
-      line-height: 47px; }
-      #time .elapsed_time #elapsed_minutes:after, #time .elapsed_time #elapsed_seconds:after {
-        font-size: 14px; }
-    #time .elapsed_time .divider {
-      display: inline-block;
-      line-height: 47px;
-      vertical-align: top;
-      margin-top: 0px;
-      font-size: 75px; }
-    #time .elapsed_time #elapsed_minutes {
-      display: inline-block; }
-      #time .elapsed_time #elapsed_minutes:after {
-        display: block;
-        content: "sekunder";
-        color: #999; }
-    #time .elapsed_time #elapsed_seconds {
-      display: inline-block; }
-      #time .elapsed_time #elapsed_seconds:after {
-        display: block;
-        content: "minuter";
-        color: #999; }
 
 .ui-btn {
   color: white !important;

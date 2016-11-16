@@ -43,8 +43,6 @@ players['Viggo'] = 'IMG_0179.jpg';
 players['Viktor'] = 'IMG_0180.jpg';
 players['Åke'] = 'IMG_0166.jpg';
 
-//console.log(players);
-
 var positions = new Object();
 /*positions['HF'] = 'Höger Forward';
 positions['VF'] = 'Vänster Forward';
@@ -130,7 +128,8 @@ function Player (name, img) {
             position = this.positions[this.positions.length-1];
             var returnString = name;
 
-            returnString += ' [' + position.position + ']';
+            //returnString += ' [' + position.position + ']';
+            returnString += position.position;
 
             if(position.startTime != null){
                 var elapsedTime = getElapsedTime(position.startTime, new Date());
@@ -162,11 +161,13 @@ function init() {
     
     for (var name in players) {
 	    var name_plate = name.charAt(0);
-	    
         $("#players").append('<li id="' + name + '" onClick="addPlayer(\'' + name + '\')" class="player-card ui-first-child ui-last-child"><a href="#" class="ui-btn ui-btn-icon-right ui-icon-arrow-r"><div class="name-plate">'+name_plate+'</div><img height="44" width="30" src="img/' + players[name] + '"> ' + name + '</a></li>');
     }
 
     for (var key in positions) {
+	    // 
+	    $("#positionSelector .select-position-container").append('<li id="'+key+'" onClick="setPosition(\''+key+'\')" class="ui-btn"><span class="position-key">'+key+ '</span> '+positions[key]+'</a></li>');
+	    
         $("#positions .select-position-container").append('<li id="'+key+'" onClick="setPosition(\''+key+'\')" class="ui-btn"><span class="position-key">'+key+ '</span> '+positions[key]+'</a></li>');
     }
     
@@ -178,7 +179,6 @@ function init() {
 }
 
 // Animations
-
 $.fn.extend({
     animateCss: function (animationName) {
         var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
@@ -195,7 +195,7 @@ function popRemovePlayer(name) {
 	setTimeout(function(){
 		player.addClass('confirmed animated bounceOutRight');
 		player.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
-			//console.log("Animation ends!");
+			// do when Animation ends!;
 			player.remove();
 		});
 	}, 300);
@@ -210,8 +210,7 @@ function listPlayers() {
 	
     for (var name in players) {
 	    var name_plate = name.charAt(0);
-	    console.log("setup players!");
-        $("#players-setup #list-players").append('<li id="' + name + '" class="player-card ui-first-child ui-last-child"><a href="#" class="ui-btn ui-btn-icon-right ui-icon-arrow-r"><div class="name-plate">'+name_plate+'</div><img height="44" width="30" src="img/' + players[name] + '"> ' + name + '</a></li>');
+        $("#players-setup #list-players").append('<li id="' + name + '" class="player-card ui-first-child ui-last-child"><a href="#" class="ui-btn ui-btn-icon-right ui-icon-arrow-r"><div class="name-plate">'+name_plate+'</div><img height="44" width="30" src="img/' + players[name] + '"> <span class="player-name">' + name + '</span></a></li>');
     }
 }
 
@@ -219,42 +218,42 @@ function listPlayers() {
 function listPositions() {
 	
     for (var position in positions) {
-	    console.log("setup positions!");
         $("#positions-setup #list-positions").append('<li id="' + position + '"class="position-card ui-first-child ui-last-child"><a href="#" class="ui-btn ui-btn-icon-right ui-icon-arrow-r"><span class="position-key">'+position+'</span></li>');
     }
+    
 }
 
 // Add Player
 function addPlayer(name) {
-    //popRemovePlayer(name);
     currentPlayer = new Player(name, players[name]);
-    //$("#players").hide();
-    $('#positions').show().find('.select-position-container').addClass('animate fadeInUp');
-    //$('#positions').show();
+    
+    $( "#positionSelector" ).popup( "open", { transition: "flow",overlayTheme: "a" } );
     $('#teamcompletebutton').show();
 }
 
 // Set positions
-function setPosition(position){
+function setPosition(position) {
     if(position != 'BENCH'){
         $('#'+position).remove();
+        $( "#positionSelector" ).find('#'+position).remove();
         
         // Remove player
-        //console.log(currentPlayer);
         popRemovePlayer(currentPlayer.name);
-        
+
         activePlayers[currentPlayer.name] = currentPlayer;
         activePlayers[currentPlayer.name].addPosition(new Position(position));
     } else {
-        $("#playeronbench").append('<li id="b_'+currentPlayer.name+'" onClick="doSwitchPlayer(\''+currentPlayer.name+'\')" class="ui-first-child ui-last-child"><a href="#" class="ui-btn ui-btn-icon-right ui-icon-arrow-r"><img height="44" width="30" src="img/'+currentPlayer.img+'"> '+currentPlayer.name+ ' '  + currentPlayer.viewPositions() + '</a></li>');
+        $("#playeronbench").append('<li id="b_'+currentPlayer.name+'" onClick="doSwitchPlayer(\''+currentPlayer.name+'\')" class="player-card ui-first-child ui-last-child"><a href="#" class="ui-btn ui-btn-icon-right ui-icon-arrow-r"><img height="44" width="30" src="img/'+currentPlayer.img+'"> '+currentPlayer.name+ ' '  + currentPlayer.viewPositions() + '</a></li>');
         benchPlayers[currentPlayer.name] = currentPlayer;
 
         // Remove player
-        //console.log(currentPlayer);
         popRemovePlayer(currentPlayer.name);
     }
     $("#players").show();
     $("#positions").hide();
+    
+    $( "#positionSelector" ).popup( "close" );
+    
     $('#teamcompletebutton').show();
 }
 
@@ -329,8 +328,7 @@ function startGame(){
 function updateActiveView(){
     $('#players li').remove();
     for (var name in activePlayers) {
-	    console.log( activePlayers[name].positions[0].position );
-        $("#players").append('<li id="'+activePlayers[name].name+'" onClick="changePlayer(\''+activePlayers[name].name+'\')" class="ui-first-child ui-last-child"><a href="#" class="ui-btn ui-btn-icon-right ui-icon-arrow-r"><img height="44" width="30" src="img/'+players[name]+'"> <span class="position-key">'+activePlayers[name].positions[0].position+'</span>'+activePlayers[name].name+ '</a></li>');
+        $("#players").append('<li id="'+activePlayers[name].name+'" onClick="changePlayer(\''+activePlayers[name].name+'\')" class="player-card ui-first-child ui-last-child"><a href="#" class="ui-btn ui-btn-icon-right ui-icon-arrow-r"><img height="44" width="30" src="img/'+players[name]+'"> <span class="position-key">'+activePlayers[name].positions[0].position+'</span>'+activePlayers[name].toString()+'</a></li>');
     }
     if(startTime != null){
 		eTime = getElapsedTime(startTime, new Date());
@@ -400,15 +398,12 @@ $(document).ready(function($) {
 	FastClick.attach(document.body);
 	
 	$('#positions .cancel').on('click', function() {
-		//console.log('test');
 		$('#positions').hide();
 	});
 	
 	// Lock button
-	
 	$('#lock-screen').on('click', function() {
 		lock();
-		//console.log('test');
 		$(this).toggleClass('active');
 	});
 
@@ -421,7 +416,7 @@ $(document).ready(function($) {
 	$(document).on("pagebeforeshow","#positions-setup",function(){ // When entering pagetwo
 		//listPositions();
 	});
-	
+
 });
 
 $(document).on('pageinit','#splash',function() {
@@ -429,8 +424,16 @@ $(document).on('pageinit','#splash',function() {
 	// you to have the contained code only run when the #splash page is initialized.
 	//$( ":mobile-pagecontainer" ).pagecontainer( "change", "confirm.html", { role: "dialog" } );
 	setTimeout(function(){
-		//console.log("hehehehe");
 		$( ":mobile-pagecontainer" ).pagecontainer( "change", "#start", { role: "page" } );
-		//$.mobile.changePage("#start", "fade");
 	}, 4000);
 });
+
+// Search init
+var options = {
+    item: 'player-card'
+};
+var options = {
+  valueNames: [ 'player-name' ]
+};
+
+var userList = new List('all-players', options);

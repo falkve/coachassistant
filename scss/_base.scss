@@ -1,3 +1,6 @@
+body, input, select, textarea, button, .ui-btn {
+	font-family: 'Helvetica','HelveticaNeue-Light' !important;
+}
 .ui-overlay-a, .ui-page-theme-a, .ui-page-theme-a .ui-panel-wrapper, body {
 	margin: 0;
 	padding: 0;
@@ -5,7 +8,7 @@
 }
 
 #page-wrapper {
-	max-width: 640px;
+	//max-width: 640px;
 	padding-top: 40px;
 	position: relative;
 }

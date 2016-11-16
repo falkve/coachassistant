@@ -58,12 +58,17 @@ a {
 }
 
 .btn-return {
+    font-size: 16px !important;
+    font-weight: 100 !important;
+    color: $orange !important;
 	padding-top: 4px !important;
+	/*
 	&:before {
 		@include icons();
 		content: "\p";
 		font-size: 27px !important;
 	}
+	*/
 }
 
 // Cancel

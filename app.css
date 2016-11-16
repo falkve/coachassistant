@@ -2458,16 +2458,19 @@
   top: 0;
   border-color: black !important;
   background-color: black !important; }
-  .ui-header .ui-title {
+  #start .ui-header .ui-title {
     color: white;
-    background-image: url(images/logo-white-oneeye.svg);
+    background-image: url(images/ta_cap_only_white.svg);
     background-size: 50px;
     background-repeat: no-repeat;
     background-position: center center; }
   .ui-header .btn-navbar {
-    color: white !important;
-    border: none;
+    font-size: 16px !important;
+    font-weight: 100 !important;
+    color: #FEBB00 !important;
     padding: 0;
+    padding-top: 7px !important;
+    padding-left: 5px;
     border: none !important;
     background-color: transparent;
     -webkit-box-shadow: none;
@@ -2565,19 +2568,17 @@ a {
   content: "\i"; }
 
 .btn-return {
-  padding-top: 4px !important; }
-  .btn-return:before {
-    font-family: "teamassistant" !important;
-    font-style: normal !important;
-    font-weight: normal !important;
-    font-variant: normal !important;
-    text-transform: none !important;
-    speak: none;
-    line-height: 1;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    content: "\p";
-    font-size: 27px !important; }
+  font-size: 16px !important;
+  font-weight: 100 !important;
+  color: #FEBB00 !important;
+  padding-top: 4px !important;
+  /*
+  &:before {
+  	@include icons();
+  	content: "\p";
+  	font-size: 27px !important;
+  }
+  */ }
 
 .cancel {
   float: right;
@@ -2595,7 +2596,31 @@ a {
     content: "k";
     font-size: 27px; }
 
+#splash .splash {
+  height: 100%;
+  width: 100%;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  background-image: url(images/ta_cap_white.svg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 40%; }
+#splash .loader {
+  height: 40px;
+  width: 40px;
+  margin-top: 100px;
+  margin-left: -20px;
+  background-image: url(images/ajax-loader-black.gif);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%; }
 #splash .brand {
+  display: none;
   font-weight: 100;
   letter-spacing: 0.04em;
   text-align: center;
@@ -2680,14 +2705,19 @@ a {
       content: "\42"; }
 
 #fixed-footer {
-  border: none;
-  background-color: black; }
+  border-top: 1px solid #222;
+  background-color: #0F0F0F;
+  -webkit-box-shadow: 0px 20px 32px 24px rgba(0, 0, 0, 0.42);
+  -moz-box-shadow: 0px 20px 32px 24px rgba(0, 0, 0, 0.42);
+  box-shadow: 0px 20px 32px 24px rgba(0, 0, 0, 0.42); }
   #fixed-footer .ui-link {
     font-size: 10px;
     font-weight: 100;
     text-transform: uppercase;
     color: #999 !important;
     border: none !important; }
+    #fixed-footer .ui-link .btn-label {
+      display: none; }
     #fixed-footer .ui-link:before {
       font-family: "teamassistant" !important;
       font-style: normal !important;
@@ -2757,9 +2787,11 @@ a {
   background-color: #f7f7f7 !important; }
   #settings .ui-header {
     border-color: #DDD !important;
-    background-color: #f7f7f7 !important; }
-    #settings .ui-header .btn-navbar:before {
-      color: #999; }
+    background-color: #FFF !important; }
+    #settings .ui-header .btn-navbar {
+      color: blue !important; }
+      #settings .ui-header .btn-navbar:before {
+        color: #999; }
   #settings h1 {
     display: none; }
   #settings .ui-content {

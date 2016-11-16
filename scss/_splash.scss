@@ -1,5 +1,32 @@
 #splash {
+	.splash {
+		height: 100%;
+		width: 100%;
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		display: inline-block;
+		
+		background-image: url(images/ta_cap_white.svg);
+		background-repeat: no-repeat;
+		background-position: center center;
+	    background-size: 40%;
+	}
+	.loader {
+		height: 40px;
+		width: 40px;
+		margin-top: 100px;
+		margin-left: -20px;
+		background-image: url(images/ajax-loader-black.gif);
+		background-repeat: no-repeat;
+		background-size: 100%;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+	}
 	.brand {
+		display: none;
 		font-weight: 100;
 		letter-spacing: 0.04em;
 		text-align: center;

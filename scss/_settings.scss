@@ -3,8 +3,9 @@
 	
 	.ui-header {
 		border-color: #DDD !important;
-		background-color: #f7f7f7 !important;
+		background-color: #FFF !important;
 		.btn-navbar {
+			color: blue !important;
 			&:before {
 				color: $grey;
 			}

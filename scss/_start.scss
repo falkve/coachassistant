@@ -1,3 +1,7 @@
+#start {
+
+}
+
 .player--cards {
 	a {
 		display: block;
@@ -68,14 +72,22 @@
 }
 
 #fixed-footer {
-	border: none;
-	background-color: black;
+    border-top: 1px solid #222;
+    background-color: #0F0F0F;
+	-webkit-box-shadow: 0px 20px 32px 24px rgba(0,0,0,0.42);
+	-moz-box-shadow: 0px 20px 32px 24px rgba(0,0,0,0.42);
+	box-shadow: 0px 20px 32px 24px rgba(0,0,0,0.42);
+	
 	.ui-link {
 		font-size: 10px;
 		font-weight: 100;
 		text-transform: uppercase;
 		color: #999 !important;
 		border: none !important;
+		
+		.btn-label {
+			display: none;
+		}
 		
 		&:before {
 			@include icons();

@@ -429,7 +429,7 @@ $(document).on('pageinit','#splash',function() {
 	// you to have the contained code only run when the #splash page is initialized.
 	//$( ":mobile-pagecontainer" ).pagecontainer( "change", "confirm.html", { role: "dialog" } );
 	setTimeout(function(){
-		console.log("hehehehe");
+		//console.log("hehehehe");
 		$( ":mobile-pagecontainer" ).pagecontainer( "change", "#start", { role: "page" } );
 		//$.mobile.changePage("#start", "fade");
 	}, 4000);

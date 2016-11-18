@@ -2423,6 +2423,10 @@
   min-height: 0 !important;
   padding-left: 15px !important; }
 
+.ui-popup-screen.in {
+  opacity: 0.8 !important;
+  filter: Alpha(Opacity=80) !important; }
+
 .float-left {
   float: left; }
 
@@ -2524,9 +2528,16 @@ h3 {
 h5 {
   font-size: 12px;
   font-weight: 300;
+  text-align: center;
   color: #999;
   margin: 0;
   margin-bottom: 10px; }
+  h5 span {
+    display: inline-block;
+    color: white;
+    padding: 3px 20px;
+    background-color: #222;
+    border-radius: 15px; }
 
 a {
   text-decoration: none; }
@@ -2785,6 +2796,74 @@ a {
   margin: 0;
   padding: 0; }
 
+#playeronbench-container {
+  position: relative; }
+  #playeronbench-container .close {
+    position: absolute;
+    left: 0;
+    top: 10px;
+    z-index: 9; }
+    #playeronbench-container .close .ui-btn {
+      font-weight: 100;
+      color: #FEBB00 !important;
+      border: none !important;
+      /*
+      &:before {
+      	@include icons();
+      	content: "d";
+      }
+      */ }
+  #playeronbench-container #current-player {
+    font-size: 22px;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 40px;
+    background: #111;
+    position: relative; }
+    #playeronbench-container #current-player .badge {
+      display: inline-block;
+      text-align: center;
+      width: 60px;
+      height: 60px;
+      margin-left: -30px;
+      border-radius: 20px;
+      position: absolute;
+      z-index: 1; }
+      #playeronbench-container #current-player .badge:after {
+        display: inline-block;
+        font-family: "teamassistant" !important;
+        font-style: normal !important;
+        font-weight: normal !important;
+        font-variant: normal !important;
+        text-transform: none !important;
+        speak: none;
+        line-height: 1;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        font-size: 50px;
+        content: "u";
+        color: white;
+        margin-left: -40px;
+        position: relative; }
+      #playeronbench-container #current-player .badge:before {
+        display: inline-block;
+        font-family: "teamassistant" !important;
+        font-style: normal !important;
+        font-weight: normal !important;
+        font-variant: normal !important;
+        text-transform: none !important;
+        speak: none;
+        line-height: 1;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        font-size: 50px;
+        content: "x";
+        color: #999;
+        margin-left: -20px;
+        position: relative; }
+
 #settings {
   background-color: #f7f7f7 !important; }
   #settings .ui-header {
@@ -2840,6 +2919,16 @@ a {
         padding-bottom: 10px;
         float: left; }
 
+.ui-content.timer-active {
+  padding-top: 120px; }
+
+#time-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999; }
+
 #time {
   font-family: 'Helvetica-Light','HelveticaNeue-Light', sans-serif;
   font-size: 98px !important;
@@ -2848,7 +2937,8 @@ a {
   text-align: center;
   color: white;
   position: relative;
-  min-height: 105px;
+  min-height: 152px;
+  height: 152px;
   margin-left: -16px;
   margin-right: -16px;
   margin-top: -16px;
@@ -3072,6 +3162,43 @@ a {
   .player-card.confirmed a .name-plate {
     background-color: #37c772 !important; }
 
+#players-container #current-team {
+  display: none;
+  padding: 3px;
+  border-radius: 20px;
+  background-color: #222; }
+  #players-container #current-team .label,
+  #players-container #current-team #active-players-badge,
+  #players-container #current-team #benched-players-badge,
+  #players-container #current-team #total-players-badge {
+    display: inline-block;
+    text-align: center;
+    line-height: 25px;
+    color: white;
+    width: 25px;
+    height: 25px;
+    border-radius: 20px; }
+  #players-container #current-team #active-players-badge {
+    background-color: #f15400; }
+  #players-container #current-team #benched-players-badge {
+    background-color: #333; }
+  #players-container #current-team #total-players-badge {
+    background-color: transparent; }
+  #players-container #current-team .label:before {
+    font-family: "teamassistant" !important;
+    font-style: normal !important;
+    font-weight: normal !important;
+    font-variant: normal !important;
+    text-transform: none !important;
+    speak: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    display: block;
+    font-size: 19px;
+    content: "m";
+    vertical-align: middle; }
+
 #players .player-elapsed-time,
 #playeronbench .player-elapsed-time {
   display: inline-block;
@@ -3106,6 +3233,33 @@ a {
       padding-left: 20px;
       border-color: #222 !important;
       background-color: #222; }
+
+.search--no-results {
+  background: #F00;
+  color: #FFF; }
+
+#list-players {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  max-height: 100px;
+  overflow: auto;
+  list-style: none;
+  border: 1px solid #000; }
+
+#list-players li {
+  display: none;
+  border-bottom: 1px solid #000;
+  padding: 5px; }
+
+#list-players .visible {
+  display: block; }
+
+#list-players.last {
+  border-bottom: none; }
+
+#list-players .active {
+  background-color: #eee; }
 
 #teamcompletebutton {
   display: none; }

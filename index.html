@@ -49,13 +49,13 @@
     
     <!-- Remove latency in click -->
     <script src="fastclick.js"></script>
-    
-    <!-- Search in list, used in players -->    
-    <script src="js/lib/list.min.js"></script>
-    
+	
+	<!-- Search, prototype -->
+	<script src="search.js"></script>
+	
     <!-- Our scripts -->
     <script src="app.js"></script>
-
+	
     <script>
         $( document ).ready(function() {
             init();
@@ -104,13 +104,21 @@
 		    <button class="ui-btn" onclick="unlock()" style="background-color: #36A131; position:absolute; bottom: -10px;">Unlock</button>
 		</div>
 		
-		<div id="time"></div>
+		<div id="time-container">
+			<div id="time"></div>
+		</div>
 		
-		<h5>Välj spelare</h5>
-		<ul data-role="listview" data-inset="true" id="players">
-			
-		</ul>
-	
+		<div id="players-container">
+			<div id="current-team">
+				<div id="active-players-badge"></div>
+				<div id="benched-players-badge"></div>
+				<div class="label"><span class="sr-only">total</span></div>
+				<div id="total-players-badge"></div>
+			</div>
+			<h5 style="text-align: center;"><span>Välj spelare</span></h5>
+			<ul data-role="listview" data-inset="true" id="players"></ul>
+		</div>
+
 		<div data-role="main" class="ui-content" id="positions">
 			<div class="select-position-container">
 				<header>
@@ -119,16 +127,23 @@
 				<footer></footer>
 			</div>
 		</div>	
-	
-		<ul data-role="listview" data-inset="true" id="playeronbench">
-			
-		</ul>
 		
+		<div id="playeronbench-container">
+			<div class="close"><button class="ui-btn" onclick="back()">Avbryt</button></div>
+			<h5><span>Välj spelare att byta till</span></h5>
+			<div id="current-player">
+				<div class="name"></div>
+				<div class="badge"></div>
+			</div>
+			<ul data-role="listview" data-inset="true" id="playeronbench"></ul>
+		</div>
 		
+		<!--
 		<div data-role="main" class="ui-content" id="back">
 		    <button class="ui-btn" onclick="back()">Avbryt</button>
 		</div>
-	
+		-->
+		
 		<!-- start -->
 		<div data-role="main" class="ui-content" id="teamcompletebutton">
 		    <button class="ui-btn" onclick="teamComplete()">Team Complete</button>
@@ -152,6 +167,7 @@
 		<ul data-role="listview" data-inset="true" id="players">        
 		 
 		</ul>
+		
 		<!--
 		<div id="player--cards" class="player--cards disable-links">
 			<h5>Spelare</h5>
@@ -203,42 +219,67 @@
 	<div id="fixed-footer" data-role="footer" data-id="foo1" data-position="fixed" data-tap-toggle="false">
 		<div data-role="navbar">
 			<ul>
+				<li><a class="players-setup" href="#players-setup" data-transition="none"><span class="btn-label">Spelare</span></a></li>
+				<li><a class="positios-setup" href="#positions-setup" data-transition="none"><span class="btn-label">Positioner</span></a></li>
+				<li><a class="settings" href="#settings" data-transition="none"><span class="btn-label">Inställningar</span></a></li>
+			</ul>
+		</div>
+	</div>
+
+	<!--
+		
+		Dont do transitions???
+		Instagram just pops the pages when clicking the footer nav... Feels fast...
+		
+	<div id="fixed-footer" data-role="footer" data-id="foo1" data-position="fixed" data-tap-toggle="false">
+		<div data-role="navbar">
+			<ul>
 				<li><a class="players-setup" href="#players-setup" data-transition="slideup"><span class="btn-label">Spelare</span></a></li>
 				<li><a class="positios-setup" href="#positions-setup" data-transition="slideup"><span class="btn-label">Positioner</span></a></li>
 				<li><a class="settings" href="#settings" data-transition="slideup"><span class="btn-label">Inställningar</span></a></li>
 			</ul>
-		</div><!-- /navbar -->
-	</div><!-- /footer -->
-
+		</div>
+	</div>
+	-->
 </div>
 
 <div data-role="page" id="players-setup">
 	<div data-role="header">
-		<a href="#start" class="ui-btn-left btn-navbar btn-return" data-role="button" role="button" data-transition="slideup" data-direction="reverse">Avbryt</a>
+		<a href="#start" class="ui-btn-left btn-navbar btn-return" data-role="button" role="button" data-transition="none" data-direction="reverse">Avbryt</a>
 		<h1><span class="sr-only">TeamAssistant</span></h1>
 	</div><!-- /header -->
 	
 	<div data-role="content">
 		<div class="search-player">
 			<input class="search" placeholder="Sök spelare" />
+			
+			<input type="text" id="searchbox" />
+			
 		</div>
-		<h3>Spelare</h3>
+		<h3><span>Spelare</span></h3>
 		<div id="all-players">
 			<ul data-role="listview" data-inset="true" id="list-players" class="list">
 				
 			</ul>
 		</div>
+		
+		<script type="text/javascript">
+			Search("searchbox", "list-players", "player-name", function (element) {
+			    element.innerHTML += ' - enter';
+			});
+		</script>
+		
 	</div>
 </div>
 
 <div data-role="page" id="positions-setup">
 	<div data-role="header">
-		<a href="#start" class="ui-btn-left btn-navbar btn-return" data-role="button" role="button" data-transition="slideup" data-direction="reverse">Avbryt</a>
+		<a href="#start" class="ui-btn-left btn-navbar btn-return" data-role="button" role="button" data-transition="none" data-direction="reverse">Avbryt</a>
 		<h1><span class="sr-only">TeamAssistant</span></h1>
 	</div><!-- /header -->
 
 	<div data-role="content">
-		<h3>Positioner</h3>
+		<h3><span>Positioner</span></h3>
 		<ul data-role="listview" data-inset="true" id="list-positions">
 		</ul>
 	</div>
@@ -247,11 +288,11 @@
 
 <div data-role="page" id="settings">
 	<div data-role="header">
-		<a href="#start" class="ui-btn-left btn-navbar btn-return" data-role="button" role="button" data-transition="slideup" data-direction="reverse">Avbryt</a>
+		<a href="#start" class="ui-btn-left btn-navbar btn-return" data-role="button" role="button" data-transition="none" data-direction="reverse">Avbryt</a>
 		<h1>Bar</h1>
 	</div><!-- /header -->
 
-<div data-role="content">	
+	<div data-role="content">	
 		<h3>Appinställningar</h3>
 		
 		<div class="settings-option">
@@ -261,7 +302,7 @@
 					<li>
 						<form>
 						    <label for="lockable-startpage">Låsbar startsida</label>
-						    <input type="checkbox" data-role="flipswitch" name="flip-checkbox-1" id="lockable-startpage">
+						    <input type="checkbox" data-role="flipswitch" name="lockable-startpage" id="lockable-startpage" data-on-text="På" data-off-text="Av">
 						</form>
 					</li>
 				</ul>
@@ -275,7 +316,7 @@
 					<li>
 						<form>
 						    <label for="use-playershirtnum">Använd tröjnummer</label>
-						    <input type="checkbox" data-role="flipswitch" name="flip-checkbox-1" id="use-playershirtnum">
+						    <input type="checkbox" data-role="flipswitch" name="use-playershirtnum" id="use-playershirtnum" data-on-text="På" data-off-text="Av">
 						</form>
 					</li>
 				</ul>
@@ -288,8 +329,8 @@
 				<ul>
 					<li>
 						<form>
-						    <label for="log-events">Spara log</label>
-						    <input type="checkbox" data-role="flipswitch" name="flip-checkbox-1" id="log-events">
+						    <label for="log-games">Spara log</label>
+						    <input type="checkbox" data-role="flipswitch" name="log-games" id="log-games" data-on-text="På" data-off-text="Av">
 						</form>
 					</li>
 				</ul>
@@ -299,11 +340,18 @@
 					<li>
 						<form>
 						    <label for="gps-trackning">Spara position för match</label>
-						    <input type="checkbox" data-role="flipswitch" name="flip-checkbox-1" id="gps-trackning">
+						    <input type="checkbox" data-role="flipswitch" name="gps-trackning" id="gps-trackning" data-on-text="På" data-off-text="Av">
 						</form>
 					</li>
 				</ul>
 			</div>
+			<ul>
+				<li>Förslag... på val alt funktionalitet...</li>
+				<li>Hur många spelare ska starta?</li>
+				<li>När alla positioner är valda, gör det enklare att bänka folk...</li>
+				<li>Preview av laguppställningen i panel?</li>
+				<li>Panel som popar varje gång man populerar den med någon... Räkna antal spelare på bänk, räkna antal spelare som ska starta...</li>
+			</ul>
 		</div>
 		
 		<div class="settings-option user-account-details">

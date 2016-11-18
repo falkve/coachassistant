@@ -25,3 +25,10 @@
     min-height: 0 !important;
     padding-left: 15px !important;
 }
+
+.ui-popup-screen {
+	&.in {
+	    opacity: 0.8 !important;
+	    filter: Alpha(Opacity=80) !important;
+	}
+}

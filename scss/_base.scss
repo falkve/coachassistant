@@ -26,9 +26,17 @@ h3 {
 h5 {
     font-size: 12px;
 	font-weight: 300;
+	text-align: center;
 	color: $grey;
 	margin: 0;
 	margin-bottom: 10px;
+	span {
+		display: inline-block;
+		color: white;
+		padding: 3px 20px;
+		background-color: #222;
+		border-radius: 15px;
+	}
 }
 
 a {

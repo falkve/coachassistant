@@ -63,9 +63,50 @@
 	}
 }
 
+#players-container {
+	#current-team {
+		display: none;
+		padding: 3px;
+		border-radius: 20px;
+		background-color: #222;
+		
+		.label,
+		#active-players-badge,
+		#benched-players-badge,
+		#total-players-badge {
+			display: inline-block;
+			text-align: center;
+			line-height: 25px;
+			color: white;
+			width: 25px;
+			height: 25px;
+			border-radius: 20px;
+		}
+		
+		#active-players-badge {
+			background-color: $red-fire;
+		}
+	
+		#benched-players-badge {
+			background-color: #333;
+		}
+		#total-players-badge {
+			background-color: transparent;
+		}
+		.label {
+			&:before {
+			    @include icons();
+			    display: block;
+			    font-size: 19px;
+			    content: "m";
+		        vertical-align: middle;
+			}
+		}
+	}
+}
+
 #players,
 #playeronbench {
-	
 	// Times
 	.player-elapsed-time {
 		display: inline-block;
@@ -106,4 +147,32 @@
 		
 		}
 	}
+}
+
+.search--no-results {
+    background: #F00;
+    color: #FFF;
+}
+#list-players {
+	margin: 0;
+	padding: 0;
+	position: relative;
+	max-height: 100px;
+	overflow: auto;
+	list-style: none;
+	border: 1px solid #000;
+}
+#list-players li {
+	display: none;
+	border-bottom: 1px solid #000;
+	padding: 5px;
+}
+#list-players .visible {
+	display: block;
+}
+#list-players.last {
+	border-bottom: none;
+}
+#list-players .active {
+	background-color: #eee;
 }

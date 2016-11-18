@@ -10,6 +10,7 @@
 			padding: 10px 20px;
 			border-radius: 10px;
 			background-color: white;
+			
 			.arrow-up {
 				color: $green;
 				float: left;
@@ -36,6 +37,75 @@
 			li {
 
 			}
+		}
+	}
+}
+
+#playeronbench-container  {
+	position: relative;
+	.close {
+		position: absolute;
+		left: 0;
+		top: 10px;
+		z-index: 9;
+		.ui-btn {
+			font-weight: 100;
+			color: $orange !important;
+			border: none !important;
+			/*
+			&:before {
+				@include icons();
+				content: "d";
+			}
+			*/			
+		}
+	}
+
+	#current-player {
+		font-size: 22px;
+		color: white;
+		text-align: center;
+		padding: 20px;
+		margin-bottom: 30px;
+		border-radius: 40px;
+		background: #111;
+		position: relative;
+		
+		.badge {
+			display: inline-block;
+			text-align: center;
+			width: 60px;
+			height: 60px;
+		    margin-left: -30px;
+		    border-radius: 20px;
+			//background: #333;
+			position: absolute;
+			z-index: 1;
+	
+			&:after {
+				    display: inline-block;
+				@include icons();
+				font-size: 50px;
+				content: "u";
+				color: white;
+			    margin-left: -40px;
+				position: relative;
+			    //bottom: -30px;
+			}
+			
+			&:before {
+				    display: inline-block;
+				@include icons();
+				font-size: 50px;
+				content: "x";
+				color: #999;
+			    margin-left: -20px;
+				position: relative;
+			    //bottom: -30px;
+			}
+		}
+		.current-player {
+			
 		}
 	}
 }

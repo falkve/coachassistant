@@ -1,3 +1,16 @@
+.ui-content.timer-active {
+	padding-top: 120px;
+}
+
+
+#time-container {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 9999;
+}
+
 #time {
 	font-family: 'Helvetica-Light','HelveticaNeue-Light', sans-serif;
 	font-size: 98px !important;
@@ -6,7 +19,8 @@
 	text-align: center;
 	color: white;
 	position: relative;
-	min-height: 105px;
+	min-height: 152px;
+	height: 152px;
 	margin-left: -16px;
 	margin-right: -16px;
 	margin-top: -16px;
@@ -14,6 +28,8 @@
 	//border-radius: 4px;
 	overflow: hidden;
     background: black;
+    
+
 	
 	/*
 	&:before {

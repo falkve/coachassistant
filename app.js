@@ -57,6 +57,13 @@ positions['HM'] = 'Höger Mittfältare';
 positions['B'] = 'Back';
 positions['BENCH'] = 'Avbytarbänk';
 
+var settings = new Object();
+settings['lockable_keyboard'] = false;
+settings['log_games'] = true;
+settings['shirt_numbers'] = false;
+settings['save_location'] = true;
+settings['user_email'] = 'martin@kidkie.se';
+
 var activePlayers = new Object();
 var benchPlayers = new Object();
 var currentPlayer = null;
@@ -148,20 +155,21 @@ function init() {
     activePlayers = new Object();
     benchPlayers = new Object();
     currentPlayer = null;
-    $('#players li').remove();
+    
+    $('#players-container #players li').remove();
     $('#positions li').remove();
     $("#positions").hide();
-    $("#playeronbench").hide();
+    $("#playeronbench-container").hide();
     $("#gameover").hide();
     $("#startgame").hide();
     $("#init").hide();
-    $("#time").hide();
+    $("#time-container").hide();
     $("#lockscreen").hide();
     $("#back").hide();
     
     for (var name in players) {
 	    var name_plate = name.charAt(0);
-        $("#players").append('<li id="' + name + '" onClick="addPlayer(\'' + name + '\')" class="player-card ui-first-child ui-last-child"><a href="#" class="ui-btn ui-btn-icon-right ui-icon-arrow-r"><div class="name-plate">'+name_plate+'</div><img height="44" width="30" src="img/' + players[name] + '"> ' + name + '</a></li>');
+        $("#players-container #players").append('<li id="' + name + '" onClick="addPlayer(\'' + name + '\')" class="player-card ui-first-child ui-last-child"><a href="#" class="ui-btn ui-btn-icon-right ui-icon-arrow-r"><div class="name-plate">'+name_plate+'</div><img height="44" width="30" src="img/' + players[name] + '"> ' + name + '</a></li>');
     }
 
     for (var key in positions) {
@@ -223,12 +231,97 @@ function listPositions() {
     
 }
 
+// Settings
+function initSettings() {
+	console.log(settings);
+	
+	useLockableKeyboard = settings['lockable_keyboard'];
+	useLogGames = settings['log_games'];
+	useShirtNumbers = settings['shirt_numbers'];
+	useSaveLocation = settings['save_location'];
+	userEmail = settings['user_email'];
+	
+	if(useLockableKeyboard) {
+		// $("#lockable-startpage").prop( "checked", true ).flipswitch( "refresh" );
+		$("#lockable-startpage").prop( "checked", true );
+	}
+	
+	if(useShirtNumbers) {
+		//$("#use-playershirtnum").prop( "checked", true ).flipswitch( "refresh" );
+		$("#use-playershirtnum").prop( "checked", true );
+	}
+	
+	if(useLogGames) {
+		//$("#log-games").prop( "checked", true ).flipswitch( "refresh" );
+		$("#log-games").prop( "checked", true );
+	}
+	
+	if(useSaveLocation) {
+		//$("#log-games").prop( "checked", true ).flipswitch( "refresh" );
+		$("#log-games").prop( "checked", true );
+	}
+	
+	if(userEmail) {
+		//$("#gps-trackning").prop( "checked", true ).flipswitch( "refresh" );
+		$("#gps-trackning").prop( "checked", true );
+	}
+}
+
+function updateSettings() {
+	// ToDo
+}
+
+/*
+
+settings['lockable_keyboard'] = false;
+settings['log_games'] = true;
+settings['shirt_numbers'] = false;
+settings['save_location'] = true;
+settings['user_email'] = 'martin@kidkie.se';
+
+*/
+
 // Add Player
 function addPlayer(name) {
     currentPlayer = new Player(name, players[name]);
     
-    $( "#positionSelector" ).popup( "open", { transition: "flow",overlayTheme: "a" } );
+    // use JQM PopUp
+    $( "#positionSelector" ).popup( "open", {
+	    transition: "flow",overlayTheme: "a"
+	});
     $('#teamcompletebutton').show();
+        
+}
+
+// Count positions
+
+function countActivePlayers() {
+	var countActive = 0;
+	var countBenched = 0;
+	var i;
+	
+	for (i in activePlayers) {
+		if (activePlayers.hasOwnProperty(i)) {
+			countActive++;
+		}
+	}
+
+	for (i in benchPlayers) {
+		if (benchPlayers.hasOwnProperty(i)) {
+			countBenched++;
+		}
+	}
+	
+	totalTeam = countActive + countBenched;
+	
+	$('#players-container #active-players-badge').text(countActive);
+	$('#players-container #benched-players-badge').text(countBenched);
+	$('#players-container #total-players-badge').text(totalTeam);
+
+	if(countActive > 0 || countBenched > 0) {
+		$("#current-team").show();
+	}
+
 }
 
 // Set positions
@@ -243,25 +336,29 @@ function setPosition(position) {
         activePlayers[currentPlayer.name] = currentPlayer;
         activePlayers[currentPlayer.name].addPosition(new Position(position));
     } else {
-        $("#playeronbench").append('<li id="b_'+currentPlayer.name+'" onClick="doSwitchPlayer(\''+currentPlayer.name+'\')" class="player-card ui-first-child ui-last-child"><a href="#" class="ui-btn ui-btn-icon-right ui-icon-arrow-r"><img height="44" width="30" src="img/'+currentPlayer.img+'"> '+currentPlayer.name+ ' '  + currentPlayer.viewPositions() + '</a></li>');
+        $("#playeronbench-container #playeronbench").append('<li id="b_'+currentPlayer.name+'" onClick="doSwitchPlayer(\''+currentPlayer.name+'\')" class="player-card ui-first-child ui-last-child"><a href="#" class="ui-btn ui-btn-icon-right ui-icon-arrow-r"><img height="44" width="30" src="img/'+currentPlayer.img+'"> '+currentPlayer.name+ ' '  + currentPlayer.viewPositions() + '</a></li>');
         benchPlayers[currentPlayer.name] = currentPlayer;
 
         // Remove player
         popRemovePlayer(currentPlayer.name);
     }
-    $("#players").show();
+    $("#players-container").show();
     $("#positions").hide();
+    $("#positionSelector").popup( "close" );
+    $("#teamcompletebutton").show();
     
-    $( "#positionSelector" ).popup( "close" );
-    
-    $('#teamcompletebutton').show();
+    countActivePlayers();
 }
 
 // Change player
 function changePlayer(name){
     currentPlayer = activePlayers[name];
-    $("#players").hide();
-    $("#playeronbench").show();
+    
+    $("#players-container").hide();
+    console.log(currentPlayer.name);
+    $("#playeronbench-container #current-player .name").text(currentPlayer.name);
+    
+    $("#playeronbench-container").show();
     $("#gameover").hide();
     $("#back").show();
 }
@@ -271,7 +368,7 @@ function doSwitchPlayer(name){
     var position = new Position(currentPlayer.positions[currentPlayer.positions.length-1].position);
     position.startTime = new Date();
     p.addPosition(position);
-    $("#playeronbench").append('<li id="b_'+currentPlayer.name+'" onClick="doSwitchPlayer(\''+currentPlayer.name+'\')" class="ui-first-child ui-last-child"><a href="#" class="ui-btn ui-btn-icon-right ui-icon-arrow-r"><img height="44" width="30" src="img/'+currentPlayer.img+'"> '+currentPlayer.name+ ' ' +currentPlayer.viewPositions()+'</a></li>');
+    $("#playeronbench-container #playeronbench").append('<li id="b_'+currentPlayer.name+'" onClick="doSwitchPlayer(\''+currentPlayer.name+'\')" class="player-card ui-first-child ui-last-child"><a href="#" class="ui-btn ui-btn-icon-right ui-icon-arrow-r"><img height="44" width="30" src="img/'+currentPlayer.img+'"> '+currentPlayer.name+ ' ' +currentPlayer.viewPositions()+'</a></li>');
 
     activePlayers[name] = p;
     currentPlayer.endCurrentPosition();
@@ -280,15 +377,15 @@ function doSwitchPlayer(name){
     benchPlayers[currentPlayer.name] = currentPlayer;
     $('#b_'+name).remove();
 
-    $("#players").show();
-    $("#playeronbench").hide();
+    $("#players-container").show();
+    $("#playeronbench-container").hide();
     $("#gameover").show();
     $("#back").hide();
 
 }
 function back(){
-    $("#players").show();
-    $("#playeronbench").hide();
+    $("#players-container").show();
+    $("#playeronbench-container").hide();
     $("#gameover").show();
     $("#back").hide();
 }
@@ -312,7 +409,8 @@ function teamComplete(){
 
 function startGame(){
     startTime = new Date();
-    $("#time").show();
+    $('#start .ui-content').addClass('timer-active');
+    $("#time-container").show();
     $("#startgame").hide();
     
     var d = new Date();
@@ -326,9 +424,9 @@ function startGame(){
 }
 
 function updateActiveView(){
-    $('#players li').remove();
+    $('#players-container #players li').remove();
     for (var name in activePlayers) {
-        $("#players").append('<li id="'+activePlayers[name].name+'" onClick="changePlayer(\''+activePlayers[name].name+'\')" class="player-card ui-first-child ui-last-child"><a href="#" class="ui-btn ui-btn-icon-right ui-icon-arrow-r"><img height="44" width="30" src="img/'+players[name]+'"> <span class="position-key">'+activePlayers[name].positions[0].position+'</span>'+activePlayers[name].toString()+'</a></li>');
+        $("#players-container #players").append('<li id="'+activePlayers[name].name+'" onClick="changePlayer(\''+activePlayers[name].name+'\')" class="player-card ui-first-child ui-last-child"><a href="#" class="ui-btn ui-btn-icon-right ui-icon-arrow-r"><img height="44" width="30" src="img/'+players[name]+'"> <span class="position-key">'+activePlayers[name].positions[0].position+'</span>'+activePlayers[name].toString()+'</a></li>');
     }
     if(startTime != null){
 		eTime = getElapsedTime(startTime, new Date());
@@ -338,23 +436,23 @@ function updateActiveView(){
 		eSeconds = eSeconds < 10 ? "0" + eSeconds : eSeconds;
 		eMinutes = eMinutes < 10 ? "0" + eMinutes : eMinutes;
 	    
-	    $('#time').html('<div class="elapsed_time"><div id="elapsed_seconds">'+eMinutes+'</div> <div class="divider">:</div> <div id="elapsed_minutes">'+eSeconds+'</div> </div>');
+	    $('#time-container #time').html('<div class="elapsed_time"><div id="elapsed_seconds">'+eMinutes+'</div> <div class="divider">:</div> <div id="elapsed_minutes">'+eSeconds+'</div> </div>');
     }
 }
 
 function gameOver(){
     $("#gameover").hide();
     clearInterval(loopId);
-    $('#players li').remove();
+    $('#players-container #players li').remove();
     for (var name in activePlayers) {
         var player = activePlayers[name];
         player.endCurrentPosition();
 
-        $("#players").append('<li id="'+player.name+'" onClick="" class="ui-first-child ui-last-child"><a href="#" class="ui-btn ui-btn-icon-right"><b><u>'+player.name+'</u></b><br/> '+player.getStatistic()+ '</a></li>');
+        $("#players-container #players").append('<li id="'+player.name+'" onClick="" class="ui-first-child ui-last-child"><a href="#" class="ui-btn ui-btn-icon-right"><b><u>'+player.name+'</u></b><br/> '+player.getStatistic()+ '</a></li>');
     }
     for (var name in benchPlayers) {
         var player = benchPlayers[name];
-        $("#players").append('<li id="'+player.name+'" onClick="" class="ui-first-child ui-last-child"><a href="#" class="ui-btn ui-btn-icon-right"><b><u>'+player.name+'</u></b><br/> '+player.getStatistic()+ '</a></li>');
+        $("#players-container #players").append('<li id="'+player.name+'" onClick="" class="ui-first-child ui-last-child"><a href="#" class="ui-btn ui-btn-icon-right"><b><u>'+player.name+'</u></b><br/> '+player.getStatistic()+ '</a></li>');
     }
     $("#init").show();
 }
@@ -416,7 +514,10 @@ $(document).ready(function($) {
 	$(document).on("pagebeforeshow","#positions-setup",function(){ // When entering pagetwo
 		//listPositions();
 	});
-
+	
+	// init Settings
+	initSettings();
+	
 });
 
 $(document).on('pageinit','#splash',function() {
@@ -427,13 +528,3 @@ $(document).on('pageinit','#splash',function() {
 		$( ":mobile-pagecontainer" ).pagecontainer( "change", "#start", { role: "page" } );
 	}, 4000);
 });
-
-// Search init
-var options = {
-    item: 'player-card'
-};
-var options = {
-  valueNames: [ 'player-name' ]
-};
-
-var userList = new List('all-players', options);

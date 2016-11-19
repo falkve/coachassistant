@@ -39,19 +39,14 @@
 	<meta name="msapplication-tap-highlight" content="no">
 	<!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
 	<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi">
-
 	
     <link rel="stylesheet" href="app.css">
     <link rel="stylesheet" href="jquery.mobile-1.4.5.css">
-    <!--<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">-->
-    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src="js/lib/jquery-1.11.3.min.js"></script>
+    <script src="js/lib/jquery.mobile-1.4.5.min.js"></script>
     
-    <!-- Remove latency in click -->
-    <script src="fastclick.js"></script>
-	
-	<!-- Search, prototype -->
-	<script src="search.js"></script>
+    <!-- Remove latency in click to make it more like native app -->
+    <script src="js/lib/fastclick.min.js"></script>
 	
     <!-- Our scripts -->
     <script src="app.js"></script>
@@ -88,9 +83,7 @@
 <div data-role="page" id="start">
 
 	<div data-role="header">
-		<!-- <a href="#mypanel" class="ui-btn-left btn-navbar btn-menu" data-role="button" role="button"><span>Inställningar</span></a> -->
-		<h1><span class="sr-only">TeamAssistant</span></h1>
-		<!--<a href="#addplayer" class="ui-btn-right btn-navbar btn-add" data-role="button" role="button" data-transition="slide"><span>Add player</span></a>-->
+		<h1><span>Team Assistant</span></h1>
 	</div><!-- /header -->
 
 	<div data-role="content">	
@@ -161,29 +154,15 @@
 		<div data-role="main" class="ui-content" id="init">
 		    <button class="ui-btn" onclick="init()">Start new Game</button>
 		</div>
-		<!-- /end -->
-
 
 		<ul data-role="listview" data-inset="true" id="players">        
 		 
 		</ul>
-		
-		<!--
-		<div id="player--cards" class="player--cards disable-links">
-			<h5>Spelare</h5>
-		</div>
-		-->
-		<!--
-		<div class="small" style="padding-top: 40px;">
-			TeamAssistant version Beta
-		</div>
-		-->
-		
+
 		<div id="lock-screen"><span class="sr-only">Lås klick</span></div>
 		
 	</div>
-
-
+	
 	<div data-role="panel" id="mypanel" data-display="overlay">
 	    
 	    <div data-role="header">
@@ -215,7 +194,6 @@
 		
 	</div>
 	
-
 	<div id="fixed-footer" data-role="footer" data-id="foo1" data-position="fixed" data-tap-toggle="false">
 		<div data-role="navbar">
 			<ul>
@@ -225,22 +203,6 @@
 			</ul>
 		</div>
 	</div>
-
-	<!--
-		
-		Dont do transitions???
-		Instagram just pops the pages when clicking the footer nav... Feels fast...
-		
-	<div id="fixed-footer" data-role="footer" data-id="foo1" data-position="fixed" data-tap-toggle="false">
-		<div data-role="navbar">
-			<ul>
-				<li><a class="players-setup" href="#players-setup" data-transition="slideup"><span class="btn-label">Spelare</span></a></li>
-				<li><a class="positios-setup" href="#positions-setup" data-transition="slideup"><span class="btn-label">Positioner</span></a></li>
-				<li><a class="settings" href="#settings" data-transition="slideup"><span class="btn-label">Inställningar</span></a></li>
-			</ul>
-		</div>
-	</div>
-	-->
 </div>
 
 <div data-role="page" id="players-setup">
@@ -252,24 +214,21 @@
 	<div data-role="content">
 		<div class="search-player">
 			<input class="search" placeholder="Sök spelare" />
-			
-			<input type="text" id="searchbox" />
-			
 		</div>
+		
 		<h3><span>Spelare</span></h3>
 		<div id="all-players">
-			<ul data-role="listview" data-inset="true" id="list-players" class="list">
-				
-			</ul>
+			<ul data-role="listview" data-inset="true" id="list-players"></ul>
 		</div>
 		
-		<script type="text/javascript">
-			Search("searchbox", "list-players", "player-name", function (element) {
-			    element.innerHTML += ' - enter';
-			});
-		</script>
+		<div class="page-cta">
+			<a href="#" class="btn-add">
+				Lägg till spelare
+			</a>
+		</div>
 		
 	</div>
+	
 </div>
 
 <div data-role="page" id="positions-setup">
@@ -282,6 +241,13 @@
 		<h3><span>Positioner</span></h3>
 		<ul data-role="listview" data-inset="true" id="list-positions">
 		</ul>
+		
+		<div class="page-cta">
+			<a href="#" class="btn-add">
+				Lägg till position
+			</a>
+		</div>
+		
 	</div>
 
 </div>
@@ -294,78 +260,75 @@
 
 	<div data-role="content">	
 		<h3>Appinställningar</h3>
+
+		<form id="settings-form">
 		
-		<div class="settings-option">
-			<h5>Tillgänglighet</h5>
-			<div class="option">
+			<div class="settings-option">
+				<h5>Tillgänglighet</h5>
+				<div class="option">
+					<ul>
+						<li>
+						    <label for="lockable_keyboard">Låsbar startsida</label>
+						    <input type="checkbox" data-role="flipswitch" name="lockable_keyboard" id="lockable_keyboard" data-on-text="På" data-off-text="Av">
+						</li>
+					</ul>
+				</div>
+			</div>
+	
+			<div class="settings-option">
+				<h5>Identifikation</h5>
+				<div class="option">
+					<ul>
+						<li>
+						    <label for="shirt_numbers">Använd tröjnummer</label>
+						    <input type="checkbox" data-role="flipswitch" name="shirt_numbers" id="shirt_numbers" data-on-text="På" data-off-text="Av">
+						</li>
+					</ul>
+				</div>
+			</div>
+	
+			<div class="settings-option">
+				<h5>Datahantering</h5>
+				<div class="option">
+					<ul>
+						<li>
+						    <label for="log_games">Spara log</label>
+						    <input type="checkbox" data-role="flipswitch" name="log_games" id="log_games" data-on-text="På" data-off-text="Av">
+						</li>
+					</ul>
+				</div>
+				<div class="option">
+					<ul>
+						<li>
+						    <label for="save_location">Spara position för match</label>
+						    <input type="checkbox" data-role="flipswitch" name="save_location" id="save_location" data-on-text="På" data-off-text="Av">
+						</li>
+					</ul>
+				</div>
 				<ul>
-					<li>
-						<form>
-						    <label for="lockable-startpage">Låsbar startsida</label>
-						    <input type="checkbox" data-role="flipswitch" name="lockable-startpage" id="lockable-startpage" data-on-text="På" data-off-text="Av">
-						</form>
-					</li>
+					<li>Flera tränare borde kunna dela på samma timer/setup för att dela på bördan...</li>
+					<li>Förslag... på val alt funktionalitet...</li>
+					<li>Hur många spelare ska starta?</li>
+					<li>När alla positioner är valda, gör det enklare att bänka folk...</li>
+					<li>Preview av laguppställningen i panel?</li>
+					<!--<li>Panel som popar varje gång man populerar den med någon... Räkna antal spelare på bänk, räkna antal spelare som ska starta...</li>-->
 				</ul>
 			</div>
-		</div>
-
-		<div class="settings-option">
-			<h5>Identifikation</h5>
-			<div class="option">
-				<ul>
-					<li>
-						<form>
-						    <label for="use-playershirtnum">Använd tröjnummer</label>
-						    <input type="checkbox" data-role="flipswitch" name="use-playershirtnum" id="use-playershirtnum" data-on-text="På" data-off-text="Av">
-						</form>
-					</li>
-				</ul>
+			
+			<div class="settings-option user-account-details">
+				<h5>Dina uppgifter</h5>
+				<div class="option">
+					<ul>
+						<li>
+							<div id="email">martin@kidkie.se</div>
+						</li>
+					</ul>
+				</div>
+				<p class="small">Behövs för att kunna spara din data</p>
 			</div>
-		</div>
-
-		<div class="settings-option">
-			<h5>Datahantering</h5>
-			<div class="option">
-				<ul>
-					<li>
-						<form>
-						    <label for="log-games">Spara log</label>
-						    <input type="checkbox" data-role="flipswitch" name="log-games" id="log-games" data-on-text="På" data-off-text="Av">
-						</form>
-					</li>
-				</ul>
-			</div>
-			<div class="option">
-				<ul>
-					<li>
-						<form>
-						    <label for="gps-trackning">Spara position för match</label>
-						    <input type="checkbox" data-role="flipswitch" name="gps-trackning" id="gps-trackning" data-on-text="På" data-off-text="Av">
-						</form>
-					</li>
-				</ul>
-			</div>
-			<ul>
-				<li>Förslag... på val alt funktionalitet...</li>
-				<li>Hur många spelare ska starta?</li>
-				<li>När alla positioner är valda, gör det enklare att bänka folk...</li>
-				<li>Preview av laguppställningen i panel?</li>
-				<li>Panel som popar varje gång man populerar den med någon... Räkna antal spelare på bänk, räkna antal spelare som ska starta...</li>
-			</ul>
-		</div>
+			
+		</form><!-- /form -->
 		
-		<div class="settings-option user-account-details">
-			<h5>Dina uppgifter</h5>
-			<div class="option">
-				<ul>
-					<li>
-						<div id="email">martin@kidkie.se</div>
-					</li>
-				</ul>
-			</div>
-			<p class="small">Behövs för att kunna spara din data</p>
-		</div>
-
 	</div><!-- /content -->
 
 </div>

@@ -8,16 +8,26 @@
 	
 	#start & {
 		.ui-title {
-			color: white;
-			background-image: url(images/ta_cap_only_white.svg);
-			background-size: 50px;
-			background-repeat: no-repeat;
-			background-position: center center;
+			font-family: 'Roboto Slab', sans-serif;
+			font-style: normal;
+			font-weight: normal;
+			font-variant: normal;
+			text-transform: none;
+			speak: normal;
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;
+			font-weight: 700;
+			letter-spacing: 0.8px;
+		    text-transform: uppercase;
+			color: #DDD;
+			//background-image: url(images/ta_cap_only_white.svg);
+			//background-size: 50px;
+			//background-repeat: no-repeat;
+			//background-position: center center;
 		}
 	}
 	
 	.btn-navbar {
-		//color: white !important;
 	    font-size: 16px !important;
 	    font-weight: 100 !important;
 	    color: $orange !important;

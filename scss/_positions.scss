@@ -1,5 +1,9 @@
 // Positions
 
+#list-positions {
+	margin-bottom: 20px !important;
+}
+
 .position-card {
 	a {
 		display: inline-block;
@@ -14,8 +18,9 @@
 
 .position-key {
     display: inline-block;
+    font-family: 'Open Sans Condensed', sans-serif;
     font-size: 13px;
-    font-weight: 600;
+    font-weight: 700;
     line-height: 30px;
     text-align: center;
     //width: 30px;
@@ -25,6 +30,7 @@
     border-radius: 20px;
     background: $red-fire;
 }
+
 .ui-overlay-shadow {
     -webkit-box-shadow: none !important;
     -moz-box-shadow: none !important;
@@ -66,7 +72,7 @@
 	background-color: #111;
 	position: relative;
 	.ui-btn {
-		font-weight: 100;
+		font-weight: 600;
 	    color: #DDD !important;
 		padding-top: 0 !important;
 	    padding-left: 0 !important;

@@ -1,5 +1,8 @@
 body, input, select, textarea, button, .ui-btn {
-	font-family: 'Helvetica','HelveticaNeue-Light' !important;
+	font-family: 'Open Sans', 'Helvetica','HelveticaNeue-Light' !important;
+	font-weight: 400;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 .ui-overlay-a, .ui-page-theme-a, .ui-page-theme-a .ui-panel-wrapper, body {
 	margin: 0;
@@ -27,12 +30,12 @@ h5 {
     font-size: 12px;
 	font-weight: 300;
 	text-align: center;
-	color: $grey;
+    font-weight: 400;
 	margin: 0;
-	margin-bottom: 10px;
+	margin-bottom: 15px;
 	span {
 		display: inline-block;
-		color: white;
+		color: #999;
 		padding: 3px 20px;
 		background-color: #222;
 		border-radius: 15px;
@@ -41,6 +44,95 @@ h5 {
 
 a {
 	text-decoration: none;
+}
+
+.page-cta {
+	text-align: center;
+	width: 100%;
+}
+
+// Move
+
+
+.app-version {
+	font-size: 12px;
+	color: $grey;
+	padding: 0 0 20px 20px;
+	position: absolute;
+	bottom: 0;
+}
+
+.listview-seamless-btn {
+	color: blue;
+    padding: .7em 1em;
+    margin-top: 3px;
+    border-top: 1px solid #DDD;
+	background-color: white;
+	
+	&:after {
+		@include icons();
+		font-size: 23px;
+		line-height: 19px;		
+		content: "3";
+		float: right;
+	}
+}
+
+// positions
+
+.white-list {
+
+	li {
+		padding: .7em 1em !important;
+		border-bottom: 1px solid #DDD !important;
+		background-color: white;
+		
+		&:first-child {
+			border: none !important;
+			border-bottom: 1px solid #DDD !important;
+		}
+		
+		&:last-of-type {
+			border: none !important;
+		}
+	}
+}
+
+// add player
+
+#selectable-positions {
+	#positions-list {
+		li {
+			&.selected-position {
+				&:after {
+					@include icons();
+					color: $green;
+					content: "j";
+					float: right;
+				}
+			}		
+		}
+	}
+
+}
+
+#switch, #addplayer {
+	h1 {
+		display: none;
+	}
+}
+
+// Sortable
+.sortable-chosen {
+	border: 2px solid #DDD;
+}
+
+.sortable-ghost {
+	/*
+	-webkit-box-shadow: 0px 0px 18px 0px rgba(0,0,0,0.28);
+	-moz-box-shadow: 0px 0px 18px 0px rgba(0,0,0,0.28);
+	box-shadow: 0px 0px 18px 0px rgba(0,0,0,0.28);
+	*/
 }
 
 // Buttons
@@ -53,11 +145,16 @@ a {
 }
 
 .btn-add {
+	color: white !important;
+	padding: 10px;
+	border-radius: 20px;
+	background-color: #333;
 	&:before {
 		@include icons();
 		content: "4";
 		font-size: 27px !important;
 		line-height: 35px !important;
+		vertical-align: middle;
 	}
 }
 

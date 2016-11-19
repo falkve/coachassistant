@@ -2,6 +2,70 @@
 
 }
 
+#teamcompletebutton {
+	text-align: center;
+	.ui-btn {
+	    display: inline-block;
+	    width: 230px;
+	    padding: 20px;
+	    border-radius: 50px !important;
+	    border-color: $green !important;
+	    background: $green !important;
+	    position: relative;
+
+		&:before {
+			@include icons();
+			content: "h";
+			font-size: 28px;
+			color: white;
+			position: absolute;
+			right: 9px;
+			top: 16px;
+			z-index: 20;
+		}
+		/*
+		&:after {
+			@include icons();
+			content: "";
+			width: 35px;
+			height: 35px;
+			border-radius: 50%;
+			border-radius: 50%;
+			background-color: rgba(255, 255, 255, 0.12);
+			position: absolute;
+			position: absolute;
+			right: 6px;
+			top: 4px;
+			z-index: 10;
+		}
+		*/
+	}
+}
+
+#startgame {
+	text-align: center;
+	.ui-btn {
+	    display: inline-block;
+	    width: 230px;
+	    padding: 20px;
+	    border-radius: 50px !important;
+	    border-color: $green !important;
+	    background: $green !important;
+	    position: relative;
+
+		&:before {
+			@include icons();
+			content: "5";
+			font-size: 28px;
+			color: white;
+			position: absolute;
+			right: 9px;
+			top: 16px;
+			z-index: 20;
+		}
+	}
+}
+
 .player--cards {
 	a {
 		display: block;

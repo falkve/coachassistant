@@ -1,4 +1,80 @@
 @font-face {
+  font-family: 'Open Sans Condensed';
+  font-style: normal;
+  font-weight: 300;
+  src: local("Open Sans Cond Light"), local("OpenSans-CondensedLight"), url(fonts/OpenSans-CondLight.ttf) format("ttf");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000; }
+/* latin */
+@font-face {
+  font-family: 'Open Sans Condensed';
+  font-style: normal;
+  font-weight: 700;
+  src: local("Open Sans Condensed Bold"), local("OpenSans-CondensedBold"), url(fonts/OpenSans-CondBold.ttf) format("ttf");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000; }
+/* latin */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 300;
+  src: local("Open Sans Light"), local("OpenSans-Light"), url(fonts/OpenSans-Light.ttf) format("ttf");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000; }
+/* latin */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local("Open Sans"), local("OpenSans"), url(fonts/OpenSans-Regular.ttf) format("ttf");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000; }
+/* latin */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  src: local("Open Sans Semibold"), local("OpenSans-Semibold"), url(https://fonts.gstatic.com/s/opensans/v13/MTP_ySUJH_bn48VBG8sNShampu5_7CjHW5spxoeN3Vs.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000; }
+/* latin */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local("Open Sans Bold"), local("OpenSans-Bold"), url(https://fonts.gstatic.com/s/opensans/v13/k3k702ZOKiLJc3WVjuplzBampu5_7CjHW5spxoeN3Vs.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000; }
+/* latin */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 800;
+  src: local("Open Sans Extrabold"), local("OpenSans-Extrabold"), url(https://fonts.gstatic.com/s/opensans/v13/EInbV5DfGHOiMmvb1Xr-hhampu5_7CjHW5spxoeN3Vs.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000; }
+/* latin-ext */
+@font-face {
+  font-family: 'Roboto Slab';
+  font-style: normal;
+  font-weight: 400;
+  src: local("Roboto Slab Regular"), local("RobotoSlab-Regular"), url(https://fonts.gstatic.com/s/robotoslab/v6/y7lebkjgREBJK96VQi37ZqE8kM4xWR1_1bYURRojRGc.woff2) format("woff2");
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF; }
+/* latin */
+@font-face {
+  font-family: 'Roboto Slab';
+  font-style: normal;
+  font-weight: 400;
+  src: local("Roboto Slab Regular"), local("RobotoSlab-Regular"), url(https://fonts.gstatic.com/s/robotoslab/v6/y7lebkjgREBJK96VQi37Zogp9Q8gbYrhqGlRav_IXfk.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000; }
+/* latin-ext */
+@font-face {
+  font-family: 'Roboto Slab';
+  font-style: normal;
+  font-weight: 700;
+  src: local("Roboto Slab Bold"), local("RobotoSlab-Bold"), url(https://fonts.gstatic.com/s/robotoslab/v6/dazS1PrQQuCxC3iOAJFEJYgd9OEPUCN3AdYW0e8tat4.woff2) format("woff2");
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF; }
+/* latin */
+@font-face {
+  font-family: 'Roboto Slab';
+  font-style: normal;
+  font-weight: 700;
+  src: local("Roboto Slab Bold"), local("RobotoSlab-Bold"), url(https://fonts.gstatic.com/s/robotoslab/v6/dazS1PrQQuCxC3iOAJFEJf79_ZuUxCigM2DespTnFaw.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000; }
+@font-face {
   font-family: "teamassistant";
   src: url("fonts/teamassistant.eot");
   src: url("fonts/teamassistant.eot?#iefix") format("embedded-opentype"), url("fonts/teamassistant.woff") format("woff"), url("fonts/teamassistant.ttf") format("truetype"), url("fonts/teamassistant.svg#teamassistant") format("svg");
@@ -2463,11 +2539,18 @@
   border-color: black !important;
   background-color: black !important; }
   #start .ui-header .ui-title {
-    color: white;
-    background-image: url(images/ta_cap_only_white.svg);
-    background-size: 50px;
-    background-repeat: no-repeat;
-    background-position: center center; }
+    font-family: 'Roboto Slab', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    speak: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: #DDD; }
   .ui-header .btn-navbar {
     font-size: 16px !important;
     font-weight: 100 !important;
@@ -2506,7 +2589,10 @@
         color: #999; }
 
 body, input, select, textarea, button, .ui-btn {
-  font-family: 'Helvetica','HelveticaNeue-Light' !important; }
+  font-family: 'Open Sans', 'Helvetica','HelveticaNeue-Light' !important;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
 
 .ui-overlay-a, .ui-page-theme-a, .ui-page-theme-a .ui-panel-wrapper, body {
   margin: 0;
@@ -2529,18 +2615,87 @@ h5 {
   font-size: 12px;
   font-weight: 300;
   text-align: center;
-  color: #999;
+  font-weight: 400;
   margin: 0;
-  margin-bottom: 10px; }
+  margin-bottom: 15px; }
   h5 span {
     display: inline-block;
-    color: white;
+    color: #999;
     padding: 3px 20px;
     background-color: #222;
     border-radius: 15px; }
 
 a {
   text-decoration: none; }
+
+.page-cta {
+  text-align: center;
+  width: 100%; }
+
+.app-version {
+  font-size: 12px;
+  color: #999;
+  padding: 0 0 20px 20px;
+  position: absolute;
+  bottom: 0; }
+
+.listview-seamless-btn {
+  color: blue;
+  padding: .7em 1em;
+  margin-top: 3px;
+  border-top: 1px solid #DDD;
+  background-color: white; }
+  .listview-seamless-btn:after {
+    font-family: "teamassistant" !important;
+    font-style: normal !important;
+    font-weight: normal !important;
+    font-variant: normal !important;
+    text-transform: none !important;
+    speak: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 23px;
+    line-height: 19px;
+    content: "3";
+    float: right; }
+
+.white-list li {
+  padding: .7em 1em !important;
+  border-bottom: 1px solid #DDD !important;
+  background-color: white; }
+  .white-list li:first-child {
+    border: none !important;
+    border-bottom: 1px solid #DDD !important; }
+  .white-list li:last-of-type {
+    border: none !important; }
+
+#selectable-positions #positions-list li.selected-position:after {
+  font-family: "teamassistant" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #37c772;
+  content: "j";
+  float: right; }
+
+#switch h1, #addplayer h1 {
+  display: none; }
+
+.sortable-chosen {
+  border: 2px solid #DDD; }
+
+.sortable-ghost {
+  /*
+  -webkit-box-shadow: 0px 0px 18px 0px rgba(0,0,0,0.28);
+  -moz-box-shadow: 0px 0px 18px 0px rgba(0,0,0,0.28);
+  box-shadow: 0px 0px 18px 0px rgba(0,0,0,0.28);
+  */ }
 
 .btn-menu:before {
   font-family: "teamassistant" !important;
@@ -2554,19 +2709,25 @@ a {
   -moz-osx-font-smoothing: grayscale;
   content: "\79"; }
 
-.btn-add:before {
-  font-family: "teamassistant" !important;
-  font-style: normal !important;
-  font-weight: normal !important;
-  font-variant: normal !important;
-  text-transform: none !important;
-  speak: none;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  content: "4";
-  font-size: 27px !important;
-  line-height: 35px !important; }
+.btn-add {
+  color: white !important;
+  padding: 10px;
+  border-radius: 20px;
+  background-color: #333; }
+  .btn-add:before {
+    font-family: "teamassistant" !important;
+    font-style: normal !important;
+    font-weight: normal !important;
+    font-variant: normal !important;
+    text-transform: none !important;
+    speak: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    content: "4";
+    font-size: 27px !important;
+    line-height: 35px !important;
+    vertical-align: middle; }
 
 .btn-close:before {
   font-family: "teamassistant" !important;
@@ -2640,6 +2801,78 @@ a {
   color: white; }
   #splash .brand img {
     max-width: 25%; }
+
+#teamcompletebutton {
+  text-align: center; }
+  #teamcompletebutton .ui-btn {
+    display: inline-block;
+    width: 230px;
+    padding: 20px;
+    border-radius: 50px !important;
+    border-color: #37c772 !important;
+    background: #37c772 !important;
+    position: relative;
+    /*
+    &:after {
+    	@include icons();
+    	content: "";
+    	width: 35px;
+    	height: 35px;
+    	border-radius: 50%;
+    	border-radius: 50%;
+    	background-color: rgba(255, 255, 255, 0.12);
+    	position: absolute;
+    	position: absolute;
+    	right: 6px;
+    	top: 4px;
+    	z-index: 10;
+    }
+    */ }
+    #teamcompletebutton .ui-btn:before {
+      font-family: "teamassistant" !important;
+      font-style: normal !important;
+      font-weight: normal !important;
+      font-variant: normal !important;
+      text-transform: none !important;
+      speak: none;
+      line-height: 1;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      content: "h";
+      font-size: 28px;
+      color: white;
+      position: absolute;
+      right: 9px;
+      top: 16px;
+      z-index: 20; }
+
+#startgame {
+  text-align: center; }
+  #startgame .ui-btn {
+    display: inline-block;
+    width: 230px;
+    padding: 20px;
+    border-radius: 50px !important;
+    border-color: #37c772 !important;
+    background: #37c772 !important;
+    position: relative; }
+    #startgame .ui-btn:before {
+      font-family: "teamassistant" !important;
+      font-style: normal !important;
+      font-weight: normal !important;
+      font-variant: normal !important;
+      text-transform: none !important;
+      speak: none;
+      line-height: 1;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      content: "5";
+      font-size: 28px;
+      color: white;
+      position: absolute;
+      right: 9px;
+      top: 16px;
+      z-index: 20; }
 
 .player--cards a {
   display: block;
@@ -2875,6 +3108,8 @@ a {
         color: #999; }
   #settings h1 {
     display: none; }
+  #settings h5 {
+    text-align: left; }
   #settings .ui-content {
     padding: 0; }
     #settings .ui-content h3 {
@@ -2930,9 +3165,9 @@ a {
   z-index: 9999; }
 
 #time {
-  font-family: 'Helvetica-Light','HelveticaNeue-Light', sans-serif;
+  font-family: 'Open Sans', 'Helvetica-Light','HelveticaNeue-Light', sans-serif;
   font-size: 98px !important;
-  font-weight: 100 !important;
+  font-weight: 300 !important;
   text-shadow: 2px 2px 3px black;
   text-align: center;
   color: white;
@@ -2944,21 +3179,7 @@ a {
   margin-top: -16px;
   margin-bottom: 15px;
   overflow: hidden;
-  background: black;
-  /*
-  &:before {
-  	content: "";
-  	width: 100%;
-  	height: 80px;
-  	position: absolute;
-  	left: 0;
-  	top: 0;
-  	background: -moz-linear-gradient(top, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 91%);
-  	background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 91%);
-  	background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 91%);
-  	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=0 );
-  }
-  */ }
+  background: black; }
   #time .elapsed_time {
     padding-top: 25px; }
     #time .elapsed_time #elapsed_minutes, #time .elapsed_time #elapsed_seconds {
@@ -2985,6 +3206,9 @@ a {
         content: "minuter";
         color: #999; }
 
+#list-positions {
+  margin-bottom: 20px !important; }
+
 .position-card a {
   display: inline-block;
   font-size: 19px;
@@ -2996,8 +3220,9 @@ a {
 
 .position-key {
   display: inline-block;
+  font-family: 'Open Sans Condensed', sans-serif;
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 30px;
   text-align: center;
   height: 30px;
@@ -3044,7 +3269,7 @@ a {
     .ui-popup ul li {
       text-align: left; }
   .ui-popup .ui-btn {
-    font-weight: 100;
+    font-weight: 600;
     color: #DDD !important;
     padding-top: 0 !important;
     padding-left: 0 !important;
@@ -3164,9 +3389,12 @@ a {
 
 #players-container #current-team {
   display: none;
-  padding: 3px;
+  padding: 3px 5px;
   border-radius: 20px;
-  background-color: #222; }
+  background-color: #444;
+  position: absolute;
+  top: 10px;
+  right: 31px; }
   #players-container #current-team .label,
   #players-container #current-team #active-players-badge,
   #players-container #current-team #benched-players-badge,
@@ -3198,6 +3426,8 @@ a {
     font-size: 19px;
     content: "m";
     vertical-align: middle; }
+  #players-container #current-team.active {
+    display: inline-block; }
 
 #players .player-elapsed-time,
 #playeronbench .player-elapsed-time {
@@ -3233,33 +3463,6 @@ a {
       padding-left: 20px;
       border-color: #222 !important;
       background-color: #222; }
-
-.search--no-results {
-  background: #F00;
-  color: #FFF; }
-
-#list-players {
-  margin: 0;
-  padding: 0;
-  position: relative;
-  max-height: 100px;
-  overflow: auto;
-  list-style: none;
-  border: 1px solid #000; }
-
-#list-players li {
-  display: none;
-  border-bottom: 1px solid #000;
-  padding: 5px; }
-
-#list-players .visible {
-  display: block; }
-
-#list-players.last {
-  border-bottom: none; }
-
-#list-players .active {
-  background-color: #eee; }
 
 #teamcompletebutton {
   display: none; }
@@ -3365,130 +3568,3 @@ a {
   content: "q" !important;
   background-image: none !important;
   background-color: transparent !important; }
-
-.app-version {
-  font-size: 12px;
-  color: #999;
-  padding: 0 0 20px 20px;
-  position: absolute;
-  bottom: 0; }
-
-.listview-seamless-btn {
-  color: blue;
-  padding: .7em 1em;
-  margin-top: 3px;
-  border-top: 1px solid #DDD;
-  background-color: white; }
-  .listview-seamless-btn:after {
-    font-family: "teamassistant" !important;
-    font-style: normal !important;
-    font-weight: normal !important;
-    font-variant: normal !important;
-    text-transform: none !important;
-    speak: none;
-    line-height: 1;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    font-size: 23px;
-    line-height: 19px;
-    content: "3";
-    float: right; }
-
-.white-list li {
-  padding: .7em 1em !important;
-  border-bottom: 1px solid #DDD !important;
-  background-color: white; }
-  .white-list li:first-child {
-    border: none !important;
-    border-bottom: 1px solid #DDD !important; }
-  .white-list li:last-of-type {
-    border: none !important; }
-
-#selectable-positions #positions-list li.selected-position:after {
-  font-family: "teamassistant" !important;
-  font-style: normal !important;
-  font-weight: normal !important;
-  font-variant: normal !important;
-  text-transform: none !important;
-  speak: none;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #37c772;
-  content: "j";
-  float: right; }
-
-#switch h1, #addplayer h1 {
-  display: none; }
-
-.sortable-chosen {
-  border: 2px solid #DDD; }
-
-.sortable-ghost {
-  /*
-  -webkit-box-shadow: 0px 0px 18px 0px rgba(0,0,0,0.28);
-  -moz-box-shadow: 0px 0px 18px 0px rgba(0,0,0,0.28);
-  box-shadow: 0px 0px 18px 0px rgba(0,0,0,0.28);
-  */ }
-
-#teamcompletebutton .ui-btn {
-  background: #704fd6 !important;
-  border-radius: 50px !important;
-  border-color: #704fd6 !important;
-  position: relative; }
-  #teamcompletebutton .ui-btn:before {
-    font-family: "teamassistant" !important;
-    font-style: normal !important;
-    font-weight: normal !important;
-    font-variant: normal !important;
-    text-transform: none !important;
-    speak: none;
-    line-height: 1;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    content: "h";
-    font-size: 28px;
-    color: #37c772;
-    position: absolute;
-    right: 9px;
-    top: 8px;
-    z-index: 20; }
-  #teamcompletebutton .ui-btn:after {
-    font-family: "teamassistant" !important;
-    font-style: normal !important;
-    font-weight: normal !important;
-    font-variant: normal !important;
-    text-transform: none !important;
-    speak: none;
-    line-height: 1;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    content: "";
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.12);
-    position: absolute;
-    position: absolute;
-    right: 6px;
-    top: 4px;
-    z-index: 10; }
-
-#startgame .ui-btn {
-  background: #704fd6 !important;
-  border-radius: 50px !important;
-  border-color: #704fd6 !important;
-  position: relative; }
-  #startgame .ui-btn:after {
-    font-family: "teamassistant" !important;
-    font-style: normal !important;
-    font-weight: normal !important;
-    font-variant: normal !important;
-    text-transform: none !important;
-    speak: none;
-    line-height: 1;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    content: "5";
-    position: absolute; }

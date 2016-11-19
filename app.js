@@ -58,10 +58,10 @@ positions['B'] = 'Back';
 positions['BENCH'] = 'Avbytarbänk';
 
 var settings = new Object();
-settings['lockable_keyboard'] = false;
-settings['log_games'] = true;
-settings['shirt_numbers'] = false;
-settings['save_location'] = true;
+settings['lockable_keyboard'] = 0;
+settings['shirt_numbers'] = 0;
+settings['log_games'] = 0;
+settings['save_location'] = 0;
 settings['user_email'] = 'martin@kidkie.se';
 
 var activePlayers = new Object();
@@ -233,7 +233,7 @@ function listPositions() {
 
 // Settings
 function initSettings() {
-	console.log(settings);
+	//console.log(settings);
 	
 	useLockableKeyboard = settings['lockable_keyboard'];
 	useLogGames = settings['log_games'];
@@ -242,44 +242,31 @@ function initSettings() {
 	userEmail = settings['user_email'];
 	
 	if(useLockableKeyboard) {
-		// $("#lockable-startpage").prop( "checked", true ).flipswitch( "refresh" );
 		$("#lockable-startpage").prop( "checked", true );
 	}
 	
 	if(useShirtNumbers) {
-		//$("#use-playershirtnum").prop( "checked", true ).flipswitch( "refresh" );
 		$("#use-playershirtnum").prop( "checked", true );
 	}
 	
 	if(useLogGames) {
-		//$("#log-games").prop( "checked", true ).flipswitch( "refresh" );
 		$("#log-games").prop( "checked", true );
 	}
 	
 	if(useSaveLocation) {
-		//$("#log-games").prop( "checked", true ).flipswitch( "refresh" );
 		$("#log-games").prop( "checked", true );
 	}
 	
 	if(userEmail) {
-		//$("#gps-trackning").prop( "checked", true ).flipswitch( "refresh" );
 		$("#gps-trackning").prop( "checked", true );
 	}
+	
 }
 
+// Update settings with new after user input
 function updateSettings() {
 	// ToDo
 }
-
-/*
-
-settings['lockable_keyboard'] = false;
-settings['log_games'] = true;
-settings['shirt_numbers'] = false;
-settings['save_location'] = true;
-settings['user_email'] = 'martin@kidkie.se';
-
-*/
 
 // Add Player
 function addPlayer(name) {
@@ -294,7 +281,6 @@ function addPlayer(name) {
 }
 
 // Count positions
-
 function countActivePlayers() {
 	var countActive = 0;
 	var countBenched = 0;
@@ -318,8 +304,16 @@ function countActivePlayers() {
 	$('#players-container #benched-players-badge').text(countBenched);
 	$('#players-container #total-players-badge').text(totalTeam);
 
-	if(countActive > 0 || countBenched > 0) {
-		$("#current-team").show();
+	if(totalTeam > 0 && totalTeam < 2) {
+		$("#current-team").addClass('animated tada active');
+		$('#current-team').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+			$('#current-team').removeClass('animated tada');
+		});
+	} else {
+		$("#current-team").addClass('animated tada');
+		$('#current-team').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+			$('#current-team').removeClass('animated tada');
+		});
 	}
 
 }
@@ -346,18 +340,14 @@ function setPosition(position) {
     $("#positions").hide();
     $("#positionSelector").popup( "close" );
     $("#teamcompletebutton").show();
-    
     countActivePlayers();
 }
 
 // Change player
 function changePlayer(name){
     currentPlayer = activePlayers[name];
-    
     $("#players-container").hide();
-    console.log(currentPlayer.name);
     $("#playeronbench-container #current-player .name").text(currentPlayer.name);
-    
     $("#playeronbench-container").show();
     $("#gameover").hide();
     $("#back").show();
@@ -412,6 +402,7 @@ function startGame(){
     $('#start .ui-content').addClass('timer-active');
     $("#time-container").show();
     $("#startgame").hide();
+    $("#current-team").hide();
     
     var d = new Date();
     for (var name in activePlayers) {
@@ -517,6 +508,17 @@ $(document).ready(function($) {
 	
 	// init Settings
 	initSettings();
+	
+	// Form change event
+	$( "#settings-form" ).change(function() {
+		console.log( "Settings changed!" );
+		$('#settings-form input[type=checkbox]').each(function () {
+		    var sThisVal = (this.checked ? "1" : "0");
+		    settingOption = $(this).attr('id');
+		    settings[settingOption] = sThisVal;
+		});
+		console.log( settings );
+	});
 	
 });
 

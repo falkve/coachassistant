@@ -32,3 +32,13 @@
 	    filter: Alpha(Opacity=80) !important;
 	}
 }
+
+.ui-li-static {
+	&.ui-body-inherit {
+		color: white !important;
+		text-align: center !important;
+		border: none !important;
+		border-radius: 0 !important;
+		background-color: transparent !important;
+	}
+}

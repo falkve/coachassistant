@@ -154,3 +154,24 @@
 		}
 	}
 }
+
+// List players
+#all-players {
+	#list-players {
+		width: 100%;
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+		li {
+			a {
+				display: inherit;
+				text-align: left;
+				//width: 100%;
+			}
+		}
+	}
+}
+
+
+
+

@@ -2,26 +2,96 @@
  * Created by vonfalk on 2016-04-13.
  */
 
-var playersObj = {"players":
-[{'player_name':'Adrian','player_image':'IMG_0172.jpg'},
-{'player_name':'Albin', 'player_image':'IMG_0176.jpg'},
-{'player_name':'Christoffer', 'player_image':'IMG_0178.jpg'},
-{'player_name':'Dante', 'player_image':'IMG_0174.jpg'},
-{'player_name':'Dylan', 'player_image':'IMG_0175.jpg'},
-{'player_name':'Emil', 'player_image':'IMG_0166.jpg'},
-{'player_name':'Ivar', 'player_image':'IMG_0169.jpg'},
-{'player_name':'Jacob', 'player_image':'IMG_0167.jpg'},
-{'player_name':'Leo', 'player_image':'IMG_0173.jpg'},
-{'player_name':'Linus','player_image':'IMG_0166.jpg'},
-{'player_name':'Malte', 'player_image':'IMG_0177.jpg'},
-{'player_name':'Pontus', 'player_image':'IMG_0168.jpg'},
-{'player_name':'Samuel', 'player_image':'IMG_0171.jpg'},
-{'player_name':'Sebastian', 'player_image':'IMG_0166.jpg'},
-{'player_name':'Tor', 'player_image':'IMG_0170.jpg'},
-{'player_name':'Viggo','player_image':'IMG_0179.jpg'},
-{'player_name':'Viktor', 'player_image':'IMG_0180.jpg'},
-{'player_name':'Åke', 'player_image':'IMG_0166.jpg'}]
-};
+// Setup	
+function initLocalStorage() {
+	var playersObj = localStorage.getItem("players");
+	
+	if( playersObj === null ) {
+		// Create obj
+		var playersObj = new Object();
+
+		// test data
+		// var playersObj = {"players":[{"player_name":"test", "player_image":"na.png", "player_number":"10"}]};
+		var playersObj = {"players":[]};
+		
+		// Data must be stringified to be able to store it
+		var dataToStore = JSON.stringify(playersObj);
+		
+		// Create it and add test data
+		localStorage.setItem('players', dataToStore);
+		
+		// Confirm
+		console.log('Nothing in LS, create and setup players object: ',playersObj);
+	} else {
+		//console.log('Obj exists, get data: ',playersObj);
+	}		
+}
+
+// Get data from localStorage
+function getData() {
+	// Check if OBJ exists, if not, create it
+	initLocalStorage();
+	
+	// Get LS
+	var playersObj = localStorage.getItem("players");
+	
+	// Make it a JSON object again
+	var playersObj = JSON.parse(playersObj);
+	
+	// Confirm
+	//console.log('Get data from local storage: ', playersObj);
+	
+	// Retrieve and return it globally
+	return playersObj;
+}
+
+// Save data to localStorage
+function saveData(data) {
+	
+	// Confirm
+	console.log("Save data to LS: ", data);
+	
+	// To save data to local storage you need to 
+	// stringify it
+	var dataToStore = JSON.stringify(data);
+	
+	// Add it to LS
+	localStorage.setItem('players', dataToStore);
+	
+	// Confirm and preview data after save
+	console.log( localStorage.getItem("players") );
+}
+
+// Get data and make it global
+var playersObj = getData();
+
+// Confirm
+//console.log('this is returned from LS: ', playersObj);
+
+/*
+// Make it work with create player and localStorage instead
+var playersObj = new Object();
+var playersObj = {"players":[
+	{'player_name':'Adrian','player_image':'IMG_0172.jpg','player_number':''},
+	{'player_name':'Albin', 'player_image':'IMG_0176.jpg','player_number':''},
+	{'player_name':'Christoffer', 'player_image':'IMG_0178.jpg','player_number':''},
+	{'player_name':'Dante', 'player_image':'IMG_0174.jpg','player_number':''},
+	{'player_name':'Dylan', 'player_image':'IMG_0175.jpg','player_number':''},
+	{'player_name':'Emil', 'player_image':'IMG_0166.jpg','player_number':''},
+	{'player_name':'Ivar', 'player_image':'IMG_0169.jpg','player_number':''},
+	{'player_name':'Jacob', 'player_image':'IMG_0167.jpg','player_number':''},
+	{'player_name':'Leo', 'player_image':'IMG_0173.jpg','player_number':''},
+	{'player_name':'Linus','player_image':'IMG_0166.jpg','player_number':''},
+	{'player_name':'Malte', 'player_image':'IMG_0177.jpg','player_number':''},
+	{'player_name':'Pontus', 'player_image':'IMG_0168.jpg','player_number':''},
+	{'player_name':'Samuel', 'player_image':'IMG_0171.jpg','player_number':''},
+	{'player_name':'Sebastian', 'player_image':'IMG_0166.jpg','player_number':''},
+	{'player_name':'Tor', 'player_image':'IMG_0170.jpg','player_number':''},
+	{'player_name':'Viggo','player_image':'IMG_0179.jpg','player_number':''},
+	{'player_name':'Viktor', 'player_image':'IMG_0180.jpg','player_number':''},
+	{'player_name':'Åke', 'player_image':'IMG_0166.jpg','player_number':''}
+]};
+*/
 
 var players = new Object();
 players['Adrian'] = 'IMG_0172.jpg';
@@ -43,6 +113,9 @@ players['Viggo'] = 'IMG_0179.jpg';
 players['Viktor'] = 'IMG_0180.jpg';
 players['Åke'] = 'IMG_0166.jpg';
 
+
+// Positions
+// Todo, copy playerObj functions...
 var positions = new Object();
 /*positions['HF'] = 'Höger Forward';
 positions['VF'] = 'Vänster Forward';
@@ -57,12 +130,15 @@ positions['HM'] = 'Höger Mittfältare';
 positions['B'] = 'Back';
 positions['BENCH'] = 'Avbytarbänk';
 
+
+// Settings default is false on everything
 var settings = new Object();
 settings['lockable_keyboard'] = 0;
-settings['shirt_numbers'] = 0;
+settings['shirt_numbers'] = 1;
 settings['log_games'] = 0;
 settings['save_location'] = 0;
 settings['user_email'] = 'martin@kidkie.se';
+
 
 var activePlayers = new Object();
 var benchPlayers = new Object();
@@ -150,6 +226,19 @@ function Player (name, img) {
     };
 }
 
+function trim (str) {
+     return str.replace (/^\s+|\s+$/g, '');
+}
+
+function isEmpty(obj) {
+    for(var prop in obj) {
+        if(obj.hasOwnProperty(prop))
+            return false;
+    }
+
+    return true;
+}
+
 function init() {
     startTime = null;
     activePlayers = new Object();
@@ -167,10 +256,29 @@ function init() {
     $("#lockscreen").hide();
     $("#back").hide();
     
-    for (var name in players) {
-	    var name_plate = name.charAt(0);
-        $("#players-container #players").append('<li id="' + name + '" onClick="addPlayer(\'' + name + '\')" class="player-card ui-first-child ui-last-child"><a href="#" class="ui-btn ui-btn-icon-right ui-icon-arrow-r"><div class="name-plate">'+name_plate+'</div><img height="44" width="30" src="img/' + players[name] + '"> ' + name + '</a></li>');
+    if( isEmpty(playersObj.players) ) {
+	    $("#start #players-container #players").append('<li>Du har inte skapat ditt lag ännu. <a class="players-setup" style="border: 1px solid black; background: black !important; border-radius: 20px !important; margin-top: 15px;" href="#players-setup" data-transition="none"><span class="btn-label">Lägg till din första spelare</span></a></li>');
+	} else {
+	    for (var i=0; i<playersObj.players.length; i++) {
+			thisPlayer = playersObj.players[i];
+			
+			if(settings['shirt_numbers']==1) {
+				player_name_plate = thisPlayer.player_number;
+			} else {
+				player_name_plate = thisPlayer.player_name.charAt(0);
+			}
+			
+			$("#start #players-container #players").append('<li id="' + thisPlayer.player_name + '" onClick="addPlayer(\'' + thisPlayer.player_name + '\')" class="player-card ui-first-child ui-last-child"><a href="#" class="ui-btn ui-btn-icon-right ui-icon-arrow-r"><div class="name-plate">'+player_name_plate+'</div><img height="44" width="30" src="img/' + thisPlayer.player_image + '"> <span class="player-name">' + thisPlayer.player_name + '</span></a></li>');
+		}
+	}
+    
+    /*
+    for (player in playersObj.players) {
+	    console.log(playersObj);
+	    var name_plate = player.player_name.charAt(0);
+        $("#players-container #players").append('<li id="' + player.player_name + '" onClick="addPlayer(\'' + player.player_name + '\')" class="player-card ui-first-child ui-last-child"><a href="#" class="ui-btn ui-btn-icon-right ui-icon-arrow-r"><div class="name-plate">'+name_plate+'</div><img height="44" width="30" src="img/' + player.player_name + '"> ' + player.player_name + '</a></li>');
     }
+    */
 
     for (var key in positions) {
 	    // 
@@ -216,10 +324,24 @@ function popRemovePlayer(name) {
 // List and handle players
 function listPlayers() {
 	
-    for (var name in players) {
-	    var name_plate = name.charAt(0);
-        $("#players-setup #list-players").append('<li id="' + name + '" class="player-card ui-first-child ui-last-child"><a href="#" class="ui-btn ui-btn-icon-right ui-icon-arrow-r"><div class="name-plate">'+name_plate+'</div><img height="44" width="30" src="img/' + players[name] + '"> <span class="player-name">' + name + '</span></a></li>');
-    }
+	console.log('list players', playersObj);
+	
+	if( isEmpty(playersObj) ) {
+		$('#all-players').html('<ul data-role="listview" data-inset="true" id="list-players" class="list-unstyled"><li>Inga spelare hittades</li></ul>');
+	} else {
+		console.log('obj exists list players!');
+
+		if(playersObj.players.length > 0) {
+			$('#all-players').html('<ul data-role="listview" data-inset="true" id="list-players" class="list-unstyled"></ul>');
+			for (var i=0; i<playersObj.players.length; i++) {
+				thisPlayer = playersObj.players[i];
+				var name_plate = thisPlayer.player_name.charAt(0);
+				$("#players-setup #list-players").append('<li id="' + thisPlayer.player_name + '" class="player-card ui-first-child ui-last-child"><a href="#" class="ui-btn ui-btn-icon-right ui-icon-arrow-r"><div class="name-plate">'+name_plate+'</div><img height="44" width="30" src="img/' + thisPlayer.player_image + '"> <span class="player-name">' + thisPlayer.player_name + '</span></a></li>');
+			}
+		} else {
+			$("#players-setup #list-players").append('<li>Lägg till spelare</li>');
+		}
+	}
 }
 
 // List and handle positions
@@ -231,8 +353,88 @@ function listPositions() {
     
 }
 
+// todo check form
+/*
+	if (trim(name_element.value) == '') {
+		alert ('Please enter your name');
+	}
+*/
+
+function createPlayer() {
+	
+  var name_element = document.getElementById('player_name');
+  var number_element = document.getElementById('player_number');
+  //var email_element = document.getElementById('player_numberl');
+  //var mail_format_element = document.getElementById('slt_mail_format');
+  
+  // ToDo
+  // Kolla om numret finns redan...?
+
+  var name = trim(name_element.value);
+  var number = trim(number_element.value);
+  
+  //var email = trim(email_element.value);
+  //var mail_format = mail_format_element.value;
+
+  var error_message = 'The following fields had errors in them: \n\n';
+  var data = 'You entered the following information: \n\n';
+
+  var error_flag = false;
+
+  if(name == '') {
+	  error_message += 'Name: Please enter your name\n';
+	  error_flag = true;
+  } else {
+	  data += 'Name: ' + name + '\n';
+  }
+  
+  /*
+  if(!checkEmail(email)) {
+	  error_message += 'Email: Please enter a valid email address';
+	  error_flag = true;
+  } else {
+	  data += 'Email: ' + email + '\n';
+  }
+
+  data += 'Mail Format: ' + mail_format;
+  */
+  
+  if(error_flag) {
+	  console.log(error_message);
+  } else {
+	  addPlayerTolist(player_name.value,player_number.value);
+  }
+
+}
+
+function addPlayerTolist(player_name,player_number) {
+	//console.log(player_name, player_number);
+	//console.log('trying to save player to obj: ',obj);
+	
+	var obj = playersObj;
+	console.log(playersObj);
+	
+	var createPlayer = { "player_name" : player_name, "player_image" : "na.png" , "player_number" : player_number };
+	
+	$('#all-players').append('');
+	
+	//jsonStr = JSON.stringify(obj);
+	//console.log(jsonStr);
+	//console.log(typeof obj);
+	
+	// Add it to the plauers object
+	obj.players.push(createPlayer);
+	
+	// Save it to LocalStorage
+	saveData( obj );
+	
+	listPlayers();
+	
+}
+
 // Settings
 function initSettings() {
+	// Confirm settings
 	//console.log(settings);
 	
 	useLockableKeyboard = settings['lockable_keyboard'];
@@ -263,11 +465,6 @@ function initSettings() {
 	
 }
 
-// Update settings with new after user input
-function updateSettings() {
-	// ToDo
-}
-
 // Add Player
 function addPlayer(name) {
     currentPlayer = new Player(name, players[name]);
@@ -277,7 +474,6 @@ function addPlayer(name) {
 	    transition: "flow",overlayTheme: "a"
 	});
     $('#teamcompletebutton').show();
-        
 }
 
 // Count positions
@@ -496,11 +692,12 @@ $(document).ready(function($) {
 		$(this).toggleClass('active');
 	});
 
+	// Not used, this can be used if we separate to different pages for functions like timer
 	// List players
 	$(document).on("pagebeforeshow","#players-setup",function(){ // When entering pagetwo
 		//listPlayers();
 	});
-
+	
 	// List positions
 	$(document).on("pagebeforeshow","#positions-setup",function(){ // When entering pagetwo
 		//listPositions();
@@ -520,6 +717,16 @@ $(document).ready(function($) {
 		console.log( settings );
 	});
 	
+	// Create player
+	$('#createPlayerForm button').on('click', function(e) {
+		
+		$("#popupCreatePlayer").popup( "close" );
+		
+		e.preventDefault();
+		console.log('save');
+		createPlayer();
+		
+	});
 });
 
 $(document).on('pageinit','#splash',function() {

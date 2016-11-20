@@ -218,13 +218,32 @@
 		
 		<h3><span>Spelare</span></h3>
 		<div id="all-players">
-			<ul data-role="listview" data-inset="true" id="list-players"></ul>
+			<!--<ul data-role="listview" data-inset="true" id="list-players"></ul>-->
+		</div>
+		
+		<div data-role="popup" id="popupCreatePlayer" data-overlay-theme="a" data-position-to="window">
+			<form id="createPlayerForm">
+				<div style="padding:10px 20px;">
+				  <h3>Lägg till spelare</h3>
+		          <label for="un" class="ui-hidden-accessible">Namn:</label>
+		          <input type="text" name="player_name" id="player_name" value="Martin" placeholder="namn" />
+
+		          <label for="pw" class="ui-hidden-accessible">Spelarnummer:</label>
+		          <input type="text" name="player_number" id="player_number" value="10" placeholder="Skriv in numret på din spelare" />
+
+		    	  <button type="submit">Lägg till</button>
+				</div>
+			</form>
 		</div>
 		
 		<div class="page-cta">
-			<a href="#" class="btn-add">
-				Lägg till spelare
+			
+			<a href="#popupCreatePlayer" data-transition="flow" data-rel="popup" data-position-to="window" data-role="button" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" aria-haspopup="true" aria-owns="#popupLogin" class="btn-add">
+				<span class="ui-btn-inner ui-btn-corner-all">
+					<span class="ui-btn-text">Lägg till spelare</span>
+				</span>
 			</a>
+			
 		</div>
 		
 	</div>

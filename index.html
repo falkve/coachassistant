@@ -139,7 +139,7 @@
 		
 		<!-- start -->
 		<div data-role="main" class="ui-content" id="teamcompletebutton">
-		    <button class="ui-btn" onclick="teamComplete()">Team Complete</button>
+		    <button class="ui-btn" onclick="teamComplete()">Komplett team!</button>
 		</div>
 		
 		<div data-role="main" class="ui-content" id="gameover">
@@ -266,9 +266,7 @@
 				Lägg till position
 			</a>
 		</div>
-		
 	</div>
-
 </div>
 
 <div data-role="page" id="settings">
@@ -349,7 +347,25 @@
 		</form><!-- /form -->
 		
 	</div><!-- /content -->
+</div>
 
+<div data-role="page" id="start-timer">
+	<div data-role="header">
+		<a href="#start" class="ui-btn-left btn-navbar btn-return" data-role="button" role="button" data-transition="none" data-direction="reverse">Avbryt</a>
+		<h1><span class="sr-only">TeamAssistant</span></h1>
+	</div><!-- /header -->
+
+	<div data-role="content">
+		<h3><span>Positioner</span></h3>
+		<ul data-role="listview" data-inset="true" id="list-positions">
+		</ul>
+		
+		<div class="page-cta">
+			<a href="#" class="btn-add">
+				Lägg till position
+			</a>
+		</div>
+	</div>
 </div>
 
 </body>

@@ -28,7 +28,11 @@
 			content: "4" !important;
 		}
 	}
-
+	
+	.player-name {
+		display: inline-block;
+	}
+	
 	.name-plate {
 		display: inline-block;
 		text-transform: uppercase;
@@ -39,7 +43,27 @@
 		height: 50px;
 		margin-right: 10px;
 		border-radius: 50%;
+		position: relative;
+		z-index: 5;
 	}
+
+	.number-plate {
+		display: block;
+		font-size: 14px;
+		line-height: 30px;
+		text-align: right;
+		width: 30px;
+		height: 30px;
+		padding: 7px;
+		position: absolute;
+		top: 13px;
+		left: 48px;
+		border-radius: 50%;
+		background: #222;
+		color: #666;
+		z-index: 2;
+	}
+
 	img {
 		display: none;
 		width: 50px;
@@ -151,6 +175,12 @@
 				background-color: #222;
 			}
 		
+		}
+	}
+	.player-card {
+		.player-name {
+			display: inline-block;
+			padding-left: 23px;
 		}
 	}
 }

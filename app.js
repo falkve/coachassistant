@@ -134,11 +134,10 @@ positions['BENCH'] = 'Avbytarbänk';
 // Settings default is false on everything
 var settings = new Object();
 settings['lockable_keyboard'] = 0;
-settings['shirt_numbers'] = 1;
+settings['shirt_numbers'] = 0;
 settings['log_games'] = 0;
 settings['save_location'] = 0;
 settings['user_email'] = 'martin@kidkie.se';
-
 
 var activePlayers = new Object();
 var benchPlayers = new Object();
@@ -323,20 +322,21 @@ function popRemovePlayer(name) {
 
 // List and handle players
 function listPlayers() {
-	
-	console.log('list players', playersObj);
+	//console.log('list players', playersObj);
 	
 	if( isEmpty(playersObj) ) {
 		$('#all-players').html('<ul data-role="listview" data-inset="true" id="list-players" class="list-unstyled"><li>Inga spelare hittades</li></ul>');
 	} else {
-		console.log('obj exists list players!');
+		//console.log('obj exists list players!');
 
 		if(playersObj.players.length > 0) {
 			$('#all-players').html('<ul data-role="listview" data-inset="true" id="list-players" class="list-unstyled"></ul>');
 			for (var i=0; i<playersObj.players.length; i++) {
+				//console.log(playersObj.players);
+				
 				thisPlayer = playersObj.players[i];
 				var name_plate = thisPlayer.player_name.charAt(0);
-				$("#players-setup #list-players").append('<li id="' + thisPlayer.player_name + '" class="player-card ui-first-child ui-last-child"><a href="#" class="ui-btn ui-btn-icon-right ui-icon-arrow-r"><div class="name-plate">'+name_plate+'</div><img height="44" width="30" src="img/' + thisPlayer.player_image + '"> <span class="player-name">' + thisPlayer.player_name + '</span></a></li>');
+				$("#players-setup #list-players").append('<li id="' + thisPlayer.player_name + '" class="player-card ui-first-child ui-last-child"><a href="#" class="ui-btn ui-btn-icon-right ui-icon-arrow-r"><div class="name-plate">'+name_plate+'</div><div class="number-plate">'+thisPlayer.player_number+'</div><img height="44" width="30" src="img/' + thisPlayer.player_image + '"> <div class="player-name">' + thisPlayer.player_name + '</div></a></li>');
 			}
 		} else {
 			$("#players-setup #list-players").append('<li>Lägg till spelare</li>');
@@ -346,11 +346,9 @@ function listPlayers() {
 
 // List and handle positions
 function listPositions() {
-	
     for (var position in positions) {
         $("#positions-setup #list-positions").append('<li id="' + position + '"class="position-card ui-first-child ui-last-child"><a href="#" class="ui-btn ui-btn-icon-right ui-icon-arrow-r"><span class="position-key">'+position+'</span></li>');
-    }
-    
+    }   
 }
 
 // todo check form
@@ -360,6 +358,7 @@ function listPositions() {
 	}
 */
 
+// Create players
 function createPlayer() {
 	
   var name_element = document.getElementById('player_name');
@@ -407,6 +406,7 @@ function createPlayer() {
 
 }
 
+// Add player to list
 function addPlayerTolist(player_name,player_number) {
 	//console.log(player_name, player_number);
 	//console.log('trying to save player to obj: ',obj);
@@ -549,6 +549,7 @@ function changePlayer(name){
     $("#back").show();
 }
 
+// Do switch player
 function doSwitchPlayer(name){
     var p = benchPlayers[name];
     var position = new Position(currentPlayer.positions[currentPlayer.positions.length-1].position);
@@ -569,6 +570,7 @@ function doSwitchPlayer(name){
     $("#back").hide();
 
 }
+
 function back(){
     $("#players-container").show();
     $("#playeronbench-container").hide();
@@ -593,6 +595,7 @@ function teamComplete(){
     updateActiveView();
 }
 
+// Start game
 function startGame(){
     startTime = new Date();
     $('#start .ui-content').addClass('timer-active');
@@ -610,6 +613,7 @@ function startGame(){
     lock();
 }
 
+// Update active view
 function updateActiveView(){
     $('#players-container #players li').remove();
     for (var name in activePlayers) {
@@ -627,6 +631,7 @@ function updateActiveView(){
     }
 }
 
+// Game over
 function gameOver(){
     $("#gameover").hide();
     clearInterval(loopId);
@@ -644,8 +649,7 @@ function gameOver(){
     $("#init").show();
 }
 
-
-
+// Get elapsed time
 function getElapsedTime(from, to){
 
     var timeDiff = to - from;
@@ -677,6 +681,7 @@ function getElapsedTime(from, to){
     return new ElapsedTime(days, hours, minutes, seconds);
 }
 
+// Setup jQuery functions
 $(document).ready(function($) {
 	
 	// FastClick
@@ -729,6 +734,7 @@ $(document).ready(function($) {
 	});
 });
 
+// Page init
 $(document).on('pageinit','#splash',function() {
 	// the .on() method does require jQuery 1.7 + but this will allow
 	// you to have the contained code only run when the #splash page is initialized.

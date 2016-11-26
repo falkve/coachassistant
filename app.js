@@ -748,3 +748,23 @@ $(document).on('pageinit','#splash',function() {
 		$( ":mobile-pagecontainer" ).pagecontainer( "change", "#start", { role: "page" } );
 	}, 4000);
 });
+
+
+
+
+$(function() {      
+  //Keep track of how many swipes
+  var count=0;
+  //Enable swiping...
+  $("#lockscreen #swipe-unlock").swipe( {
+    //Single swipe handler for left swipes
+    swipeLeft:function(event, direction, distance, duration, fingerCount) {
+      //$(this).text("You swiped " + direction + " " + ++count + " times " );
+      //$(this).text("Unlocked");
+      unlock();
+      
+    },
+    //Default is 75px, set to 0 for demo so any distance triggers swipe
+    threshold:100
+  });
+});

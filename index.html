@@ -47,6 +47,9 @@
     
     <!-- Remove latency in click to make it more like native app -->
     <script src="js/lib/fastclick.min.js"></script>
+    
+    <!-- Swipe LIB -->
+    <script type="text/javascript" src="js/lib/jquery.touchSwipe.min.js"></script>
 	
     <!-- Our scripts -->
     <script src="app.js"></script>
@@ -56,17 +59,6 @@
             init();
         });
     </script>
-
-    <style>
-        .overlay {
-            position:absolute;
-            top:0;
-            left:0;
-            width:100%;
-            height:100%;
-            z-index:1000;
-        }
-    </style>
 
 </head>
 
@@ -86,7 +78,7 @@
 		<h1><span>Coach Assistant</span></h1>
 	</div><!-- /header -->
 
-	<div data-role="content">	
+	<div data-role="content">
 		
 		<div data-role="popup" data-overlay-theme="a" id="positionSelector" class="ui-content" data-position-to="window">
 			<p>Välj position på spelare</p>
@@ -369,12 +361,19 @@
 	</div><!-- /header -->
 
 	<div data-role="content">
-		<h3><span>Starta spel!</span></h3>
+		<h5><span>Starta spel</span></h5>
 		
 		<div id="time-container">
 			<div id="time"></div>
 		</div>
-
+		
+		<div id="lockscreen" class="overlay">
+		    <!--<button class="ui-btn" onclick="unlock()" style="background-color: #36A131; position:absolute; bottom: -10px;">Unlock</button>-->
+		    
+		    <div id="swipe-unlock">Dra för att låsa upp</div>
+		    
+		</div>
+		
 		<div id="active-players-container">
 			<div id="current-team">
 				<div id="active-players-badge"></div>
@@ -395,12 +394,6 @@
 			</div>
 			<ul data-role="listview" data-inset="true" id="playeronbench"></ul>
 		</div>
-		
-		<!--
-		<ul data-role="listview" data-inset="true" id="players">        
-		 
-		</ul>
-		-->
 		
 		<div id="lock-screen"><span class="sr-only">Lås klick</span></div>
 

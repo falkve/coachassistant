@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<meta id="extViewportMeta" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
 
-    <title>CoachAssistant</title>
+    <title>Coach Assistant</title>
     
 	<meta name="apple-touch-fullscreen" content="yes">
 
@@ -93,13 +93,17 @@
 			<ul class="select-position-container"></ul>
 		</div>
 		
+		<!--
 		<div id="lockscreen" class="overlay">
 		    <button class="ui-btn" onclick="unlock()" style="background-color: #36A131; position:absolute; bottom: -10px;">Unlock</button>
 		</div>
+		-->
 		
+		<!--
 		<div id="time-container">
 			<div id="time"></div>
 		</div>
+		-->
 		
 		<div id="players-container">
 			<div id="current-team">
@@ -119,8 +123,9 @@
 				</header>
 				<footer></footer>
 			</div>
-		</div>	
+		</div>
 		
+		<!--
 		<div id="playeronbench-container">
 			<div class="close"><button class="ui-btn" onclick="back()">Avbryt</button></div>
 			<h5><span>Välj spelare att byta till</span></h5>
@@ -130,6 +135,7 @@
 			</div>
 			<ul data-role="listview" data-inset="true" id="playeronbench"></ul>
 		</div>
+		-->
 		
 		<!--
 		<div data-role="main" class="ui-content" id="back">
@@ -139,27 +145,33 @@
 		
 		<!-- start -->
 		<div data-role="main" class="ui-content" id="teamcompletebutton">
-		    <button class="ui-btn" onclick="teamComplete()">Komplett team!</button>
+		    <button class="ui-btn" onclick="teamComplete()">Komplett team</button>
 		</div>
 		
+		<!--
 		<div data-role="main" class="ui-content" id="gameover">
 		    <button class="ui-btn" onclick="gameOver()">Game Over</button>
 		    <button class="ui-btn" onclick="lock()">Lock</button>
 		</div>
+		-->
 		
+		<!--
 		<div data-role="main" class="ui-content" id="startgame">
 		    <button class="ui-btn" onclick="startGame()">Start Game</button>
 		</div>
+		-->
 		
+		<!--
 		<div data-role="main" class="ui-content" id="init">
 		    <button class="ui-btn" onclick="init()">Start new Game</button>
 		</div>
+		-->
 
-		<ul data-role="listview" data-inset="true" id="players">        
-		 
-		</ul>
+		<ul data-role="listview" data-inset="true" id="players"></ul>
 
+		<!--
 		<div id="lock-screen"><span class="sr-only">Lås klick</span></div>
+		-->
 		
 	</div>
 	
@@ -190,7 +202,7 @@
 			<li><a href="#">CSV</a></li>
 		</ul>
 		
-		<div class="app-version">TeamAssistant Beta</div>
+		<div class="app-version">Coach Assistant Beta</div>
 		
 	</div>
 	
@@ -207,8 +219,8 @@
 
 <div data-role="page" id="players-setup">
 	<div data-role="header">
-		<a href="#start" class="ui-btn-left btn-navbar btn-return" data-role="button" role="button" data-transition="none" data-direction="reverse">Avbryt</a>
-		<h1><span class="sr-only">TeamAssistant</span></h1>
+		<a href="#start" class="ui-btn-left btn-navbar btn-return" data-role="button" role="button" data-transition="none" data-direction="reverse">Stäng</a>
+		<h1><span class="sr-only">Coach Assistant</span></h1>
 	</div><!-- /header -->
 	
 	<div data-role="content">
@@ -216,7 +228,7 @@
 			<input class="search" placeholder="Sök spelare" />
 		</div>
 		
-		<h3><span>Spelare</span></h3>
+		<h3><span>Hantera spelare</span></h3>
 		<div id="all-players">
 			<!--<ul data-role="listview" data-inset="true" id="list-players"></ul>-->
 		</div>
@@ -252,8 +264,8 @@
 
 <div data-role="page" id="positions-setup">
 	<div data-role="header">
-		<a href="#start" class="ui-btn-left btn-navbar btn-return" data-role="button" role="button" data-transition="none" data-direction="reverse">Avbryt</a>
-		<h1><span class="sr-only">TeamAssistant</span></h1>
+		<a href="#start" class="ui-btn-left btn-navbar btn-return" data-role="button" role="button" data-transition="none" data-direction="reverse">Stäng</a>
+		<h1><span class="sr-only">Coach Assistant</span></h1>
 	</div><!-- /header -->
 
 	<div data-role="content">
@@ -271,7 +283,7 @@
 
 <div data-role="page" id="settings">
 	<div data-role="header">
-		<a href="#start" class="ui-btn-left btn-navbar btn-return" data-role="button" role="button" data-transition="none" data-direction="reverse">Avbryt</a>
+		<a href="#start" class="ui-btn-left btn-navbar btn-return" data-role="button" role="button" data-transition="none" data-direction="reverse">Stäng</a>
 		<h1>Bar</h1>
 	</div><!-- /header -->
 
@@ -350,22 +362,73 @@
 </div>
 
 <div data-role="page" id="start-timer">
+	
 	<div data-role="header">
-		<a href="#start" class="ui-btn-left btn-navbar btn-return" data-role="button" role="button" data-transition="none" data-direction="reverse">Avbryt</a>
-		<h1><span class="sr-only">TeamAssistant</span></h1>
+		<a href="#start" class="ui-btn-left btn-navbar btn-return" data-role="button" role="button" data-transition="none" data-direction="reverse">Stäng</a>
+		<h1><span class="sr-only">Coach Assistant</span></h1>
 	</div><!-- /header -->
 
 	<div data-role="content">
-		<h3><span>Positioner</span></h3>
-		<ul data-role="listview" data-inset="true" id="list-positions">
-		</ul>
+		<h3><span>Starta spel!</span></h3>
 		
-		<div class="page-cta">
-			<a href="#" class="btn-add">
-				Lägg till position
-			</a>
+		<div id="time-container">
+			<div id="time"></div>
+		</div>
+
+		<div id="active-players-container">
+			<div id="current-team">
+				<div id="active-players-badge"></div>
+				<div id="benched-players-badge"></div>
+				<div class="label"><span class="sr-only">total</span></div>
+				<div id="total-players-badge"></div>
+			</div>
+			<!-- <h5 style="text-align: center;"><span>Välj spelare</span></h5> -->
+			<ul data-role="listview" data-inset="true" id="active-players"></ul>
+		</div>
+
+		<div id="playeronbench-container">
+			<div class="close"><button class="ui-btn" onclick="back()">Avbryt</button></div>
+			<h5><span>Välj spelare att byta till</span></h5>
+			<div id="current-player">
+				<div class="name"></div>
+				<div class="badge"></div>
+			</div>
+			<ul data-role="listview" data-inset="true" id="playeronbench"></ul>
+		</div>
+		
+		<!--
+		<ul data-role="listview" data-inset="true" id="players">        
+		 
+		</ul>
+		-->
+		
+		<div id="lock-screen"><span class="sr-only">Lås klick</span></div>
+
+	</div>
+	
+	<div data-role="main" class="ui-content" id="gameover">
+	    <button class="ui-btn" onclick="gameOver()">Game Over</button>
+	    <button class="ui-btn" onclick="lock()">Lock</button>
+	</div>
+	
+	<div data-role="main" class="ui-content" id="startgame">
+	    <button class="ui-btn" onclick="startGame()">Start Game</button>
+	</div>
+	
+	<div data-role="main" class="ui-content" id="init">
+	    <button class="ui-btn" onclick="init()">Start new Game</button>
+	</div>
+
+	<div id="fixed-footer" data-role="footer" data-id="foo1" data-position="fixed" data-tap-toggle="false">
+		<div data-role="navbar">
+			<ul>
+				<li><a class="players-setup" href="#" data-transition="none">Lås upp<span class="btn-label">Spelare</span></a></li>
+				<li><a class="positios-setup" href="#" data-transition="none">Avbryt<span class="btn-label">Positioner</span></a></li>
+				<li><a class="settings" href="#" data-transition="none"><span class="btn-label">Inställningar</span></a></li>
+			</ul>
 		</div>
 	</div>
+
 </div>
 
 </body>

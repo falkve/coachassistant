@@ -542,11 +542,11 @@ function setPosition(position) {
 // Change player
 function changePlayer(name){
     currentPlayer = activePlayers[name];
-    $("#players-container").hide();
+    $("#start-timer #active-players-container").hide();
     $("#playeronbench-container #current-player .name").text(currentPlayer.name);
     $("#playeronbench-container").show();
-    $("#gameover").hide();
-    $("#back").show();
+    $("#start-timer #gameover").hide();
+    $("#start-timer #back").show();
 }
 
 // Do switch player
@@ -555,7 +555,7 @@ function doSwitchPlayer(name){
     var position = new Position(currentPlayer.positions[currentPlayer.positions.length-1].position);
     position.startTime = new Date();
     p.addPosition(position);
-    $("#playeronbench-container #playeronbench").append('<li id="b_'+currentPlayer.name+'" onClick="doSwitchPlayer(\''+currentPlayer.name+'\')" class="player-card ui-first-child ui-last-child"><a href="#" class="ui-btn ui-btn-icon-right ui-icon-arrow-r"><img height="44" width="30" src="img/'+currentPlayer.img+'"> '+currentPlayer.name+ ' ' +currentPlayer.viewPositions()+'</a></li>');
+    $("#start-timer #playeronbench-container #playeronbench").append('<li id="b_'+currentPlayer.name+'" onClick="doSwitchPlayer(\''+currentPlayer.name+'\')" class="player-card ui-first-child ui-last-child"><a href="#" class="ui-btn ui-btn-icon-right ui-icon-arrow-r"><img height="44" width="30" src="img/'+currentPlayer.img+'"> '+currentPlayer.name+ ' ' +currentPlayer.viewPositions()+'</a></li>');
 
     activePlayers[name] = p;
     currentPlayer.endCurrentPosition();
@@ -564,43 +564,48 @@ function doSwitchPlayer(name){
     benchPlayers[currentPlayer.name] = currentPlayer;
     $('#b_'+name).remove();
 
-    $("#players-container").show();
-    $("#playeronbench-container").hide();
-    $("#gameover").show();
-    $("#back").hide();
+    $("#start-timer #active-players-container").show();
+    $("#start-timer #playeronbench-container").hide();
+    $("#start-timer #gameover").show();
+    $("#start-timer #back").hide();
 
 }
 
 function back(){
-    $("#players-container").show();
-    $("#playeronbench-container").hide();
-    $("#gameover").show();
-    $("#back").hide();
+    $("#start-timer #players-container").show();
+    $("#start-timer #playeronbench-container").hide();
+    $("#start-timer #gameover").show();
+    $("#start-timer #back").hide();
 }
 
 function unlock(){
-    $("#lockscreen").hide();
-    $("#gameover").show();
+    $("#start-timer #lockscreen").hide();
+    $("#start-timer #gameover").show();
 }
 
 function lock(){
-    $("#lockscreen").show();
-    $("#gameover").hide();
+    $("#start-timer #lockscreen").show();
+    $("#start-timer #gameover").hide();
 }
 
 function teamComplete(){
-    $('#players li').remove();
-    $('#teamcompletebutton').hide();
-    $("#startgame").show();
+    $('#start-timer #players-active li').remove();
+    //$('#start-timer #teamcompletebutton').hide();
+    $("#start-timer #startgame").show();
+    
+    
+    $( ":mobile-pagecontainer" ).pagecontainer( "change", "#start-timer", { role: "page" } );
+    
+    
     updateActiveView();
 }
 
 // Start game
 function startGame(){
     startTime = new Date();
-    $('#start .ui-content').addClass('timer-active');
-    $("#time-container").show();
-    $("#startgame").hide();
+    $('#start-timer .ui-content').addClass('timer-active');
+    $("#start-timer #time-container").show();
+    $("#start-timer #startgame").hide();
     $("#current-team").hide();
     
     var d = new Date();
@@ -609,15 +614,15 @@ function startGame(){
     }
     loopId = setInterval(updateActiveView, 1000);
     
-    $("#gameover").show();
+    $("#start-timer #gameover").show();
     lock();
 }
 
 // Update active view
 function updateActiveView(){
-    $('#players-container #players li').remove();
+    $('#start-timer #active-players-container #active-players li').remove();
     for (var name in activePlayers) {
-        $("#players-container #players").append('<li id="'+activePlayers[name].name+'" onClick="changePlayer(\''+activePlayers[name].name+'\')" class="player-card ui-first-child ui-last-child"><a href="#" class="ui-btn ui-btn-icon-right ui-icon-arrow-r"><img height="44" width="30" src="img/'+players[name]+'"> <span class="position-key">'+activePlayers[name].positions[0].position+'</span>'+activePlayers[name].toString()+'</a></li>');
+        $("#start-timer #active-players-container #active-players").append('<li id="'+activePlayers[name].name+'" onClick="changePlayer(\''+activePlayers[name].name+'\')" class="player-card ui-first-child ui-last-child"><a href="#" class="ui-btn ui-btn-icon-right ui-icon-arrow-r"><img height="44" width="30" src="img/'+players[name]+'"> <span class="position-key">'+activePlayers[name].positions[0].position+'</span>'+activePlayers[name].toString()+'</a></li>');
     }
     if(startTime != null){
 		eTime = getElapsedTime(startTime, new Date());
@@ -627,13 +632,13 @@ function updateActiveView(){
 		eSeconds = eSeconds < 10 ? "0" + eSeconds : eSeconds;
 		eMinutes = eMinutes < 10 ? "0" + eMinutes : eMinutes;
 	    
-	    $('#time-container #time').html('<div class="elapsed_time"><div id="elapsed_seconds">'+eMinutes+'</div> <div class="divider">:</div> <div id="elapsed_minutes">'+eSeconds+'</div> </div>');
+	    $('#start-timer #time-container #time').html('<div class="elapsed_time"><div id="elapsed_seconds">'+eMinutes+'</div> <div class="divider">:</div> <div id="elapsed_minutes">'+eSeconds+'</div> </div>');
     }
 }
 
 // Game over
 function gameOver(){
-    $("#gameover").hide();
+    $("#start-timer #gameover").hide();
     clearInterval(loopId);
     $('#players-container #players li').remove();
     for (var name in activePlayers) {

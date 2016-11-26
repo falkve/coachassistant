@@ -18,10 +18,14 @@
 			content: "h";
 			font-size: 28px;
 			color: white;
-			position: absolute;
-			right: 9px;
-			top: 16px;
-			z-index: 20;
+		    line-height: 60px;
+		    width: 50px;
+		    height: 100px;
+		    background: rgba(0,0,0,0.4);
+		    position: absolute;
+		    right: 0;
+		    top: 0;
+		    z-index: 20;
 		}
 		/*
 		&:after {
@@ -58,10 +62,14 @@
 			content: "5";
 			font-size: 28px;
 			color: white;
-			position: absolute;
-			right: 9px;
-			top: 16px;
-			z-index: 20;
+		    line-height: 60px;
+		    width: 50px;
+		    height: 100px;
+		    background: rgba(0,0,0,0.4);
+		    position: absolute;
+		    right: 0;
+		    top: 0;
+		    z-index: 20;
 		}
 	}
 }

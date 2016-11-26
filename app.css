@@ -2848,9 +2848,13 @@ a {
       content: "h";
       font-size: 28px;
       color: white;
+      line-height: 60px;
+      width: 50px;
+      height: 100px;
+      background: rgba(0, 0, 0, 0.4);
       position: absolute;
-      right: 9px;
-      top: 16px;
+      right: 0;
+      top: 0;
       z-index: 20; }
 
 #startgame {
@@ -2876,9 +2880,13 @@ a {
       content: "5";
       font-size: 28px;
       color: white;
+      line-height: 60px;
+      width: 50px;
+      height: 100px;
+      background: rgba(0, 0, 0, 0.4);
       position: absolute;
-      right: 9px;
-      top: 16px;
+      right: 0;
+      top: 0;
       z-index: 20; }
 
 .player--cards a {
@@ -3456,7 +3464,8 @@ a {
     display: inline-block; }
 
 #players .player-elapsed-time,
-#playeronbench .player-elapsed-time {
+#playeronbench .player-elapsed-time,
+#active-players .player-elapsed-time {
   display: inline-block;
   font-weight: 100;
   color: #FEBB00;
@@ -3467,7 +3476,8 @@ a {
   position: absolute;
   right: 10px !important; }
 #players .removeAnim,
-#playeronbench .removeAnim {
+#playeronbench .removeAnim,
+#active-players .removeAnim {
   height: 200px;
   -webkit-transition: all 10s ease-out;
   -moz-transition: all 10s ease-out;
@@ -3492,6 +3502,11 @@ a {
 #players-setup .player-card .player-name {
   display: inline-block;
   padding-left: 23px; }
+#players-setup .btn-add {
+  border: transparent !important;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  box-shadow: none !important; }
 
 #all-players #list-players {
   width: 100%;

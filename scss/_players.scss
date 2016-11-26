@@ -1,4 +1,6 @@
-// Player
+// -------------------------------------------
+// Players card, general
+// -------------------------------------------
 
 .player-card {
 	& {
@@ -136,7 +138,8 @@
 }
 
 #players,
-#playeronbench {
+#playeronbench,
+#active-players {
 	// Times
 	.player-elapsed-time {
 		display: inline-block;
@@ -157,6 +160,11 @@
 	}
 }
 
+// -------------------------------------------
+// Players setup page
+// -------------------------------------------
+
+
 #players-setup {
 	.search-player {
 		padding: 10px;
@@ -174,7 +182,6 @@
 				border-color: #222 !important;
 				background-color: #222;
 			}
-		
 		}
 	}
 	.player-card {
@@ -183,9 +190,19 @@
 			padding-left: 23px;
 		}
 	}
+	.btn-add {
+		border: transparent !important;
+		-webkit-box-shadow: none !important;
+		-moz-box-shadow: none !important;
+		box-shadow: none !important;
+	}
 }
 
-// List players
+// -------------------------------------------
+// List players container
+// -------------------------------------------
+
+
 #all-players {
 	#list-players {
 		width: 100%;
